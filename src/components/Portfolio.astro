@@ -1,0 +1,12 @@
+---
+import ProductExpand from "./interactive/ProductExpand.tsx";
+const { products } = Astro.props;
+---
+<section id="portfolio">
+  <div class="reveal">
+    <div class="section-label">01 — Portfolio</div>
+    <h2 class="section-heading">Products we <strong>ship and maintain</strong></h2>
+    <p class="section-sub">Three products covering the device, connectivity, and data layers of industrial software. Click any product to explore it in depth.</p>
+  </div>
+  <ProductExpand client:load products={products} />
+</section>

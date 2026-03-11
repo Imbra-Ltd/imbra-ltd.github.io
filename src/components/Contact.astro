@@ -1,0 +1,15 @@
+---
+const { contact } = Astro.props;
+---
+<section id="contact">
+  <div>
+    <h2 class="cta-headline">
+      {contact.headline}<br /><strong>{contact.headlineStrong}</strong>
+    </h2>
+    <p class="cta-sub">{contact.sub}</p>
+  </div>
+  <div class="cta-right">
+    <a href={`mailto:${contact.email}`} class="btn-white">{contact.cta}</a>
+    <div class="cta-email mono">{contact.email}</div>
+  </div>
+</section>

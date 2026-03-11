@@ -1,0 +1,12 @@
+---
+import ServiceExpand from "./interactive/ServiceExpand.tsx";
+const { services } = Astro.props;
+---
+<section id="services">
+  <div class="reveal">
+    <div class="section-label">02 — Services</div>
+    <h2 class="section-heading">What we <strong>do for you</strong></h2>
+    <p class="section-sub">Engagements range from focused advisory to full project delivery. All work is anchored in production-grade standards.</p>
+  </div>
+  <ServiceExpand client:load services={services} />
+</section>

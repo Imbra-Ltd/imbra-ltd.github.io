@@ -1,0 +1,72 @@
+[
+  {
+    "num": "01",
+    "title": "Backend Development",
+    "desc": "Full-cycle software development from architecture to production deployment. Emphasis on readable, maintainable code suitable for industrial and data-intensive domains.",
+    "detail": "Covers greenfield applications, service APIs, CLI tools, and data-processing pipelines. Python for scripting, automation, and data work; Go for high-performance services and agents; TypeScript for web frontends and tooling. Code is written for long-term maintainability in operational environments — not just to ship.",
+    "tech": ["Python", "Go", "TypeScript", "REST APIs", "Docker", "PostgreSQL"]
+  },
+  {
+    "num": "02",
+    "title": "Application Refactoring",
+    "desc": "Structured modernisation of legacy codebases — improving type safety, test coverage, performance, and long-term maintainability.",
+    "detail": "Typical starting points: no type hints, no tests, monolithic scripts, undocumented business logic. The process involves audit, incremental refactoring with test coverage added in parallel, and optional migration to a cleaner architecture. Industrial codebases often carry years of accumulated workarounds — this service untangles them safely.",
+    "tech": ["Code Audit", "Type Safety", "Test Coverage", "CI Integration", "Architecture Review"]
+  },
+  {
+    "num": "03",
+    "title": "QA Specifications & Automated Testing",
+    "desc": "Test strategy definition, automated test implementation, and CI pipeline integration for complex industrial and data-intensive applications.",
+    "detail": "Includes writing formal QA specifications, defining acceptance criteria, building automated test suites, and wiring them into CI pipelines. For industrial systems, this also covers historian replay testing — validating behaviour against recorded process data.",
+    "tech": ["TDD", "BDD", "Integration Tests", "System Tests", "TestRail", "Playwright", "Jenkins", "Docker", "Git"]
+  },
+  {
+    "num": "04",
+    "title": "DevOps & CI/CD",
+    "desc": "Pipeline design and automation using Git, Jenkins, Ansible, and Docker — covering build, test, deployment, and infrastructure-as-code for industrial and cloud environments.",
+    "detail": "Designed for teams moving from manual deployments to repeatable, auditable release processes. Covers Git branching strategy, Jenkins pipeline authoring, Ansible playbooks for provisioning and configuration management, and Dockerised deployment targets — including air-gapped industrial environments.",
+    "tech": ["Git", "GitHub", "GitLab", "Jenkins", "Ansible", "Docker", "Azure DevOps"]
+  },
+  {
+    "num": "05",
+    "title": "Cloud Architecture & Deployment",
+    "desc": "Design and deployment of cloud-based solutions on Azure — containerised workloads, infrastructure provisioning, and integration between OT systems and cloud platforms.",
+    "detail": "Covers Azure resource design, containerised workload deployment, secure OT-to-cloud data bridging, and long-term cost-aware architecture. Particularly relevant for plants looking to expose historian data to cloud analytics without re-architecting their OT layer.",
+    "tech": ["Azure", "Docker", "Terraform", "REST APIs", "OPC-UA"]
+  },
+  {
+    "num": "06",
+    "title": "Pentesting & Security Hardening",
+    "desc": "Security assessment and hardening for OT/IT systems — identifying vulnerabilities at the boundary between plant networks and IT infrastructure before they become incidents.",
+    "detail": "Covers network and protocol-level penetration testing of industrial environments — OPC-UA endpoints, PLC interfaces, SCADA communication channels, and OT/IT boundary devices. Security hardening includes access control review, encrypted transport configuration, network segmentation recommendations, and remediation guidance. OT security requires a different approach from web app pentesting — deep protocol knowledge and understanding of plant availability constraints are essential.",
+    "tech": ["OT Security", "Network Pentesting", "OPC-UA", "SCADA", "IEC 62443", "Hardening"]
+  },
+  {
+    "num": "07",
+    "title": "Data Integration & ETL",
+    "desc": "Agent-based data pipelines connecting OT data sources to IT systems — time-series ingestion, protocol bridging, and structured delivery to analytics platforms and historian cores.",
+    "detail": "Built around an agent model: each agent handles one protocol or data source, normalises the data, and delivers it to a common sink. Covers a wide range of industrial protocols and file-based sources. Output targets include time-series databases, REST endpoints, and flat file exports into shared network folders for legacy consumers.",
+    "tech": ["IoT", "IIoT", "Resilience", "Security", "Observability", "Idempotency", "Schema Validation"]
+  },
+  {
+    "num": "08",
+    "title": "Industrial Automation — Product to SAT",
+    "desc": "End-to-end project support for Siemens and Honeywell platforms — from product selection and panel design through software development, commissioning, and site acceptance testing.",
+    "detail": "Full project lifecycle: hardware selection, electrical panel coordination, PLC/DCS software development, factory acceptance testing (FAT), on-site commissioning, and formal site acceptance testing (SAT). Experience with Siemens S7-300/1500 (TIA Portal, SCL) and Honeywell Experion PKS C300 in ATEX/IECEx-regulated environments.",
+    "tech": ["Siemens S7-300/1500", "TIA Portal", "SCL", "Honeywell Experion PKS", "C300"]
+  },
+  {
+    "num": "09",
+    "title": "Maintenance & Support",
+    "desc": "Ongoing L2/L3 support contracts for deployed systems, including industrial historians, PLC software, and custom SDK integrations.",
+    "detail": "Structured as annual contracts with defined response SLAs. L2 covers configuration changes, minor enhancements, and user support. L3 covers root cause analysis, hotfixes, and deep system-level intervention. Remote-first, with on-site available by arrangement. Contracts cover historian deployments, Siemens PLC software, and custom SDK integrations.",
+    "tech": ["PxTrend", "OPC-UA", "Siemens TIA Portal", "Python", "Ansible"]
+  },
+  {
+    "num": "10",
+    "title": "AI-Augmented Engineering",
+    "desc": "Applied AI for industrial contexts: natural language query interfaces over historian data, predictive maintenance analytics, process modelling and controller tuning, and AI-assisted documentation and refactoring of legacy codebases.",
+    "detail": "Four concrete applications: (1) natural language interfaces that let operators query historian data without knowing the tag schema; (2) predictive maintenance models for industrial equipment trained on process historian data; (3) AI-assisted documentation and refactoring of undocumented legacy code — particularly useful for inherited PLC and legacy codebases; (4) process modelling and controller tuning — building data-driven models of industrial processes to support APC design, P&ID tuning, and optimisation of control loop parameters.",
+    "tech": ["AI/ML", "APC", "P&ID Tuning", "Predictive Maintenance"]
+  }
+]

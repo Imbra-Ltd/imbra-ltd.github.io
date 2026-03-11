@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "Imbra.soft — Software & Industrial Engineering",
+    "description": "Imbra.soft builds software products and delivers engineering services for industrial environments."
+  },
+  "nav": {
+    "links": [
+      { "label": "Portfolio",  "target": "portfolio" },
+      { "label": "Services",   "target": "services" },
+      { "label": "Expertise",  "target": "expertise" },
+      { "label": "Research",   "target": "publications" }
+    ],
+    "cta": { "label": "Get in touch", "target": "contact" }
+  },
+  "hero": {
+    "eyebrow": "Software & Industrial Engineering",
+    "headline": "Complex inside.",
+    "headlineStrong": "Simple outside.",
+    "sub": "Imbra.soft builds software products and delivers engineering services for industrial environments — absorbing the technical complexity so operators, engineers, and clients get interfaces and tools that simply work.",
+    "cta": { "label": "View Portfolio", "target": "portfolio" },
+    "ghost": { "label": "Discuss a project →", "target": "contact" },
+    "stats": [
+      {
+        "num": "15+",
+        "label": "Years in Industrial Automation, Communication & Software Engineering",
+        "sub": "Solvay Sodi · Hilscher · Heidelberg Materials"
+      },
+      {
+        "num": "3",
+        "label": "Peer-reviewed Publications",
+        "sub": "Control Engineering Practice · JEST · ACCS"
+      },
+      {
+        "num": "100%",
+        "label": "Transparent Pricing",
+        "sub": "Published rates · No hidden fees · No vendor lock-in"
+      },
+      {
+        "num": "OT/IT",
+        "label": "Domain Bridge",
+        "sub": "From sensor level to cloud · PLC to REST API"
+      }
+    ]
+  },
+  "contact": {
+    "headline": "The complexity is",
+    "headlineStrong": "ours to solve.",
+    "sub": "Project engagements · Plugin services · Maintenance contracts",
+    "cta": "Get in touch",
+    "email": "contact@imbra.soft"
+  },
+  "footer": {
+    "legal": ["Privacy", "Imprint", "Legal Notice"],
+    "social": [
+      {
+        "name": "LinkedIn",
+        "class": "linkedin",
+        "href": "https://linkedin.com/in/branimir-georgiev"
+      },
+      {
+        "name": "GitHub",
+        "class": "github",
+        "href": "https://github.com/Imbra-Ltd"
+      }
+    ],
+    "address": {
+      "city": "Varna, Bulgaria",
+      "email": "contact@imbra.soft",
+      "github": "github.com/Imbra-Ltd",
+      "githubHref": "https://github.com/Imbra-Ltd"
+    },
+    "about": "Imbra.soft is a boutique software and industrial engineering consultancy based in Varna, Bulgaria. We specialise in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services — serving industrial businesses that need production-grade engineering without enterprise overhead.",
+    "copy": "© 2025 Imbra.soft · All rights reserved"
+  }
+}

@@ -1,0 +1,20 @@
+---
+const { expertise } = Astro.props;
+---
+<section id="expertise">
+  <div class="reveal">
+    <div class="section-label">03 — Domain Expertise</div>
+    <h2 class="section-heading">Where our <strong>knowledge runs deep</strong></h2>
+    <p class="section-sub">Imbra.soft works in domains that demand real engineering experience — not generalist consultancy.</p>
+  </div>
+  <div class="reveal">
+    <div class="expertise-grid">
+      {expertise.map(e => (
+        <div class="expertise-card">
+          <div class="expertise-title">{e.title}</div>
+          <div class="expertise-text">{e.text}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

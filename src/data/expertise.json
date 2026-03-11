@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Industrial Communication",
+    "text": "Deep protocol coverage across fieldbus, IoT, and Ethernet-based standards — Modbus, DeviceNet, Profibus, CAN, CANopen, OPC-UA, MQTT, HART, and EtherNet/IP — with both open-source and custom SDK implementations."
+  },
+  {
+    "title": "Industrial Automation",
+    "text": "Deep domain knowledge across Siemens PLC programming (S7-300/1500, TIA Portal, SCL) and Honeywell Experion PKS — covering SCADA, historian systems, ATEX/IECEx compliance, and OT/IT convergence architectures."
+  },
+  {
+    "title": "Data Integration",
+    "text": "Agent-based ETL pipeline design, time-series data management, OPC-UA integration, and bridging OT process data to modern IT analytics platforms."
+  },
+  {
+    "title": "Custom Software",
+    "text": "Purpose-built applications for industrial and operational environments — from internal tooling to client-facing systems with complex integration requirements."
+  }
+]

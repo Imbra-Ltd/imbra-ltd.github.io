@@ -1,0 +1,14 @@
+---
+import HamburgerMenu from "./interactive/HamburgerMenu.tsx";
+const { links, cta } = Astro.props;
+---
+<nav>
+  <a class="nav-logo" href="#">IMBRA<span>.</span>SOFT</a>
+  <div class="nav-links">
+    {links.map((l: { label: string; target: string }) => (
+      <a href={`#${l.target}`} class="nav-link">{l.label}</a>
+    ))}
+    <a href={`#${cta.target}`} class="nav-cta">{cta.label}</a>
+  </div>
+  <HamburgerMenu client:load links={links} cta={cta} />
+</nav>

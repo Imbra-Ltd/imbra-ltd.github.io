@@ -1,0 +1,64 @@
+import { useState, useEffect, useRef } from "react";
+
+interface Service {
+  num: string;
+  title: string;
+  desc: string;
+  detail: string;
+  tech: string[];
+}
+
+interface Props {
+  services: Service[];
+}
+
+export default function ServiceExpand({ services }: Props) {
+  const [activeNum, setActiveNum] = useState<string | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.classList.add("visible"); obs.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  function toggle(e: React.MouseEvent, num: string) {
+    e.stopPropagation();
+    setActiveNum(prev => prev === num ? null : num);
+  }
+
+  return (
+    <div ref={gridRef} className="services-grid reveal">
+      {services.map(s => (
+        <div key={s.num} className={`service-item ${activeNum === s.num ? "active" : ""}`}>
+          <div className="service-header">
+            <div className="service-header-content">
+              <div className="service-title">{s.title}</div>
+              <div className="service-desc">{s.desc}</div>
+            </div>
+            <button
+              className="service-toggle"
+              onClick={(e) => toggle(e, s.num)}
+              aria-label="Toggle details"
+            >
+              {activeNum === s.num ? "−" : "+"}
+            </button>
+          </div>
+          {activeNum === s.num && (
+            <div className="service-detail">
+              <p className="service-detail-text">{s.detail}</p>
+              <div className="service-tags">
+                {s.tech.map(t => <span key={t} className="service-tag">{t}</span>)}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
