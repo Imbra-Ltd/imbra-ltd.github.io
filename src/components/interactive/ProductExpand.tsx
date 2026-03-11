@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface Product {
   id: string;
@@ -57,12 +57,10 @@ export default function ProductExpand({ products }: Props) {
     setActiveId(prev => prev === p.id ? null : p.id);
   }
 
-  const activeProduct = products.find(p => p.id === activeId) ?? null;
-
   return (
-    <>
-      <div ref={gridRef} className="portfolio-grid reveal">
-        {products.map(p => (
+    <div ref={gridRef} className="portfolio-grid reveal">
+      {products.map(p => (
+        <React.Fragment key={p.id}>
           <div
             key={p.id}
             className={`product-card ${activeId === p.id ? "active" : ""}`}
@@ -80,9 +78,13 @@ export default function ProductExpand({ products }: Props) {
             </div>
             <div className="expand-indicator">+</div>
           </div>
-        ))}
-      </div>
-      {activeProduct && <DetailPanel d={activeProduct} />}
-    </>
+          {activeId === p.id && (
+            <div style={{ gridColumn: "1 / -1" }}>
+              <DetailPanel d={p} />
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
   );
 }
