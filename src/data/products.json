@@ -26,7 +26,7 @@
     "desc": "An open-architecture historian for small and medium-sized plants — minimal well-defined core, open below via agents, open above via plugins. Free to try, paid plugins and optional support.",
     "tags": ["Open Source", "Plugin Architecture", "OT Connectivity", "SMB"],
     "problem": "Most industrial historians are expensive, closed, and sized for enterprise. Imbra.soft's historian is built on an open hourglass architecture — like TCP/IP, it defines a minimal, well-specified core with open contracts on both sides: plant-facing agents connect any data source below, and application plugins consume the data above. The core and agents are open source. Engineers are encouraged to install, explore, and run it at no cost. Value is delivered through plugins that work with the data, plus optional installation and maintenance services for teams that need them.",
-    "tech": ["TimescaleDB", "InfluxDB", "OPC-UA", "Python", "Go", "REST API", "gRPC", "Docker"],
+    "tech": ["TimescaleDB", "PostgreSQL", "OPC-UA", "Python", "Go", "REST API", "gRPC", "Docker"],
     "audience": "Engineers and operations teams at small and medium-sized industrial plants looking for a capable historian without enterprise licensing costs."
   }
 ]
