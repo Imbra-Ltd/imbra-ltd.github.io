@@ -101,6 +101,8 @@ section { padding: 96px 48px; }
 .pub-journal { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #1B4F8A; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
 .pub-title { font-size: 14px; font-weight: 500; color: #111318; line-height: 1.5; margin-bottom: 8px; }
 .pub-vol { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B7480; }
+.pub-doi { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #1B4F8A; text-decoration: none; letter-spacing: 0.05em; margin-top: 10px; display: inline-block; border-bottom: 1px solid #1B4F8A; }
+.pub-doi:hover { color: #163F6E; border-color: #163F6E; }
 
 /* ── Contact ── */
 #contact { background: #111318; color: white; display: flex; align-items: center; justify-content: space-between; padding: 72px 48px; }

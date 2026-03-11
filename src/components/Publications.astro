@@ -14,6 +14,7 @@ const { publications } = Astro.props;
           <div class="pub-journal">{p.journal}</div>
           <div class="pub-title">{p.title}</div>
           <div class="pub-vol">{p.vol}</div>
+          <a class="pub-doi" href={p.doi} target="_blank" rel="noopener noreferrer">DOI ↗</a>
         </div>
       ))}
     </div>
