@@ -7,26 +7,29 @@
     "tags": ["PLC Programming", "Reusable Components", "Automation", "Commissioning"],
     "problem": "Standard Siemens blocks cover the basics but leave gaps in complex control scenarios. The library addresses this with two approaches: enriched wrappers that extend existing components like PID, and purpose-built blocks for functionality that has no standard equivalent. FC (Function) and FB (Function Block) are the two fundamental reusable code units in Siemens PLC programming — FCs are stateless logic routines, FBs retain their own memory across calls, making them ideal for encapsulating equipment like drives, valves, or controllers.",
     "tech": ["Siemens S7-300/1500", "TIA Portal", "SCL", "Ladder", "FC/FB architecture"],
-    "audience": "Automation engineers, system integrators, OEM machine builders working with Siemens platforms."
+    "audience": "Automation engineers, system integrators, OEM machine builders working with Siemens platforms.",
+    "status": "In Development"
   },
   {
     "id": "02",
     "name": "Communication Stack SDKs",
     "role": "Connectivity layer",
-    "desc": "Protocol implementations used by historian agents to connect plant devices to the historian, and as the foundation for custom PLC logic delivered to customers.",
+    "desc": "Pure Python protocol implementations for rapid prototyping and OT connectivity — production-ready at typical process sampling rates, with a clean interface for crafting, parsing, and inspecting protocol frames.",
     "tags": ["Rapid Prototyping", "Fieldbus", "IoT", "Embedded"],
-    "problem": "Connecting OT devices to modern software stacks requires a pragmatic combination of proven open-source libraries and purpose-built implementations — covering edge cases and proprietary behaviours found only in real plant environments.",
+    "problem": "Connecting to industrial devices should not require days of setup, a C compiler, or deep knowledge of protocol internals. Each SDK installs with a single pip command and exposes a clean packet-level interface — letting engineers read live data, craft custom frames, and build connectivity agents without low-level bit manipulation. Designed for historian agents, integration scripts, and proof-of-concept work that needs to become production code quickly.",
     "tech": ["Modbus TCP/IP", "Modbus RTU", "DeviceNet", "Profibus", "CAN", "CANopen", "OPC-UA", "MQTT", "HART", "EtherNet/IP"],
-    "audience": "Embedded engineers, system integrators, MES developers building device connectivity layers."
+    "audience": "Embedded engineers, system integrators, MES developers building device connectivity layers.",
+    "status": "In Development"
   },
   {
     "id": "03",
-    "name": "Plant Historian",
+    "name": "ImBrain™",
     "role": "Core platform",
     "desc": "An open-architecture historian for small and medium-sized plants — minimal well-defined core, open below via agents, open above via plugins. Free to try, paid plugins and optional support.",
     "tags": ["Open Source", "Plugin Architecture", "OT Connectivity", "SMB"],
-    "problem": "Most industrial historians are expensive, closed, and sized for enterprise. Imbra.soft's historian is built on an open hourglass architecture — like TCP/IP, it defines a minimal, well-specified core with open contracts on both sides: plant-facing agents connect any data source below, and application plugins consume the data above. The core and agents are open source. Engineers are encouraged to install, explore, and run it at no cost. Value is delivered through plugins that work with the data, plus optional installation and maintenance services for teams that need them.",
+    "problem": "Most industrial historians are expensive, closed, and sized for enterprise. ImBrain is built on an open hourglass architecture — like TCP/IP, it defines a minimal, well-specified core with open contracts on both sides: plant-facing agents connect any data source below, and application plugins consume the data above. The core and agents are open source. Engineers are encouraged to install, explore, and run it at no cost. Value is delivered through plugins that work with the data, plus optional installation and maintenance services for teams that need them.",
     "tech": ["TimescaleDB", "PostgreSQL", "OPC-UA", "Python", "Go", "REST API", "gRPC", "Docker"],
-    "audience": "Engineers and operations teams at small and medium-sized industrial plants looking for a capable historian without enterprise licensing costs."
+    "audience": "Engineers and operations teams at small and medium-sized industrial plants looking for a capable historian without enterprise licensing costs.",
+    "status": "Early Access"
   }
 ]

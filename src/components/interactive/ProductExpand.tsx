@@ -9,6 +9,7 @@ interface Product {
   problem: string;
   tech: string[];
   audience: string;
+  status: string;
 }
 
 interface Props {
@@ -71,7 +72,10 @@ export default function ProductExpand({ products }: Props) {
                 {p.role}
               </span>
             </div>
-            <div className="product-name">{p.name}</div>
+            <div className="product-name">
+              {p.name}
+              <span className={`product-status product-status--${p.status.toLowerCase().replace(/\s+/g, "-")}`}>{p.status}</span>
+            </div>
             <div className="product-desc">{p.desc}</div>
             <div className="tag-row">
               {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
