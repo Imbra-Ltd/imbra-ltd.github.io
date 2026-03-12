@@ -47,13 +47,12 @@
     "headlineStrong": "ours to solve.",
     "sub": "Project engagements · Plugin services · Maintenance contracts",
     "cta": "Get in touch",
-    "email": "contact@imbra.soft"
+    "email": "contact@imbra-soft.com"
   },
   "footer": {
     "legal": [
-      { "label": "Privacy",      "href": "/privacy" },
-      { "label": "Imprint",      "href": "/imprint" },
-      { "label": "Legal Notice", "href": "/imprint" }
+      { "label": "Privacy", "href": "/privacy" },
+      { "label": "Imprint", "href": "/imprint" }
     ],
     "social": [
       {
@@ -69,11 +68,11 @@
     ],
     "address": {
       "city": "Varna, Bulgaria",
-      "email": "contact@imbra.soft",
+      "email": "contact@imbra-soft.com",
       "github": "github.com/Imbra-Ltd",
       "githubHref": "https://github.com/Imbra-Ltd"
     },
     "about": "Imbra.soft is a boutique software and industrial engineering consultancy based in Varna, Bulgaria. We specialise in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services — serving industrial businesses that need production-grade engineering without enterprise overhead.",
-    "copy": "© 2025 Imbra.soft · All rights reserved"
+    "copy": "© 2026 Imbra.soft · All rights reserved"
   }
 }
