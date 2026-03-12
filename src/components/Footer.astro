@@ -5,7 +5,7 @@ const { footer } = Astro.props;
   <div class="footer-top">
     <div class="footer-legal">
       {footer.legal.map(l => (
-        <button class="footer-legal-link">{l}</button>
+        <a href={l.href} class="footer-legal-link">{l.label}</a>
       ))}
     </div>
     <div class="footer-social">

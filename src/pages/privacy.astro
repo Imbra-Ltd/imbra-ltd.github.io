@@ -1,0 +1,60 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+---
+<Base title={`Privacy Policy — ${site.meta.title}`} description="Privacy policy for imbra.soft.">
+  <main class="legal-page">
+    <a href="/" class="legal-back">← Back</a>
+    <div class="legal-label">Legal</div>
+    <h1 class="legal-heading">Privacy Policy</h1>
+
+    <div class="legal-grid">
+      <div class="legal-section">
+        <div class="legal-section-title">Last updated</div>
+        <div class="legal-section-body">
+          <p>March 2026</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Controller</div>
+        <div class="legal-section-body">
+          <p>Imbra OOD<br />ul. Tsar Simeon I 36<br />Varna, Bulgaria</p>
+          <p><a href="mailto:contact@imbra.soft">contact@imbra.soft</a></p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Data collected</div>
+        <div class="legal-section-body">
+          <p>This website does not currently collect personal data. No registration, contact forms, or tracking cookies are in use.</p>
+          <p>This policy will be updated if data collection is introduced in the future.</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Third-party services</div>
+        <div class="legal-section-body">
+          <p><strong>Google Fonts</strong> — Typography is loaded from Google's servers. When you visit this site, your browser makes a request to Google, which may log your IP address. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</p>
+          <p><strong>GitHub Pages</strong> — This site is hosted on GitHub Pages. GitHub may collect technical data such as IP addresses as part of its hosting infrastructure. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub's Privacy Statement</a>.</p>
+          <p>Additional third-party services may be added in the future. This policy will be updated accordingly.</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Your rights</div>
+        <div class="legal-section-body">
+          <p>Under the General Data Protection Regulation (GDPR), you have the right to access, rectify, or erase any personal data we hold about you, as well as the right to restrict or object to its processing.</p>
+          <p>To exercise these rights, contact us at <a href="mailto:contact@imbra.soft">contact@imbra.soft</a>.</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Changes</div>
+        <div class="legal-section-body">
+          <p>We may update this policy as the site evolves. The date at the top of this page reflects the most recent revision.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>

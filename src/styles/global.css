@@ -118,7 +118,7 @@ section { padding: 96px 48px; }
 footer { background: #111318; color: white; }
 .footer-top { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; }
 .footer-legal { display: flex; gap: 32px; }
-.footer-legal-link { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.5); cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: none; padding: 0; transition: color 0.15s; }
+.footer-legal-link { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: color 0.15s; }
 .footer-legal-link:hover { color: white; }
 .footer-social { display: flex; gap: 16px; align-items: center; }
 .footer-social-link { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 6px; cursor: pointer; transition: opacity 0.15s; text-decoration: none; opacity: 0.85; }
@@ -134,6 +134,24 @@ footer { background: #111318; color: white; }
 .footer-desc-text { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; line-height: 1.8; max-width: 680px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; }
 .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); font-weight: 300; }
+
+/* ── Legal pages ── */
+.legal-page { max-width: 720px; margin: 0 auto; padding: 120px 48px 96px; }
+.legal-back { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1B4F8A; text-decoration: none; letter-spacing: 0.08em; display: inline-block; margin-bottom: 48px; }
+.legal-back:hover { color: #163F6E; }
+.legal-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #1B4F8A; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+.legal-heading { font-size: 40px; font-weight: 300; color: #111318; letter-spacing: -0.02em; margin-bottom: 64px; }
+.legal-grid { display: flex; flex-direction: column; gap: 0; border-top: 1px solid #DDE2EA; }
+.legal-section { padding: 28px 0; border-bottom: 1px solid #DDE2EA; display: grid; grid-template-columns: 200px 1fr; gap: 24px; }
+.legal-section-title { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #9BA3AD; letter-spacing: 0.1em; text-transform: uppercase; padding-top: 2px; }
+.legal-section-body { font-size: 14px; color: #444B56; font-weight: 300; line-height: 1.8; display: flex; flex-direction: column; gap: 8px; }
+.legal-section-body a { color: #1B4F8A; text-decoration: none; }
+.legal-section-body a:hover { color: #163F6E; }
+.legal-section-body strong { font-weight: 500; color: #111318; }
+@media (max-width: 600px) {
+  .legal-page { padding: 96px 20px 64px; }
+  .legal-section { grid-template-columns: 1fr; gap: 8px; }
+}
 
 /* ── Reveal animation ── */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }

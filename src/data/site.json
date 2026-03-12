@@ -50,7 +50,11 @@
     "email": "contact@imbra.soft"
   },
   "footer": {
-    "legal": ["Privacy", "Imprint", "Legal Notice"],
+    "legal": [
+      { "label": "Privacy",      "href": "/privacy" },
+      { "label": "Imprint",      "href": "/imprint" },
+      { "label": "Legal Notice", "href": "/imprint" }
+    ],
     "social": [
       {
         "name": "LinkedIn",
