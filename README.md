@@ -1,6 +1,6 @@
-# Imbra.soft | Software & Industrial Engineering
+# Imbra.Soft | Software & Industrial Engineering
 
-Website for [Imbra.soft](https://imbra-ltd.github.io) — a boutique software and industrial engineering consultancy based in Varna, Bulgaria.
+Website for [Imbra.Soft](https://imbra-soft.com) — a boutique software and industrial engineering consultancy based in Varna, Bulgaria.
 
 ## Getting started
 
@@ -41,7 +41,9 @@ src/
 │   ├── products.json      # Portfolio products
 │   ├── services.json      # Services accordion
 │   ├── expertise.json     # Domain expertise cards
-│   └── publications.json  # Research publications
+│   ├── publications.json  # Research publications
+│   ├── process.json       # How We Work section
+│   └── pricing.json       # Pricing page content
 ├── components/
 │   ├── interactive/       # React islands (client-side JS)
 │   │   ├── HamburgerMenu.tsx
@@ -52,13 +54,11 @@ src/
 │   └── Base.astro         # HTML shell, global CSS, reveal script
 ├── pages/
 │   ├── index.astro        # Homepage
+│   ├── pricing.astro      # Pricing page
 │   ├── imprint.astro      # Legal imprint
-│   ├── privacy.astro      # Privacy policy
-│   └── courses/           # Placeholder for future course pages
+│   └── privacy.astro      # Privacy policy
 └── styles/
     └── global.css         # All styles
-design/
-└── prototypes/            # Design prototypes (not deployed)
 ```
 
 ## Editing content
@@ -72,6 +72,8 @@ All site content lives in `src/data/` as JSON files. No component knowledge requ
 | `src/data/services.json`     | Services accordion items                       |
 | `src/data/expertise.json`    | Domain expertise cards                         |
 | `src/data/publications.json` | Research publications with DOI links           |
+| `src/data/process.json`      | How We Work section steps                      |
+| `src/data/pricing.json`      | Pricing page — all engagement models           |
 
 ## Deployment
 
@@ -81,6 +83,6 @@ Pushing to `main` triggers a GitHub Actions workflow that builds the site and de
 
 ## Contributing
 
-- Branch naming: `feature/description`
+- Branch naming: `feature/description` or `fix/description`
 - Always test with `npm run dev` before committing
 - Create a PR for each logical group of changes
