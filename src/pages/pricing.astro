@@ -1,10 +1,21 @@
 ---
 import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
 import site from "../data/site.json";
 import pricing from "../data/pricing.json";
+
+const pricingLinks = [
+  { label: "L3 Support", target: "l3" },
+  { label: "Hotfix", target: "hotfix" },
+  { label: "Project", target: "project" },
+  { label: "Exploration", target: "exploration" },
+  { label: "Payment Terms", target: "terms" },
+];
 ---
 
 <Base title={`${pricing.meta.title} — ${site.meta.title}`} description={pricing.meta.description}>
+  <Nav links={pricingLinks} cta={site.nav.cta} />
+
   <main class="pricing-page">
     <a href="/" class="pricing-back">← Back</a>
 
@@ -14,7 +25,7 @@ import pricing from "../data/pricing.json";
       <p class="pricing-sub">{pricing.intro.sub}</p>
     </div>
 
-    <!-- L3 Support -->
+    <!-- Sections -->
     {pricing.categories.map((cat) => (
       <section class="pricing-section" id={cat.id}>
         <div class="pricing-section-header">
@@ -42,7 +53,7 @@ import pricing from "../data/pricing.json";
                   <li>{tier.channel}</li>
                   <li>{tier.reporting ? 'Monthly summary report' : 'No monthly report'}</li>
                   <li>{tier.review ? 'Quarterly business review' : 'No quarterly review'}</li>
-                  <li>Excess hours at €150/h</li>
+                  <li>Excess hours at €100/h</li>
                 </ul>
               </div>
             ))}
@@ -96,14 +107,18 @@ import pricing from "../data/pricing.json";
               <span class="pricing-rate-label">Minimum</span>
               <span class="pricing-rate-value mono">{cat.minimum}</span>
             </div>
-            <div class="pricing-rate-row">
-              <span class="pricing-rate-label">Out-of-hours</span>
-              <span class="pricing-rate-value mono">{cat.outofhours}</span>
-            </div>
-            <div class="pricing-rate-row">
-              <span class="pricing-rate-label">Expenses</span>
-              <span class="pricing-rate-value">{cat.expenses}</span>
-            </div>
+            {cat.outofhours && (
+              <div class="pricing-rate-row">
+                <span class="pricing-rate-label">Out-of-hours</span>
+                <span class="pricing-rate-value mono">{cat.outofhours}</span>
+              </div>
+            )}
+            {cat.expenses && (
+              <div class="pricing-rate-row">
+                <span class="pricing-rate-label">Expenses</span>
+                <span class="pricing-rate-value">{cat.expenses}</span>
+              </div>
+            )}
           </div>
         )}
 
@@ -123,7 +138,7 @@ import pricing from "../data/pricing.json";
     ))}
 
     <!-- Payment terms -->
-    <section class="pricing-terms">
+    <section class="pricing-terms" id="terms">
       <div class="pricing-label mono">Payment Terms</div>
       <ul class="pricing-terms-list">
         {pricing.terms.map((t) => <li>{t}</li>)}

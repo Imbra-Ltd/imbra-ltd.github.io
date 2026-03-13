@@ -7,8 +7,8 @@ const { links, cta } = Astro.props;
     <img src="/logos/logo-1b-web.svg" alt="Imbra.soft" class="nav-logo-img" />
   </a>
   <div class="nav-links">
-    {links.map((l: { label: string; target: string }) => (
-      <a href={`#${l.target}`} class="nav-link">{l.label}</a>
+    {links.map((l: { label: string; target: string; href?: string }) => (
+      <a href={l.href ?? `#${l.target}`} class="nav-link">{l.label}</a>
     ))}
     <a href={`#${cta.target}`} class="nav-cta">{cta.label}</a>
   </div>

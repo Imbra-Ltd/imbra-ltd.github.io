@@ -12,9 +12,9 @@
     {
       "id": "l3",
       "index": "01",
-      "title": "L3 Support",
-      "model": "Annual flat fee · per legacy instance",
-      "desc": "Third-level escalation for legacy industrial software systems. Covers incident investigation, root cause analysis, workaround guidance, documentation, and remote consultation — across all covered instances.",
+      "title": "L3 Support for Legacy Systems",
+      "model": "Annual flat fee · per legacy system instance",
+      "desc": "Third-level escalation exclusively for legacy industrial software systems. Covers incident investigation, root cause analysis, workaround guidance, documentation, and remote consultation — across all covered legacy instances.",
       "excludes": "Deployment to production systems, on-site visits, and new feature development are excluded and governed separately.",
       "tiers": [
         {
@@ -51,8 +51,9 @@
       ],
       "notes": [
         "Included hours are pooled across all instances within a tier — a quiet instance offsets a busy one.",
-        "Excess hours beyond the annual pool are billed at €150/hour with prior written approval.",
+        "Excess hours beyond the annual pool are billed at €100/hour with prior written approval.",
         "Instances may be on different tiers within the same agreement.",
+        "Total pooled hours across all instances and tiers cannot exceed 2,500 hours per year (10 hours/day × 250 working days) — the maximum annual capacity of one engineer.",
         "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays."
       ],
       "sla": [
@@ -65,14 +66,14 @@
     {
       "id": "hotfix",
       "index": "02",
-      "title": "Hotfix & Emergency",
+      "title": "Hotfix & Emergency of Legacy Systems",
       "model": "Hourly · minimum 2 hours",
-      "desc": "Analysis, preparation, and delivery of patches, configuration corrections, or emergency fixes as tested artifacts. Delivered to the client for their own deployment and validation.",
-      "excludes": "Deployment responsibility remains with the client. No liability is accepted for outages resulting from client-initiated deployments.",
+      "desc": "Analysis, preparation, and delivery of patches, configuration corrections, or emergency fixes. All artifacts are tested in-house before delivery. The client is responsible for independent validation in their own environment prior to any production deployment.",
+      "excludes": "Deployment to production systems remains entirely the client's responsibility. No liability is accepted for outages or data loss resulting from client-initiated deployments of delivered artifacts.",
       "rate": "€175 / hour",
       "minimum": "2-hour minimum per incident",
       "outofhours": "1.5× multiplier — evenings after 18:00 CET, weekends, public holidays",
-      "expenses": "Travel, tooling, and third-party licences billed at cost with prior written approval"
+      "expenses": "The hourly rate covers all standard expenses. Exceptional costs exceeding €1,000 (travel, third-party licences, specialised tooling) are borne by the client with prior written agreement."
     },
     {
       "id": "project",
@@ -88,17 +89,28 @@
         },
         {
           "name": "Time & Materials",
-          "desc": "Applied for exploratory or refactoring work where the full scope cannot be determined in advance. Weekly timesheets provided for client approval.",
-          "rate": "€1,000 / day (8 hours)"
+          "desc": "Applied for refactoring or development work where the full scope cannot be determined in advance. Weekly timesheets provided for client approval.",
+          "rate": "€800 / day (8 hours)"
         }
       ]
+    },
+    {
+      "id": "exploration",
+      "index": "04",
+      "title": "Exploration & Spikes",
+      "model": "Fixed time-box · daily rate",
+      "desc": "A Spike is a time-boxed investigation used to reduce technical uncertainty before committing to a full project. The outcome is a written finding — not production code. Common uses: feasibility assessment, architecture options analysis, protocol compatibility study, or vendor evaluation.",
+      "excludes": "A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
+      "rate": "€100 / hour",
+      "minimum": "1-day minimum (8 hours)",
+      "expenses": "All expenses incurred during the engagement (travel, third-party licences, specialised tooling) are borne by the client."
     }
   ],
   "terms": [
     "L3 Support invoiced quarterly in advance.",
-    "Hotfix invoices issued upon delivery, payable within 14 days.",
+    "Hotfix invoices issued upon delivery, payable within 60 days.",
     "Project invoices follow the schedule in the relevant Statement of Work.",
-    "Late payments beyond 30 days accrue interest at 1.5% per month.",
+    "Late payments beyond 60 days accrue interest at 1% per month.",
     "All intellectual property transfers to the client upon full payment."
   ],
   "cta": {
