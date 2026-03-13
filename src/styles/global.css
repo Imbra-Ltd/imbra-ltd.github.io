@@ -12,8 +12,8 @@ nav {
   border-bottom: 1px solid #DDE2EA; height: 60px;
   display: flex; align-items: center; padding: 0 48px; justify-content: space-between;
 }
-.nav-logo { font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.12em; color: #111318; text-transform: uppercase; cursor: pointer; text-decoration: none; }
-.nav-logo span { color: #1B4F8A; }
+.nav-logo { display: flex; align-items: center; cursor: pointer; text-decoration: none; }
+.nav-logo-img { height: 40px; width: auto; display: block; }
 .nav-links { display: flex; gap: 36px; align-items: center; }
 .nav-link { font-size: 13px; font-weight: 400; color: #6B7480; cursor: pointer; letter-spacing: 0.03em; transition: color 0.15s; background: none; border: none; padding: 0; text-decoration: none; }
 .nav-link:hover { color: #111318; }

@@ -3,7 +3,9 @@ import HamburgerMenu from "./interactive/HamburgerMenu.tsx";
 const { links, cta } = Astro.props;
 ---
 <nav>
-  <a class="nav-logo" href="/">IMBRA<span>.</span>SOFT</a>
+  <a class="nav-logo" href="/" aria-label="Imbra.soft — home">
+    <img src="/logos/logo-1b-web.svg" alt="Imbra.soft" class="nav-logo-img" />
+  </a>
   <div class="nav-links">
     {links.map((l: { label: string; target: string }) => (
       <a href={`#${l.target}`} class="nav-link">{l.label}</a>
