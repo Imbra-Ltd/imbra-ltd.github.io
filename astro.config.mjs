@@ -5,6 +5,6 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://imbra-ltd.github.io',
+  site: 'https://imbra-soft.com',
   integrations: [react(), sitemap()],
 });
