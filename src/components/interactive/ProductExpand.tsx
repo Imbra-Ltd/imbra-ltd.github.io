@@ -10,6 +10,7 @@ interface Product {
   tech: string[];
   audience: string;
   status: string;
+  url?: string;
 }
 
 interface Props {
@@ -34,6 +35,14 @@ function DetailPanel({ d }: { d: Product }) {
           <div className="detail-col-label">Built for</div>
           <div className="detail-col-text">{d.audience}</div>
         </div>
+        {d.url && (
+          <div className="detail-row">
+            <div className="detail-col-label">Website</div>
+            <div className="detail-col-text">
+              <a href={d.url} target="_blank" rel="noopener noreferrer" className="detail-link">{d.url.replace("https://", "")}</a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

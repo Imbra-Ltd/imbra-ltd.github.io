@@ -73,6 +73,7 @@
       "githubHref": "https://github.com/Imbra-Ltd"
     },
     "about": "Imbra.soft is a boutique software and industrial engineering consultancy based in Varna, Bulgaria. We specialise in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services — serving industrial businesses that need production-grade engineering without enterprise overhead.",
-    "copy": "© 2026 Imbra.soft · All rights reserved"
+    "copy": "© 2026 Imbra.soft · All rights reserved",
+    "builtWith": "Built with Claude Code"
   }
 }

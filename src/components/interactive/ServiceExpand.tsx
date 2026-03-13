@@ -6,6 +6,8 @@ interface Service {
   desc: string;
   detail: string;
   tech: string[];
+  projects?: string[];
+  useCases?: { delivered: string[]; exploring?: string[]; };
 }
 
 interface Props {
@@ -51,7 +53,35 @@ export default function ServiceExpand({ services }: Props) {
           </div>
           {activeNum === s.num && (
             <div className="service-detail">
-              <p className="service-detail-text">{s.detail}</p>
+              {s.detail.split("\n\n").map((para, i) => (
+                <p key={i} className="service-detail-text">{para}</p>
+              ))}
+              {s.projects && (
+                <div className="service-detail-row">
+                  <div className="service-detail-label">Projects</div>
+                  <ul className="service-detail-projects">
+                    {s.projects.map(p => <li key={p}>{p}</li>)}
+                  </ul>
+                </div>
+              )}
+              {s.useCases && (
+                <>
+                  <div className="service-detail-row">
+                    <div className="service-detail-label">Delivered</div>
+                    <ul className="service-detail-projects">
+                      {s.useCases.delivered.map(u => <li key={u}>{u}</li>)}
+                    </ul>
+                  </div>
+                  {s.useCases.exploring && (
+                    <div className="service-detail-row">
+                      <div className="service-detail-label">Exploring</div>
+                      <ul className="service-detail-projects">
+                        {s.useCases.exploring.map(u => <li key={u}>{u}</li>)}
+                      </ul>
+                    </div>
+                  )}
+                </>
+              )}
               <div className="service-tags">
                 {s.tech.map(t => <span key={t} className="service-tag">{t}</span>)}
               </div>

@@ -1,72 +1,170 @@
 [
   {
     "num": "01",
-    "title": "Backend Development",
-    "desc": "Full-cycle software development from architecture to production deployment. Emphasis on readable, maintainable code suitable for industrial and data-intensive domains.",
-    "detail": "Covers greenfield applications, service APIs, CLI tools, and data-processing pipelines. Python for scripting, automation, and data work; Go for high-performance services and agents; TypeScript for web frontends and tooling. Code is written for long-term maintainability in operational environments — not just to ship.",
-    "tech": ["Python", "Go", "TypeScript", "REST APIs", "Docker", "PostgreSQL"]
+    "title": "PLC & DCS Engineering",
+    "desc": "Full project lifecycle for process automation — from concept definition and equipment selection through PLC/DCS programming, marshalling cabinet testing, SCADA displays, PID tuning, and executive documentation.",
+    "detail": "Scope and automation concept are defined at kick-off, with signal architecture decided early — critical signals wired directly, remaining I/O via fieldbus to contain cabling cost over long distances. PLC/DCS logic and SCADA displays are implemented to specification, followed by FAT at the integrator site where I/O, logic, and displays are verified with the client. On-site commissioning covers instrument calibration, PID tuning, and interlock verification before the system runs under real process conditions. SAT is performed with live field equipment and executive documentation is filed in each control and marshalling cabinet at handover.",
+    "tech": [
+      "Honeywell Experion",
+      "Honeywell TPS",
+      "Siemens S7-300/1500",
+      "TIA Portal",
+      "WinCC",
+      "SCL",
+      "PID Tuning",
+      "ATEX/IECEx"
+    ],
+    "projects": [
+      "Fly Ash Handling · Honeywell Experion",
+      "Dense Soda · Honeywell Experion",
+      "Absorption & Distillation · Honeywell TPS / Experion",
+      "Boiler Automation · Honeywell Experion",
+      "Brine Purification · Siemens S7-1500",
+      "Water & Steam · Siemens S7-300",
+      "NH3 Analyser · Siemens S7-300",
+      "Ammonia Station (ATEX/IECEx) · Siemens S7-300",
+      "Air Compressors · Siemens S7-300",
+      "Honey Invertase · Siemens LOGO!",
+      "Cooling Tower Simulation · Excel / VB6",
+      "Fuzzy Logic Controller · Solvay Sodi (Carbonation Columns)"
+    ]
   },
   {
     "num": "02",
-    "title": "Application Refactoring",
-    "desc": "Structured modernisation of legacy codebases — improving type safety, test coverage, performance, and long-term maintainability.",
-    "detail": "Typical starting points: no type hints, no tests, monolithic scripts, undocumented business logic. The process involves audit, incremental refactoring with test coverage added in parallel, and optional migration to a cleaner architecture. Industrial codebases often carry years of accumulated workarounds — this service untangles them safely.",
-    "tech": ["Code Audit", "Type Safety", "Test Coverage", "CI Integration", "Architecture Review"]
+    "title": "Data Integration & ETL",
+    "desc": "Agent-based data pipelines connecting OT sources to historian and analytics targets — covering industrial protocols, file-based sources, and the self-healing, redundancy, and data harmonisation challenges that production environments demand.",
+    "detail": "Each agent handles one protocol or source, normalises the data, and delivers it to a common sink — a model that maps naturally to AI-augmented decision making, where agents act on data rather than just forward it. Protocols covered include OPC DA, OPC XDA, OPC UA, MQTT, FTP, and SFTP. Applied at scale connecting Siemens WinCC controllers to PxTrend for time-series metrics, alarms, and lab analyser messages. The hardest problems in production are not connectivity but resilience: self-healing on PxTrend connection loss, data harmonisation across sources with inconsistent tag schemas, and redundancy to ensure no data is lost during network interruptions.",
+    "tech": [
+      "OPC DA",
+      "OPC XDA",
+      "OPC UA",
+      "MQTT",
+      "FTP/SFTP",
+      "PxTrend",
+      "WinCC"
+    ]
   },
   {
     "num": "03",
-    "title": "QA Specifications & Automated Testing",
-    "desc": "Test strategy definition, automated test implementation, and CI pipeline integration for complex industrial and data-intensive applications.",
-    "detail": "Includes writing formal QA specifications, defining acceptance criteria, building automated test suites, and wiring them into CI pipelines. For industrial systems, this also covers historian replay testing — validating behaviour against recorded process data.",
-    "tech": ["TDD", "BDD", "Integration Tests", "System Tests", "TestRail", "Playwright", "Jenkins", "Docker", "Git"]
+    "title": "Backend Development",
+    "desc": "From REST APIs and databases to protocol libraries and device interfaces — backend engineering that covers the full depth of the OT/IT stack, not just the application layer.",
+    "detail": "In industrial environments, the gap between OT devices and IT systems is rarely a single integration problem — it is a stack of them. Work starts at the protocol level, building libraries from scratch where standard implementations cannot handle the proprietary behaviour that real devices demand.\n\nThese libraries become the foundation for agents that collect, normalise, and deliver data across the OT/IT boundary, and for emulators that replicate device behaviour precisely enough to test against. REST API endpoints give IT systems a clean interface to device state and data streams without exposing protocol internals.\n\nPython for rapid iteration and data work, Go for performance-critical services and agents. Everything is containerised and delivered through a structured DevOps cycle — version control, CI pipelines, and automated testing — so what reaches production is verified and repeatable.",
+    "tech": [
+      "Python",
+      "Go",
+      "REST API",
+      "Docker",
+      "PostgreSQL"
+    ],
+    "projects": [
+      "Protocol Emulator Framework · Hilscher",
+      "ImBrain Core Historian · Imbra.soft",
+      "Data Integration Agents · Heidelberg Materials",
+      "PxTrend Historian · Heidelberg Materials"
+    ]
   },
   {
     "num": "04",
-    "title": "DevOps & CI/CD",
-    "desc": "Pipeline design and automation using Git, Jenkins, Ansible, and Docker — covering build, test, deployment, and infrastructure-as-code for industrial and cloud environments.",
-    "detail": "Designed for teams moving from manual deployments to repeatable, auditable release processes. Covers Git branching strategy, Jenkins pipeline authoring, Ansible playbooks for provisioning and configuration management, and Dockerised deployment targets — including air-gapped industrial environments.",
-    "tech": ["Git", "GitHub", "GitLab", "Jenkins", "Ansible", "Docker", "Azure DevOps"]
+    "title": "AI/ML-Augmented Engineering",
+    "desc": "AI/ML applied where it delivers measurable value in industrial contexts — predictive maintenance, test generation, and legacy code modernisation, with a clear path toward autonomous decision making at the OT/IT boundary.",
+    "detail": "AI/ML augments engineering work at several points in the industrial stack. Predictive maintenance models trained on process historian data catch equipment degradation before it becomes downtime.\n\nAI-assisted documentation and refactoring untangles legacy codebases that have accumulated years of undocumented changes — giving teams a working understanding of what the code actually does. Test specifications and test suites generated from product descriptions reduce the manual effort of coverage at scale.\n\nThe next frontier is the agent layer — autonomous agents that act on historian data, not just collect it, opening the door to real-time process optimisation and adaptive control. This website was built entirely with Claude Code — a practical demonstration of AI/ML-augmented engineering in action.",
+    "tech": [
+      "AI/ML",
+      "Predictive Maintenance",
+      "LLM",
+      "APC",
+      "P&ID Tuning",
+      "Claude Code",
+      "GitHub Copilot"
+    ],
+    "useCases": {
+      "delivered": [
+        "Predictive Maintenance Models · Solvay Sodi (Six Sigma)",
+        "Fuzzy Logic Controller · Solvay Sodi (Carbonation Columns)",
+        "AI-Assisted Documentation & Refactoring · Hilscher",
+        "AI-Assisted Documentation & Refactoring · Heidelberg Materials",
+        "AI-Assisted Test Generation · Hilscher",
+        "AI-Assisted Code Provenance Tracing · Heidelberg Materials"
+      ],
+      "exploring": [
+        "Natural Language Interfaces over Historian Data",
+        "Process Modelling & Controller Tuning",
+        "APC Design Support"
+      ]
+    }
   },
   {
     "num": "05",
-    "title": "Cloud Architecture & Deployment",
-    "desc": "Design and deployment of cloud-based solutions on Azure — containerised workloads, infrastructure provisioning, and integration between OT systems and cloud platforms.",
-    "detail": "Covers Azure resource design, containerised workload deployment, secure OT-to-cloud data bridging, and long-term cost-aware architecture. Particularly relevant for plants looking to expose historian data to cloud analytics without re-architecting their OT layer.",
-    "tech": ["Azure", "Docker", "Terraform", "REST APIs", "OPC-UA"]
+    "title": "DevOps & CI/CD",
+    "desc": "Version control, containerisation, and CI/CD workflows for software and industrial projects — practical DevOps that gets code from development to deployment reliably.",
+    "detail": "Day-to-day experience with Git and SVN across long-running projects, including branching strategy, code review workflows, and repository management on GitHub and GitLab. Docker is used extensively for packaging, shipping, and testing services — from protocol emulators to historian components.\n\nCI/CD pipelines are supported and maintained using Jenkins and Ansible, with a focus on keeping deployments stable and repeatable in environments where downtime has real cost.",
+    "tech": ["Git", "SVN", "GitHub", "GitLab", "Docker", "Jenkins", "Ansible"]
   },
   {
     "num": "06",
-    "title": "Pentesting & Security Hardening",
-    "desc": "Security assessment and hardening for OT/IT systems — identifying vulnerabilities at the boundary between plant networks and IT infrastructure before they become incidents.",
-    "detail": "Covers network and protocol-level penetration testing of industrial environments — OPC-UA endpoints, PLC interfaces, SCADA communication channels, and OT/IT boundary devices. Security hardening includes access control review, encrypted transport configuration, network segmentation recommendations, and remediation guidance. OT security requires a different approach from web app pentesting — deep protocol knowledge and understanding of plant availability constraints are essential.",
-    "tech": ["OT Security", "Network Pentesting", "OPC-UA", "SCADA", "IEC 62443", "Hardening"]
+    "title": "Industrial Security",
+    "desc": "OT security advisory and protocol-level security testing — identifying weaknesses at the boundary between plant networks and IT infrastructure, grounded in deep protocol knowledge rather than generic scanning tools.",
+    "detail": "OT security requires a different mindset from web application pentesting — availability constraints, proprietary protocols, and legacy hardware demand a precise, non-disruptive approach. Security work is grounded in established principles: the people-process-technology triangle, security by design, and defence-in-depth — applied to environments where a misconfigured certificate or an open port can have physical consequences. Assessment follows a heuristic approach tailored to the specific OT environment — not a generic checklist.",
+    "tech": ["OT Security", "Modbus TCP/IP", "TLS", "Packet Crafting", "IEC 62443", "OPC-UA"],
+    "useCases": {
+      "delivered": [
+        "Modbus TCP/IP over TLS — Automated Requirement Tests · Hilscher",
+        "LDAP Certificate Misconfiguration · Heidelberg Materials",
+        "UPS Device Hardening · Solvay Sodi"
+      ],
+      "exploring": [
+        "IEC 62443 — Industrial Cybersecurity Standard",
+        "NIST SP 800-82 — Guide to OT Security",
+        "NIS2 Directive — EU Critical Infrastructure",
+        "GICSP Certification (GIAC/SANS)"
+      ]
+    }
   },
   {
     "num": "07",
-    "title": "Data Integration & ETL",
-    "desc": "Agent-based data pipelines connecting OT data sources to IT systems — time-series ingestion, protocol bridging, and structured delivery to analytics platforms and historian cores.",
-    "detail": "Built around an agent model: each agent handles one protocol or data source, normalises the data, and delivers it to a common sink. Covers a wide range of industrial protocols and file-based sources. Output targets include time-series databases, REST endpoints, and flat file exports into shared network folders for legacy consumers.",
-    "tech": ["IoT", "IIoT", "Resilience", "Security", "Observability", "Idempotency", "Schema Validation"]
+    "title": "Testing & Quality Assurance",
+    "desc": "Specification-driven test infrastructure for industrial communication software — from TDD-based product development to BDD integration and end-to-end test suites covering protocol-specific edge cases.",
+    "detail": "Testing starts at the product level — built test-first using TDD so the test harness itself is verified before a single production line is written. This ensures product behaviour is correct and traceable to specification.\n\nIntegration and end-to-end tests are described using BDD — structured as given/when/then scenarios that read as executable specifications. For example, a TFTP test might read: given a TFTP server in read mode, when a client requests a file, then the server responds with the correct data blocks in order. This makes test intent clear to both engineers and stakeholders.\n\nAI-assisted test generation from product descriptions scales coverage beyond what manual authoring can achieve — applied at Hilscher to protocol SDK testing across multiple communication stacks.",
+    "tech": ["TDD", "BDD", "Emulator Development", "Integration Tests", "System Tests", "Code Coverage", "pytest", "Docker", "Git"],
+    "projects": [
+      "Automated Test Suite — DeviceNet Master/Slave · Hilscher",
+      "Automated Test Suite — Modbus TCP Server/Client · Hilscher",
+      "Automated Test Suite — Modbus Security · Hilscher",
+      "Automated Test Suite — TFTP Server/Client · Hilscher",
+      "Automated Test Suite — CAN · Hilscher",
+      "Manual Test Specification — PxTrend Suite · Heidelberg Materials"
+    ]
   },
   {
     "num": "08",
-    "title": "Industrial Automation — Product to SAT",
-    "desc": "End-to-end project support for Siemens and Honeywell platforms — from product selection and panel design through software development, commissioning, and site acceptance testing.",
-    "detail": "Full project lifecycle: hardware selection, electrical panel coordination, PLC/DCS software development, factory acceptance testing (FAT), on-site commissioning, and formal site acceptance testing (SAT). Experience with Siemens S7-300/1500 (TIA Portal, SCL) and Honeywell Experion PKS C300 in ATEX/IECEx-regulated environments.",
-    "tech": ["Siemens S7-300/1500", "TIA Portal", "SCL", "Honeywell Experion PKS", "C300"]
+    "title": "Application Refactoring",
+    "desc": "Structured modernisation of legacy codebases — audit, incremental refactoring, test coverage, and architecture documentation for industrial and communication software.",
+    "detail": "Legacy industrial codebases accumulate technical debt quietly — no type hints, no tests, undocumented business logic, and architectural decisions that made sense years ago but now block progress. The process starts with an audit to map the real state of the code, followed by incremental refactoring with test coverage added in parallel so behaviour is preserved while the structure improves.\n\nFor larger codebases, architecture documentation using the arc42 template provides a shared understanding of the system before and after refactoring — giving teams a reference that survives team changes and time.",
+    "tech": ["Code Audit", "arc42", "Type Safety", "Architecture Review"],
+    "projects": [
+      "Audit & Refactoring — HilscherFramework · Hilscher",
+      "Code Audit, Architecture Review & arc42 Documentation — PxTrend Suite · Heidelberg Materials",
+      "Legacy Test Framework Refactoring · Hilscher",
+      "Legacy Source Code Audit & Provenance Tracing · Heidelberg Materials"
+    ]
   },
   {
     "num": "09",
     "title": "Maintenance & Support",
-    "desc": "Ongoing L2/L3 support contracts for deployed systems, including industrial historians, PLC software, and custom SDK integrations.",
-    "detail": "Structured as annual contracts with defined response SLAs. L2 covers configuration changes, minor enhancements, and user support. L3 covers root cause analysis, hotfixes, and deep system-level intervention. Remote-first, with on-site available by arrangement. Contracts cover historian deployments, Siemens PLC software, and custom SDK integrations.",
-    "tech": ["PxTrend", "OPC-UA", "Siemens TIA Portal", "Python", "Ansible"]
+    "desc": "Ongoing L2/L3 support for deployed systems — industrial historians, communication software, and legacy codebases that need someone who understands them deeply enough to intervene safely.",
+    "detail": "Support is structured around defined response SLAs. L2 covers configuration changes, minor enhancements, and user support. L3 covers root cause analysis, hotfixes, and deep system-level intervention.\n\nRemote-first, with on-site available by arrangement. The emphasis is on understanding the system well enough to act quickly without introducing new risk — particularly important for legacy codebases where documentation is sparse and side effects are hard to predict.",
+    "tech": ["PxTrend", "OPC-UA", "Siemens TIA Portal", "Python", "Ansible"],
+    "projects": [
+      "Legacy L2/L3 Support — HilscherFramework · Hilscher",
+      "Legacy L2/L3 Support — PxTrend Suite · Heidelberg Materials",
+      "Legacy L2/L3 Support — Water & Steam & Brine Automation · Solvay Sodi"
+    ]
   },
   {
     "num": "10",
-    "title": "AI-Augmented Engineering",
-    "desc": "Applied AI for industrial contexts: natural language query interfaces over historian data, predictive maintenance analytics, process modelling and controller tuning, and AI-assisted documentation and refactoring of legacy codebases.",
-    "detail": "Four concrete applications: (1) natural language interfaces that let operators query historian data without knowing the tag schema; (2) predictive maintenance models for industrial equipment trained on process historian data; (3) AI-assisted documentation and refactoring of undocumented legacy code — particularly useful for inherited PLC and legacy codebases; (4) process modelling and controller tuning — building data-driven models of industrial processes to support APC design, P&ID tuning, and optimisation of control loop parameters.",
-    "tech": ["AI/ML", "APC", "P&ID Tuning", "Predictive Maintenance"]
+    "title": "Training & Tutorials",
+    "desc": "Practical courses and tutorials for engineers working at the OT/IT boundary — industrial protocols, PLC/DCS programming, historian architecture, testing methodologies, and applied AI/ML. Published on Udemy, YouTube, and dedicated course pages.",
+    "detail": "Content is built around real industrial problems encountered across automation, connectivity, and software engineering projects — not synthetic examples.\n\nTopics covered include industrial communication protocols, PLC/DCS programming with Siemens platforms, OT/IT integration and historian architecture, emulator-based testing and specification-driven QA, and applied AI/ML for predictive maintenance and engineering tooling.\n\nPublished as structured video courses on Udemy, free tutorials and walkthroughs on YouTube, and written guides on the Imbra.soft blog. New content released as projects generate material worth sharing.",
+    "tech": ["Udemy", "YouTube", "Siemens TIA Portal", "OPC-UA", "Modbus", "Python", "AI/ML"]
   }
 ]

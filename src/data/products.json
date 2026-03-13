@@ -12,7 +12,7 @@
   },
   {
     "id": "02",
-    "name": "Communication Stack SDKs",
+    "name": "Imbra Connect",
     "role": "Connectivity layer",
     "desc": "Pure Python protocol implementations for rapid prototyping and OT connectivity — production-ready at typical process sampling rates, with a clean interface for crafting, parsing, and inspecting protocol frames.",
     "tags": ["Rapid Prototyping", "Fieldbus", "IoT", "Embedded"],
@@ -31,5 +31,17 @@
     "tech": ["TimescaleDB", "PostgreSQL", "OPC-UA", "Python", "Go", "REST API", "gRPC", "Docker"],
     "audience": "Engineers and operations teams at small and medium-sized industrial plants looking for a capable historian without enterprise licensing costs.",
     "status": "Early Access"
+  },
+  {
+    "id": "04",
+    "name": "CodeWithBranko",
+    "role": "Education platform",
+    "desc": "A dedicated platform for engineers working at the OT/IT boundary — practical courses, tutorials, and guides on industrial protocols, PLC programming, historian architecture, and applied AI/ML.",
+    "tags": ["Education", "OT/IT", "Industrial Protocols", "AI/ML"],
+    "problem": "Most industrial training is either too academic to be useful in the field or too vendor-specific to transfer across platforms. CodeWithBranko is built around real engineering problems encountered across automation, connectivity, and software projects — giving engineers practical skills they can apply immediately, regardless of which platform or protocol they are working with.",
+    "tech": ["Udemy", "YouTube", "Python", "Siemens TIA Portal", "OPC-UA", "Modbus"],
+    "audience": "Automation engineers, embedded developers, and software engineers stepping into OT environments — or IT engineers navigating their first industrial project.",
+    "url": "https://www.codewithbranko.com",
+    "status": "In Development"
   }
 ]
