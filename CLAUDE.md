@@ -1,7 +1,7 @@
-# Imbra.soft Website — Claude Code Instructions
+# Imbra.Soft Website — Claude Code Instructions
 
 ## Project
-Website for Imbra.soft (imbra-soft.com) — a boutique software and industrial engineering consultancy based in Varna, Bulgaria.
+Website for Imbra.Soft (imbra-soft.com) — a boutique software and industrial engineering consultancy based in Varna, Bulgaria.
 
 - Owner: Branimir Georgiev
 - GitHub org: https://github.com/Imbra-Ltd
@@ -30,7 +30,7 @@ Website for Imbra.soft (imbra-soft.com) — a boutique software and industrial e
 ## Brand voice
 - Tagline: "Complex inside. Simple outside."
 - Tone: precise, direct, no marketing fluff, no adjective inflation
-- Use "Imbra.soft" in body copy — not "Imbra Ltd", not "IMBRA.SOFT"
+- Use "Imbra.Soft" in body copy — not "Imbra Ltd", not "IMBRA.SOFT"
 - Logo renders as: `IMBRA<span>.</span>SOFT` in IBM Plex Mono
 
 ## Content

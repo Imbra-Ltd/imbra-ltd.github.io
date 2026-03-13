@@ -58,7 +58,7 @@
     ],
     "projects": [
       "Protocol Emulator Framework · Hilscher",
-      "ImBrain Core Historian · Imbra.soft",
+      "ImBrain Core Historian · Imbra.Soft",
       "Data Integration Agents · Heidelberg Materials",
       "PxTrend Historian · Heidelberg Materials"
     ]
@@ -164,7 +164,7 @@
     "num": "10",
     "title": "Training & Tutorials",
     "desc": "Practical courses and tutorials for engineers working at the OT/IT boundary — industrial protocols, PLC/DCS programming, historian architecture, testing methodologies, and applied AI/ML. Published on Udemy, YouTube, and dedicated course pages.",
-    "detail": "Content is built around real industrial problems encountered across automation, connectivity, and software engineering projects — not synthetic examples.\n\nTopics covered include industrial communication protocols, PLC/DCS programming with Siemens platforms, OT/IT integration and historian architecture, emulator-based testing and specification-driven QA, and applied AI/ML for predictive maintenance and engineering tooling.\n\nPublished as structured video courses on Udemy, free tutorials and walkthroughs on YouTube, and written guides on the Imbra.soft blog. New content released as projects generate material worth sharing.",
+    "detail": "Content is built around real industrial problems encountered across automation, connectivity, and software engineering projects — not synthetic examples.\n\nTopics covered include industrial communication protocols, PLC/DCS programming with Siemens platforms, OT/IT integration and historian architecture, emulator-based testing and specification-driven QA, and applied AI/ML for predictive maintenance and engineering tooling.\n\nPublished as structured video courses on Udemy, free tutorials and walkthroughs on YouTube, and written guides on the Imbra.Soft blog. New content released as projects generate material worth sharing.",
     "tech": ["Udemy", "YouTube", "Siemens TIA Portal", "OPC-UA", "Modbus", "Python", "AI/ML"]
   }
 ]
