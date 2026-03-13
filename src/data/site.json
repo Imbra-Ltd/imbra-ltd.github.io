@@ -7,8 +7,10 @@
     "links": [
       { "label": "Portfolio",  "target": "portfolio" },
       { "label": "Services",   "target": "services" },
+      { "label": "Process",    "target": "process" },
       { "label": "Expertise",  "target": "expertise" },
-      { "label": "Research",   "target": "publications" }
+      { "label": "Research",   "target": "publications" },
+      { "label": "Pricing",    "target": "pricing", "href": "/pricing/" }
     ],
     "cta": { "label": "Get in touch", "target": "contact" }
   },
@@ -51,6 +53,7 @@
   },
   "footer": {
     "legal": [
+      { "label": "Pricing", "href": "/pricing/" },
       { "label": "Privacy", "href": "/privacy" },
       { "label": "Imprint", "href": "/imprint" }
     ],

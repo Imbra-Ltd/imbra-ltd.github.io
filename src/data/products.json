@@ -3,23 +3,23 @@
     "id": "01",
     "name": "Siemens PLC Libraries",
     "role": "Device-side logic",
-    "desc": "Custom FC/FB blocks for Siemens PLCs — usable standalone or as part of a historian stack, producing clean, well-structured data at the source with enriched control logic.",
-    "tags": ["PLC Programming", "Reusable Components", "Automation", "Commissioning"],
-    "problem": "Standard Siemens blocks cover the basics but leave gaps in complex control scenarios. The library addresses this with two approaches: enriched wrappers that extend existing components like PID, and purpose-built blocks for functionality that has no standard equivalent. FC (Function) and FB (Function Block) are the two fundamental reusable code units in Siemens PLC programming — FCs are stateless logic routines, FBs retain their own memory across calls, making them ideal for encapsulating equipment like drives, valves, or controllers.",
+    "desc": "A port of Honeywell DCS control blocks to Siemens PLC — bringing familiar DCS semantics (PID, DEVCTL, AI/AO/DI/DO) into TIA Portal as reusable FC/FB units, usable standalone or as part of a historian stack.",
+    "tags": ["PLC Programming", "Honeywell DCS", "Control Blocks", "Automation"],
+    "problem": "Plants migrating from Honeywell DCS (Experion, TDC) to Siemens PLCs lose their control block library and have to rebuild logic from scratch. This library ports the core Honeywell control modules — PID (closed-loop control), DEVCTL (discrete device management for pumps, motors, and valves), and AI/AO/DI/DO (analog and digital I/O with engineering unit scaling, alarming, and signal conditioning) — to Siemens S7-300/1500 as native FC/FB blocks in TIA Portal. Engineers familiar with Honeywell configuration get equivalent behaviour without relearning control semantics.",
     "tech": ["Siemens S7-300/1500", "TIA Portal", "SCL", "Ladder", "FC/FB architecture"],
-    "audience": "Automation engineers, system integrators, OEM machine builders working with Siemens platforms.",
-    "status": "In Development"
+    "audience": "Automation engineers and system integrators migrating from Honeywell DCS to Siemens PLC, or building new systems that require DCS-grade control block semantics on a PLC platform.",
+    "status": "Available"
   },
   {
     "id": "02",
     "name": "Imbra Connect",
     "role": "Connectivity layer",
-    "desc": "Pure Python protocol implementations for rapid prototyping and OT connectivity — production-ready at typical process sampling rates, with a clean interface for crafting, parsing, and inspecting protocol frames.",
+    "desc": "Lightweight protocol SDKs for rapid prototyping and OT connectivity — production-ready at typical process sampling rates, with a clean interface for crafting, parsing, and inspecting protocol frames.",
     "tags": ["Rapid Prototyping", "Fieldbus", "IoT", "Embedded"],
-    "problem": "Connecting to industrial devices should not require days of setup, a C compiler, or deep knowledge of protocol internals. Each SDK installs with a single pip command and exposes a clean packet-level interface — letting engineers read live data, craft custom frames, and build connectivity agents without low-level bit manipulation. Designed for historian agents, integration scripts, and proof-of-concept work that needs to become production code quickly.",
+    "problem": "Connecting to industrial devices should not require days of setup or deep knowledge of protocol internals. Each SDK installs with a single command and exposes a clean packet-level interface — letting engineers read live data, craft custom frames, and build connectivity agents without low-level bit manipulation. Designed for historian agents, integration scripts, and proof-of-concept work that needs to become production code quickly.",
     "tech": ["Modbus TCP/IP", "Modbus RTU", "DeviceNet", "Profibus", "CAN", "CANopen", "OPC-UA", "MQTT", "HART", "EtherNet/IP"],
     "audience": "Embedded engineers, system integrators, MES developers building device connectivity layers.",
-    "status": "In Development"
+    "status": "Beta"
   },
   {
     "id": "03",
@@ -30,7 +30,7 @@
     "problem": "Most industrial historians are expensive, closed, and sized for enterprise. ImBrain is built on an open hourglass architecture — like TCP/IP, it defines a minimal, well-specified core with open contracts on both sides: plant-facing agents connect any data source below, and application plugins consume the data above. The core and agents are open source. Engineers are encouraged to install, explore, and run it at no cost. Value is delivered through plugins that work with the data, plus optional installation and maintenance services for teams that need them.",
     "tech": ["TimescaleDB", "PostgreSQL", "OPC-UA", "Python", "Go", "REST API", "gRPC", "Docker"],
     "audience": "Engineers and operations teams at small and medium-sized industrial plants looking for a capable historian without enterprise licensing costs.",
-    "status": "Early Access"
+    "status": "Prototype"
   },
   {
     "id": "04",
@@ -42,6 +42,6 @@
     "tech": ["Udemy", "YouTube", "Python", "Siemens TIA Portal", "OPC-UA", "Modbus"],
     "audience": "Automation engineers, embedded developers, and software engineers stepping into OT environments — or IT engineers navigating their first industrial project.",
     "url": "https://www.codewithbranko.com",
-    "status": "In Development"
+    "status": "Concept"
   }
 ]

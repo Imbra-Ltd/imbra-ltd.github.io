@@ -1,0 +1,27 @@
+{
+  "label": "03 — How We Work",
+  "heading": "From first contact to long-term support.",
+  "sub": "Every engagement follows a clear, documented sequence. You always know what phase you are in, what comes next, and what it will cost.",
+  "steps": [
+    {
+      "index": "01",
+      "title": "Explore",
+      "desc": "Before any commitment, we run a Spike — a time-boxed technical investigation scoped to the specific problem. We analyse the existing system, identify integration constraints, assess feasibility, and surface the risks that would otherwise surface later at much higher cost. The output is a concise written finding: context, options, recommendation, and a rough effort estimate. No code is produced. This step protects both sides from over-committing to a poorly understood problem."
+    },
+    {
+      "index": "02",
+      "title": "Agree",
+      "desc": "Using the Spike findings as input, we draft a Statement of Work that specifies scope, deliverables, milestones, acceptance criteria, timeline, and price. The SOW is the single source of truth for the engagement — it eliminates scope creep and invoice surprises. Both parties review and sign before any project work begins. For fixed-price work the SOW defines exactly what is built. For T&M work it defines the daily rate, the cap, and the reporting cadence."
+    },
+    {
+      "index": "03",
+      "title": "Deliver",
+      "desc": "We execute the project against the agreed SOW, working in short cycles with regular written progress reports. Architecture decisions are documented continuously using the arc42 template — not retrofitted at the end. Handover includes full arc42 architecture documentation, inline code documentation, and a formal acceptance testing session against the criteria defined in the SOW. Nothing is considered done until the client has signed off."
+    },
+    {
+      "index": "04",
+      "title": "Support",
+      "desc": "After go-live, we offer L3 support retainers for ongoing third-level escalation — handling incidents, root-cause analysis, and critical patches that first and second-line teams cannot resolve. Retainers are priced per supported server instance per year and include a defined annual hour budget. For unplanned emergencies outside a retainer, hotfix services are available at an hourly rate with a two-hour minimum. Response times and escalation paths are agreed in writing before the first incident."
+    }
+  ]
+}

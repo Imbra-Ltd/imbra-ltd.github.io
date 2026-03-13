@@ -1,0 +1,21 @@
+---
+const { process } = Astro.props;
+---
+<section id="process" class="reveal">
+  <div class="section-label">{process.label}</div>
+  <h2 class="section-heading">{process.heading}</h2>
+  <p class="section-sub">{process.sub}</p>
+
+  <div class="process-steps">
+    {process.steps.map((step: { index: string; title: string; desc: string }) => (
+      <div class="process-step">
+        <div class="process-step-index mono">{step.index}</div>
+        <div class="process-step-connector" />
+        <div class="process-step-body">
+          <div class="process-step-title">{step.title}</div>
+          <p class="process-step-desc">{step.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

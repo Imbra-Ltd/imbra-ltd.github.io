@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import Portfolio from "../components/Portfolio.astro";
 import Services from "../components/Services.astro";
+import Process from "../components/Process.astro";
 import Expertise from "../components/Expertise.astro";
 import Publications from "../components/Publications.astro";
 import Contact from "../components/Contact.astro";
@@ -14,12 +15,14 @@ import products from "../data/products.json";
 import services from "../data/services.json";
 import expertise from "../data/expertise.json";
 import publications from "../data/publications.json";
+import process from "../data/process.json";
 ---
 <Base title={site.meta.title} description={site.meta.description}>
   <Nav links={site.nav.links} cta={site.nav.cta} />
   <Hero hero={site.hero} />
   <Portfolio products={products} />
   <Services services={services} />
+  <Process process={process} />
   <Expertise expertise={expertise} />
   <Publications publications={publications} />
   <Contact contact={site.contact} />

@@ -3,6 +3,7 @@ import { useState } from "react";
 interface Link {
   label: string;
   target: string;
+  href?: string;
 }
 
 interface Props {
@@ -26,7 +27,7 @@ export default function HamburgerMenu({ links, cta }: Props) {
       </button>
       <div className={`mobile-menu ${open ? "open" : ""}`}>
         {links.map(l => (
-          <a key={l.target} href={`#${l.target}`} className="mobile-menu-link" onClick={close}>
+          <a key={l.target} href={l.href ?? `#${l.target}`} className="mobile-menu-link" onClick={close}>
             {l.label}
           </a>
         ))}

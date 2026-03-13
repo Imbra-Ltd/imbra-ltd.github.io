@@ -1,0 +1,154 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import site from "../data/site.json";
+import pricing from "../data/pricing.json";
+
+const pricingLinks = [
+  { label: "Retainer", target: "retainer" },
+  { label: "Hourly", target: "hourly" },
+  { label: "Project", target: "project" },
+];
+---
+
+<Base title={`${pricing.meta.title} — ${site.meta.title}`} description={pricing.meta.description}>
+  <Nav links={pricingLinks} cta={site.nav.cta} />
+
+  <main class="pricing-page">
+    <a href="/" class="pricing-back">← Back</a>
+
+    <div class="pricing-header">
+      <div class="pricing-label mono">{pricing.intro.label}</div>
+      <h1 class="pricing-heading">{pricing.intro.heading}</h1>
+      <p class="pricing-sub">{pricing.intro.sub}</p>
+    </div>
+
+    {pricing.categories.map((cat) => (
+      <section class="pricing-section" id={cat.id}>
+        <div class="pricing-section-header">
+          <span class="pricing-index mono">{cat.index}</span>
+          <div>
+            <h2 class="pricing-section-title">{cat.title}</h2>
+            <div class="pricing-model mono">{cat.model}</div>
+          </div>
+        </div>
+
+        <p class="pricing-desc">{cat.desc}</p>
+        {cat.excludes && <p class="pricing-excludes">{cat.excludes}</p>}
+
+        <!-- Subtypes: Retainer (Legacy + New) and Hourly (Hotfix + Exploration) -->
+        {cat.subtypes && cat.subtypes.map((sub) => (
+          <div class="pricing-subtype" id={sub.id}>
+            <h3 class="pricing-subtype-title">{sub.title}</h3>
+            <p class="pricing-subtype-desc">{sub.desc}</p>
+            {sub.excludes && <p class="pricing-excludes">{sub.excludes}</p>}
+
+            {sub.tiers && (
+              <div class="pricing-tiers">
+                {sub.tiers.map((tier) => (
+                  <div class={`pricing-tier${tier.highlight ? ' pricing-tier--highlight' : ''}`}>
+                    <div class="pricing-tier-name mono">{tier.name}</div>
+                    <div class="pricing-tier-price">{tier.price}</div>
+                    <div class="pricing-tier-period">{tier.period}</div>
+                    <ul class="pricing-tier-features">
+                      <li>{tier.hours}</li>
+                      <li>{tier.response}</li>
+                      <li>{tier.channel}</li>
+                      <li>{tier.reporting ? 'Monthly summary report' : 'No monthly report'}</li>
+                      <li>{tier.review ? 'Quarterly business review' : 'No quarterly review'}</li>
+                      <li>Excess hours at €150/h</li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {sub.sla && (
+              <div class="pricing-table-wrap">
+                <div class="pricing-table-label mono">Response times</div>
+                <table class="pricing-table">
+                  <thead>
+                    <tr>
+                      <th>Severity</th>
+                      <th>Definition</th>
+                      <th>Basic</th>
+                      <th>Standard</th>
+                      <th>Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sub.sla.map((row) => (
+                      <tr>
+                        <td class="mono">{row.severity}</td>
+                        <td>{row.definition}</td>
+                        <td class="mono">{row.basic}</td>
+                        <td class="mono">{row.standard}</td>
+                        <td class="mono">{row.premium}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {sub.notes && (
+              <ul class="pricing-notes">
+                {sub.notes.map((n) => <li>{n}</li>)}
+              </ul>
+            )}
+
+            {sub.rate && (
+              <div class="pricing-rates">
+                <div class="pricing-rate-row">
+                  <span class="pricing-rate-label">Standard rate</span>
+                  <span class="pricing-rate-value mono">{sub.rate}</span>
+                </div>
+                {sub.minimum && (
+                  <div class="pricing-rate-row">
+                    <span class="pricing-rate-label">Minimum</span>
+                    <span class="pricing-rate-value mono">{sub.minimum}</span>
+                  </div>
+                )}
+                {sub.outofhours && (
+                  <div class="pricing-rate-row">
+                    <span class="pricing-rate-label">Out-of-hours</span>
+                    <span class="pricing-rate-value mono">{sub.outofhours}</span>
+                  </div>
+                )}
+                {sub.expenses && (
+                  <div class="pricing-rate-row">
+                    <span class="pricing-rate-label">Expenses</span>
+                    <span class="pricing-rate-value">{sub.expenses}</span>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+
+        <!-- Project models -->
+        {cat.models && (
+          <div class="pricing-project-models">
+            {cat.models.map((m) => (
+              <div class="pricing-project-model">
+                <div class="pricing-project-model-name mono">{m.name}</div>
+                <p class="pricing-project-model-desc">{m.desc}</p>
+                <div class="pricing-project-model-rate">{m.rate}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    ))}
+
+    <!-- Legal note -->
+    <p class="pricing-legal-note">{pricing.terms[0]}</p>
+
+    <!-- CTA -->
+    <section class="pricing-cta">
+      <h2 class="pricing-cta-heading">{pricing.cta.heading}</h2>
+      <p class="pricing-cta-sub">{pricing.cta.sub}</p>
+      <a href={`mailto:${pricing.cta.email}`} class="btn-primary">{pricing.cta.label}</a>
+    </section>
+  </main>
+</Base>
