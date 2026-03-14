@@ -76,6 +76,13 @@ All site content lives in `src/data/` as JSON files. No component knowledge requ
 | `src/data/process.json`      | How We Work section steps                      |
 | `src/data/pricing.json`      | Pricing page — all engagement models           |
 
+## Third-party services
+
+| Service | Purpose | Config |
+|---------|---------|--------|
+| [Formspree](https://formspree.io) | Contact form submissions → `contact@imbra.io` | `src/data/site.json` → `contact.formEndpoint` |
+| [Plausible](https://plausible.io) | Privacy-friendly analytics (no cookies, no consent banner) | Script tag in `src/layouts/Base.astro` |
+
 ## Deployment
 
 Pushing to `main` triggers a GitHub Actions workflow that builds the site and deploys it to GitHub Pages. No manual steps required.
