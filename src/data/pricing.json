@@ -11,7 +11,7 @@
   "categories": [
     {
       "id": "retainer",
-      "index": "01",
+      "index": "1",
       "title": "Support Retainer",
       "model": "Annual flat fee · per system instance",
       "desc": "Third-level escalation for industrial software systems. Covers incident investigation, root cause analysis, workaround guidance, documentation, and remote consultation — across all covered instances.",
@@ -19,6 +19,7 @@
       "subtypes": [
         {
           "id": "l3-legacy",
+          "index": "1.1",
           "title": "Support of Legacy Systems",
           "desc": "For systems with limited or no original documentation. Investigation requires reverse-engineering, log analysis, and source-level archaeology. Higher rates reflect the additional overhead of working with undocumented, end-of-life, or vendor-unsupported software.",
           "tiers": [
@@ -70,6 +71,7 @@
         },
         {
           "id": "l3-new",
+          "index": "1.2",
           "title": "Support of New Products",
           "desc": "Applies only to systems delivered by Imbra.Soft and covered by full arc42 architecture documentation. Same service conditions as legacy support — lower rates reflect the structured codebase, modern tooling, and complete documentation available from day one.",
           "tiers": [
@@ -123,13 +125,14 @@
     },
     {
       "id": "hourly",
-      "index": "02",
+      "index": "2",
       "title": "Hourly Services",
       "model": "Per hour · minimum applies",
       "desc": "Time-billed engagements for reactive and investigative work. Applicable when scope cannot be defined in advance — emergency fixes, incident analysis, or technical exploration.",
       "subtypes": [
         {
           "id": "hotfix",
+          "index": "2.1",
           "title": "Hotfix & Emergency",
           "desc": "Analysis, preparation, and delivery of patches, configuration corrections, or emergency fixes. All artifacts are tested in-house before delivery.",
           "excludes": "⚠️ Production deployment is carried out by the client.",
@@ -140,6 +143,7 @@
         },
         {
           "id": "exploration",
+          "index": "2.2",
           "title": "Exploration & Spikes",
           "desc": "A Spike is a time-boxed investigation used to reduce technical uncertainty before committing to a full project. The outcome is a written finding — not production code. Common uses: feasibility assessment, architecture options analysis, protocol compatibility study, or vendor evaluation.",
           "excludes": "⚠\uFE0F A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
@@ -151,20 +155,15 @@
     },
     {
       "id": "project",
-      "index": "03",
+      "index": "3",
       "title": "Project Engagement",
-      "model": "Fixed price or Time & Materials",
+      "model": "Fixed price",
       "desc": "Refactoring, new features, migrations, and integrations. Each project is governed by a Statement of Work agreed in writing before commencement, defining scope, deliverables, timeline, and acceptance criteria.",
       "models": [
         {
           "name": "Fixed Price",
           "desc": "Applied when scope is clearly defined. Scope changes require a written Change Request.",
           "rate": "Quoted per project"
-        },
-        {
-          "name": "Time & Materials",
-          "desc": "Applied for refactoring or development work where the full scope cannot be determined in advance. Weekly timesheets provided for client approval.",
-          "rate": "€800 / day (8 hours)"
         }
       ]
     }

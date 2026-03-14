@@ -39,7 +39,10 @@ const pricingLinks = [
         <!-- Subtypes: Retainer (Legacy + New) and Hourly (Hotfix + Exploration) -->
         {cat.subtypes && cat.subtypes.map((sub) => (
           <div class="pricing-subtype" id={sub.id}>
-            <h3 class="pricing-subtype-title">{sub.title}</h3>
+            <h3 class="pricing-subtype-title">
+              {sub.index && <span class="pricing-subtype-index mono">{sub.index}</span>}
+              {sub.title}
+            </h3>
             <p class="pricing-subtype-desc">{sub.desc}</p>
             {sub.excludes && <p class="pricing-excludes">{sub.excludes}</p>}
 
