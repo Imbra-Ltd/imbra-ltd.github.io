@@ -190,6 +190,40 @@ Imbra Connect is not competing with healthy libraries — it is filling real, co
 
 ---
 
+## Packet crafting and test scenario support
+
+Imbra Connect implementations allow:
+- Easy crafting of standard and non-standard protocol frames
+- Handling of malformed or out-of-spec packets
+- Extensibility for custom test scenarios
+- Rich integration testing without specialised hardware
+
+### Competitive landscape for packet crafting
+
+| Tool | Protocols | Packet crafting | Python | Notes |
+|------|-----------|----------------|--------|-------|
+| **Scapy** | Modbus, EtherNet/IP, CAN, Profinet DCP | Yes — field mutation, `fuzz()` primitive | Yes | Best base layer but no DeviceNet, Profibus, or MQTT |
+| **boofuzz** | Any TCP/UDP (manual PDU definition) | Yes — mutation-based | Yes | Generic, requires heavy setup per protocol |
+| **fuzzowski-ics** | Modbus, EtherNet/IP, BACnet, S7 | Yes | Yes | Lightly maintained NCC Group fork |
+| **cpppo** | EtherNet/IP / CIP | Yes — full CIP parser | Yes | Active but EtherNet/IP only |
+| **Defensics** | 300+ protocols incl. Modbus, Profinet, DNP3 | Yes — prebuilt suites | No (proprietary GUI) | Enterprise pricing, no Python API |
+| **Aegis Fuzzer** | IEC 61850, DNP3, IEC 60870-5-104 | Yes | No | Commercial, power sector niche |
+
+### Where Imbra Connect wins
+
+No existing open Python tool provides a **unified, high-level packet crafting API across multiple industrial protocols**. Today an engineer must manually combine Scapy + pymodbus + python-can + cpppo to cover even a basic test stack — and still has no coverage for DeviceNet, Profibus, or MQTT fuzzing.
+
+Imbra Connect fills this gap:
+- **Consistent API** across all supported protocols — same patterns for crafting, sending, and parsing regardless of protocol
+- **DeviceNet and Profibus** — no open Python packet crafting exists anywhere else
+- **MQTT non-standard frame handling** — not covered by Scapy or paho-mqtt
+- **Extensible by design** — custom frame types and non-spec scenarios are first-class, not workarounds
+- **Open source** — commercial alternatives (Defensics) are enterprise-priced with no Python API
+
+Positioning: *"The only open Python framework for industrial protocol packet crafting with consistent support across MQTT, CAN, CANopen, DeviceNet, and CIP — including intentional support for non-standard frames and custom test scenarios."*
+
+---
+
 ## Open questions
 
 - [ ] Final license for the Python open source version (MIT vs LGPL vs AGPL)
