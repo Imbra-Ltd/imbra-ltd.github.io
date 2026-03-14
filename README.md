@@ -62,35 +62,12 @@ src/
     └── global.css         # All styles
 ```
 
-## Editing content
-
-All site content lives in `src/data/` as JSON files. No component knowledge required — edit the JSON, the site updates automatically.
-
-| File                         | Controls                                       |
-|------------------------------|------------------------------------------------|
-| `src/data/site.json`         | Nav links, hero stats, contact section (incl. Formspree endpoint), footer |
-| `src/data/products.json`     | Portfolio cards and detail panels              |
-| `src/data/services.json`     | Services accordion items                       |
-| `src/data/expertise.json`    | Domain expertise cards                         |
-| `src/data/publications.json` | Research publications with DOI links           |
-| `src/data/process.json`      | How We Work section steps                      |
-| `src/data/pricing.json`      | Pricing page — all engagement models           |
-
-## Third-party services
-
-| Service | Purpose | Config |
-|---------|---------|--------|
-| [Formspree](https://formspree.io) | Contact form submissions → `contact@imbra.io` | `src/data/site.json` → `contact.formEndpoint` |
-| [Plausible](https://plausible.io) | Privacy-friendly analytics (no cookies, no consent banner) | Script tag in `src/layouts/Base.astro` |
-
 ## Deployment
 
 Pushing to `main` triggers a GitHub Actions workflow that builds the site and deploys it to GitHub Pages. No manual steps required.
 
 **Prerequisite:** GitHub Pages must be configured to use GitHub Actions as the source (`Settings → Pages → Source → GitHub Actions`).
 
-## Contributing
+## Further reading
 
-- Branch naming: `feature/description` or `fix/description`
-- Always test with `npm run dev` before committing
-- Create a PR for each logical group of changes
+See [docs/PLAYBOOK.md](docs/PLAYBOOK.md) for the full developer reference — git workflow, GitHub CLI commands, release process, content editing, and third-party services.
