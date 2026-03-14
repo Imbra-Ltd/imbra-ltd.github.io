@@ -139,6 +139,57 @@ Any hardware is supported provided a `Driver` implementation exists. Any protoco
 
 ---
 
+## Competitive landscape
+
+### Core protocols (from previous analysis)
+
+| Protocol | Best Python Library | Stars | Maintained | Notes |
+|----------|---------------------|-------|------------|-------|
+| MQTT | `paho-mqtt` | 2.4k | ✅ Yes | Eclipse Foundation, v3.x + v5.x |
+| Modbus | `pymodbus` | 2.7k | ✅ Yes | Very active, async-native |
+| CAN | `python-can` | 1.5k | ✅ Yes | Broad hardware support |
+| CANopen | `canopen` | 538 | ✅ Yes | Built on python-can |
+| EtherNet/IP | `pycomm3` | 483 | ❌ No | Maintainer declared no new development |
+| OPC-UA | `asyncua` | 1.4k | ✅ Yes | Still beta versioning |
+| S7/Siemens | `python-snap7` | 778 | ✅ Yes | v3.0 pure Python rewrite |
+| DeviceNet | — | — | ❌ None | **No library exists** |
+| HART | `hart-protocol` | 27 | ⚠️ Stale | Wired HART only, quiet since 2023 |
+| DNP3 | `pydnp3` | 37 | ❌ No | Abandoned — `dnp3-python` (VOLTTRON) barely alive |
+
+### Extended protocols
+
+| Protocol | Best Python Library | Stars | Maintained | Notes |
+|----------|---------------------|-------|------------|-------|
+| EtherCAT | `pysoem` | 131 | ✅ Yes | Cython wrapper for SOEM |
+| Zigbee | `zigpy` | 887 | ✅ Yes | Full stack, powers Home Assistant |
+| KNX | `xknx` | 327 | ✅ Yes | Async, powers Home Assistant |
+| FINS (Omron) | `fins` | ~40 | ✅ Yes | Active through Aug 2025 |
+| Profibus | `pyprofibus` | 150 | ⚠️ Stale | Only open-source Profibus-DP stack, quiet since Jun 2023 |
+| GE SRTP | `ge-ethernet-SRTP` | ~35 | ⚠️ Low | GitHub only, no PyPI |
+| LIN | `pyUSBlini` | <50 | ⚠️ Stale | Hardware-specific only |
+| LoRaWAN | fragmented | ~100 | ⚠️ Stale | No maintained stack |
+| IO-Link | `iolink` | <20 | ⚠️ Stale | v0.0.5, barely started |
+| Profinet | `profi-dcp` | <30 | ❌ No | DCP discovery only, no full RT stack |
+| CC-Link | — | — | ❌ None | Vendor SDK only |
+| AS-Interface | — | — | ❌ None | Typically bridged via Modbus/EtherNet/IP |
+| Modbus Plus | — | — | ❌ None | Proprietary Schneider variant |
+| Foundation Fieldbus | — | — | ❌ None | FieldComm Group controlled |
+
+### Market gap summary
+
+The Python industrial protocol ecosystem is fragmented, undermaintained, and incomplete. Key gaps:
+
+- **EtherNet/IP** — pycomm3 abandoned, no replacement
+- **DeviceNet** — completely unserved
+- **HART / WirelessHART** — effectively unserved
+- **Profibus** — one stale library, no active development
+- **LIN, IO-Link, LoRaWAN, Profinet** — minimal or no coverage
+- **CC-Link, AS-i, Modbus Plus, Foundation Fieldbus** — no open Python library exists
+
+Imbra Connect is not competing with healthy libraries — it is filling real, confirmed gaps in the ecosystem.
+
+---
+
 ## Open questions
 
 - [ ] Final license for the Python open source version (MIT vs LGPL vs AGPL)
