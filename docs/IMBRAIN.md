@@ -345,8 +345,8 @@ security:
 
 - [x] Time-series store — **TimescaleDB** (PostgreSQL extension). Standard SQL, handles both time-series and relational metadata, natural fit for LLM-generated queries, production-grade.
 - [x] Sparkplug B namespace design — see below.
-- [ ] Plugin distribution — private registry, GitHub releases, or marketplace?
-- [ ] Fine-tuning strategy for local models — plant-specific terminology and tag names
+- [x] Plugin distribution — GitHub Releases (v1), private registry (v2). See deployment model.
+- [x] Fine-tuning strategy — RAG + pgvector (PostgreSQL extension). Tag catalogue and plant context stored as embeddings, retrieved at query time. No per-customer fine-tuning required.
 - [x] Security model — see below.
 - [x] Deployment model — see below.
 - [x] On-premise hardware reference spec — see below.
