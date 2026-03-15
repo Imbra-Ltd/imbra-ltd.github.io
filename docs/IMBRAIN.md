@@ -49,27 +49,62 @@ The LLM translates intent into queries, executes them against the time-series st
 
 ---
 
-## Architecture
+## Product layers
 
 ```
-User (natural language / API)
-            ↓
-ImBrain Agent (LLM core + tool use)
-            ↓
-Plugin layer
-├── ReportPlugin        # generate shift/daily/weekly reports
-├── AlertPlugin         # threshold and anomaly alerting
-├── ForecastPlugin      # predictive analytics
-├── AggregatorPlugin    # cross-historian queries
-├── OpcUaPlugin         # OPC-UA integration
-└── ...                 # user-defined plugins
-            ↓
-Data layer (TimescaleDB / PostgreSQL)
-            ↓
-Agent layer (Imbra Connect — OT data sources)
+┌─────────────────────────────────────────────────────┐
+│                 User (browser UI / API)              │
+├─────────────────────────────────────────────────────┤
+│              Paid plugins                            │
+│  LLM · Forecast · Update · Cert rotation · OPC-UA   │
+├─────────────────────────────────────────────────────┤
+│              Bundled plugins (free)                  │
+│         Reporting · Alerting · Dashboards            │
+├─────────────────────────────────────────────────────┤
+│                  ImBrain Core (free)                 │
+│  Time-series store · Monitoring · Playback           │
+│  Alarms · Virtual tags · Aliasing · RBAC/ABAC · 2FA  │
+├─────────────────────────────────────────────────────┤
+│            Agent interface (gRPC)                    │
+├─────────────────────────────────────────────────────┤
+│         Agents (built on Imbra Connect SDK)          │
+│  Collect · Harmonize · Recover · Forward             │
+├─────────────────────────────────────────────────────┤
+│         Imbra Connect SDK (free, open source)        │
+│  MQTT · Modbus · CAN · CANopen · DeviceNet · CIP     │
+├─────────────────────────────────────────────────────┤
+│              OT data sources                         │
+│     PLCs · Sensors · Drives · Field devices          │
+└─────────────────────────────────────────────────────┘
 
-ImBrain ←——MQTT/Sparkplug B——→ ImBrain  (mesh)
+ImBrain Core ←——MQTT/Sparkplug B——→ ImBrain Core  (mesh)
 ```
+
+### ImBrain Core features (free)
+
+- **Time-series storage** — TimescaleDB, standard SQL
+- **Live monitoring** — real-time tag values, trends
+- **Dashboards and displays** — configurable, browser-based
+- **Playback** — historical data replay
+- **Alarms** — condition-based, configurable thresholds
+- **Virtual tags** — calculated tags from expressions
+- **Aliasing** — human-readable names over raw tag IDs
+- **Clean UI** — simple configuration, no engineering degree required
+- **Security** — RBAC/ABAC, 2FA, mTLS, audit log
+
+### Bundled plugins (free, included in installer)
+
+- **ReportPlugin** — shift, daily, weekly reports
+- **AlertPlugin** — threshold and anomaly alerting
+
+### Paid plugins
+
+- **LLMPlugin** — natural language interface, AI-generated reports
+- **ForecastPlugin** — predictive analytics
+- **UpdatePlugin** — auto-update with admin approval and rollback
+- **CertRotationPlugin** — automated certificate lifecycle management
+- **OpcUaPlugin** — OPC-UA Pub/Sub integration
+- **MeshPlugin** — multi-site aggregation and cross-historian queries
 
 ---
 
@@ -338,6 +373,65 @@ security:
 | Group manager | Own group | Read all sites in group, cross-site reports |
 | Group admin | Own group | Full group configuration, approve site connections |
 | System admin | All groups | Full access — master ImBrain only |
+
+---
+
+## Agent → Core interface
+
+### Decision: gRPC
+
+Agents communicate with ImBrain Core via gRPC over localhost (inter-container on the same machine).
+
+```
+Agent container  →  gRPC (localhost)  →  ImBrain Core container
+                                              ↓
+                                         MQTT/Sparkplug B
+                                              ↓
+                                    Mesh (other ImBrain instances)
+```
+
+### Rationale
+
+| Perspective | Verdict | Notes |
+|-------------|---------|-------|
+| Security | ✅ gRPC | mTLS by default, no broker as intermediary, method-level auth |
+| Performance | ✅ gRPC | Binary protobuf, streaming, minimal overhead on localhost |
+| Agent developer | ✅ gRPC | Strongly typed contract, code generation in any language |
+| Extensibility | ✅ gRPC | Protobuf schema evolution, versioned APIs |
+| Debuggability | ⚠️ gRPC | Mitigated by diagnostic CLI (see below) |
+
+MQTT loses its debuggability advantage once mTLS is applied — traffic is opaque regardless. gRPC wins on every technical dimension.
+
+### Agent SDK
+
+gRPC is hidden behind an agent SDK available in Python, Go, and TypeScript. Agent developers never interact with protobuf or gRPC directly:
+
+```python
+agent = ImBrainAgent(core="localhost:50051")
+agent.connect()
+agent.send(tag="TK301_PV", value=98.3, timestamp=datetime.now())
+```
+
+### Diagnostic CLI
+
+Maintenance staff interact with agents through the ImBrain CLI — no gRPC or certificate knowledge required:
+
+```bash
+imbrain agent list                    # show all connected agents
+imbrain agent status varna-modbus     # health, last message, tag count
+imbrain agent tail varna-modbus       # live stream of incoming tag values
+imbrain agent replay varna-modbus     # replay last N messages
+```
+
+### Known limitations and mitigations
+
+| Limitation | Mitigation |
+|------------|------------|
+| Learning curve for agent developers | Agent SDK hides gRPC completely |
+| No native browser support | UI uses REST/HTTP — not gRPC |
+| Firewall/proxy issues | Same machine/container only — not a concern |
+| Proto schema discipline required | Versioned `.proto` files (`v1`, `v2`), strict review |
+| Unfamiliar to OT staff | Diagnostic CLI — OT staff never touch gRPC directly |
 
 ---
 
