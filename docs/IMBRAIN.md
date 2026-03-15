@@ -253,7 +253,7 @@ Air-gapped plants run all plugins locally. Connected plants can offload compute-
 |-----------|---------|-------|
 | ImBrain core | Open source | Minimal historian core, time-series store, agent loop |
 | OT agents (Imbra Connect) | Open source (Python) | Data collection layer |
-| Plugins | Paid | Report, alert, forecast, AI adapters, OPC-UA |
+| Plugins | Paid | Report, alert, forecast, AI adapters, OPC-UA, Update, Certificate rotation |
 | Support | Paid retainer | Installation, maintenance, incident response |
 | Cloud deployment | Paid | Managed cloud option |
 
@@ -399,7 +399,7 @@ imbrain-update-v1.0.1-linux-x86.tar.gz
 └── update.sh           # loads new image, restarts service
 ```
 
-Connected deployments (v2): auto-update mechanism via ImBrain update plugin.
+Connected deployments: auto-update via the Update plugin (see below).
 
 ### Storage backends
 
@@ -410,6 +410,26 @@ Connected deployments (v2): auto-update mechanism via ImBrain update plugin.
 | Cloud / managed | Timescale Cloud / Supabase | Zero local infrastructure, internet required |
 
 Same binary, different config. `--demo` flag switches to embedded DuckDB.
+
+### Auto-update
+
+| Deployment | Update mechanism |
+|------------|-----------------|
+| Air-gapped | Manual update package (USB / secure file transfer) |
+| Connected, small | Update plugin (paid) — UI-driven, admin approval required |
+| Connected, enterprise | OS package manager (apt/yum private repo) |
+
+**Update plugin (paid):**
+- Periodically checks a version endpoint for new releases
+- Notifies admin in UI — update never applies without approval
+- Downloads and verifies new image before applying
+- Automatic rollback to previous image if startup fails
+- For air-gapped: can poll a local or DMZ mirror instead of the internet
+
+**OS package manager (enterprise):**
+- `.deb` / `.rpm` packages hosted on a private apt/yum repository
+- `apt upgrade imbrain` — standard, auditable, works behind corporate proxies
+- Air-gapped: mirror the repository locally
 
 ### Plugin distribution
 
