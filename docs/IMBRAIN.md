@@ -159,7 +159,7 @@ Air-gapped plants run all plugins locally. Connected plants can offload compute-
 
 ## Open questions
 
-- [ ] Time-series store — TimescaleDB (PostgreSQL extension) or InfluxDB or QuestDB?
+- [x] Time-series store — **TimescaleDB** (PostgreSQL extension). Standard SQL, handles both time-series and relational metadata, natural fit for LLM-generated queries, production-grade.
 - [ ] Sparkplug B namespace design for the mesh — site / area / line / tag hierarchy
 - [ ] Plugin distribution — private registry, GitHub releases, or marketplace?
 - [ ] Fine-tuning strategy for local models — plant-specific terminology and tag names
