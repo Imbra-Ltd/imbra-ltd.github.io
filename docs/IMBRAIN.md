@@ -124,6 +124,57 @@ Group   (UUID + alias)  — customer or business unit, e.g. "Solvay Sodi"
 
 ---
 
+## Mesh topology
+
+### Recommended configuration
+
+**Per-site broker + Master historian**
+
+```
+Operator
+    ↓
+Master ImBrain (group level, 99.5% HA)
+    ├── Site ImBrain — Varna   (99.9% HA)
+    ├── Site ImBrain — Sofia   (99.9% HA)
+    └── Site ImBrain — Heidelberg (99.9% HA)
+```
+
+- Each site runs its own MQTT broker and ImBrain instance — fully independent, air-gapped capable
+- Master ImBrain connects to all site historians for cross-site queries and reporting
+- If master goes down: sites keep running and storing locally — no data loss, reduced cross-site visibility
+- If a site broker goes down: data collection stops — data loss risk — higher HA required locally
+
+### Availability targets
+
+| Component | Target | Rationale |
+|-----------|--------|-----------|
+| Local MQTT broker | 99.9% (~8.7 h/year downtime) | Data loss if down — highest priority |
+| Local ImBrain | 99.9% | Same — ingest must not stop |
+| Master ImBrain | 99.5% (~43.8 h/year downtime) | Degraded UX only, no data loss |
+| Master MQTT broker | 99.5% | Mesh sync delayed, not lost |
+
+### Broker topology options
+
+All three options are supported — customer chooses based on needs and budget:
+
+| Option | Description | Best for |
+|--------|-------------|----------|
+| A: Central broker | All sites connect to one shared broker | Small deployments, cloud-only |
+| B: Per-site + federation | Site brokers bridge to each other | Enterprise, multi-region |
+| C: Per-site, no federation | Independent brokers, ImBrain handles cross-site | **Recommended default** |
+
+### Customer configuration (Option C)
+
+```yaml
+# Site ImBrain config — this is all the customer configures
+master: mqtt://imbrain-master.customer.com
+site_alias: "Varna Plant"
+```
+
+Site ID and certificates are issued automatically by the master on first connection. No manual certificate management.
+
+---
+
 ## Mesh communication protocol
 
 **Primary: MQTT + Sparkplug B**
