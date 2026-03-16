@@ -80,7 +80,10 @@ src/components/
 | Privacy Policy             | `/privacy/`                   | Legal page                                 |
 | Imprint                    | `/imprint/`                   | Legal page                                 |
 
-Whitepaper PDFs are stored in `public/docs/` and served at `/docs/*.pdf`. PDFs are excluded from git via `.gitignore` — they must be generated locally with pandoc before deployment (see `docs/PLAYBOOK.md`).
+Whitepaper PDFs are stored in `public/docs/` and served at `/docs/*.pdf`. PDFs are committed to git and deployed with the site. To regenerate a PDF after editing its source markdown:
+```
+pandoc docs/WHITEPAPER-<NAME>.md -o public/docs/<name>.pdf --pdf-engine="C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe" --metadata title="<Title>"
+```
 
 ## Homepage sections (in order)
 1. Nav — logo (links to `/`), section links, hamburger on mobile
