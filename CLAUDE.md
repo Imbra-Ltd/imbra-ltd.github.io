@@ -69,10 +69,23 @@ src/components/
 
 **Rule:** default to `.astro`. Only reach for React (`.tsx`) when client-side state is required.
 
-## Page sections (in order)
+## Pages
+
+| Page                       | Path                          | Notes                                      |
+|----------------------------|-------------------------------|--------------------------------------------|
+| Homepage                   | `/`                           | All main sections                          |
+| Pricing                    | `/pricing/`                   | Standalone page with contact form          |
+| Whitepaper — ImBrain       | `/whitepapers/imbrain/`       | Landing page for ImBrain white paper       |
+| Whitepaper — Imbra Connect | `/whitepapers/imbra-connect/` | Landing page for Imbra Connect white paper |
+| Privacy Policy             | `/privacy/`                   | Legal page                                 |
+| Imprint                    | `/imprint/`                   | Legal page                                 |
+
+Whitepaper PDFs are stored in `public/docs/` and served at `/docs/*.pdf`. PDFs are excluded from git via `.gitignore` — they must be generated locally with pandoc before deployment (see `docs/PLAYBOOK.md`).
+
+## Homepage sections (in order)
 1. Nav — logo (links to `/`), section links, hamburger on mobile
 2. Hero — eyebrow, headline, sub-text, CTA buttons, stat strip (4 cards)
-3. Portfolio — 3 product cards in a grid, expandable with detail panel
+3. Portfolio — 4 product cards in a grid, expandable with detail panel
 4. Services — 10 service cards in 2-column grid, each expandable inline
 5. Expertise — 4 domain expertise cards
 6. Research & Credentials — 3 publication cards with DOI links
@@ -88,6 +101,7 @@ src/components/
 |---------|---------|--------|
 | [Formspree](https://formspree.io) | Contact form → `contact@imbra.io` | `src/data/site.json` → `contact.formEndpoint` |
 | [Plausible](https://plausible.io) | Privacy-friendly analytics (no cookies) | Script tag in `src/layouts/Base.astro` |
+| [Google Search Console](https://search.google.com/search-console) | Search indexing and crawl monitoring | Verification meta tag in `src/layouts/Base.astro` |
 
 ## Documentation rule
 Before every commit, update all relevant documentation:
@@ -102,6 +116,7 @@ Before every commit, update all relevant documentation:
 - PRs should be small and focused — one concern per PR
 - Always test with `npm run dev` before committing
 - Do not commit `dist/` or `node_modules/`
+- **Before pushing or creating a PR**, always check the current branch and open PR status with `git status` and `gh pr list`. If the previous PR is closed or merged, create a new branch rather than pushing to a stale one.
 
 ## Commands
 ```
