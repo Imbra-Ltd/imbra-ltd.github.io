@@ -1,0 +1,69 @@
+---
+import Base from "../../layouts/Base.astro";
+import site from "../../data/site.json";
+
+const title = "Honeywell Control Blocks for Siemens — White Paper";
+const description = "How porting Honeywell DCS control blocks — PID, DEVCTL, AI/AO/DI/DO — to Siemens SCL eliminates the semantic gap in mixed DCS/PLC environments and gives operators one control philosophy across the plant.";
+---
+
+<Base title={`${title} — ${site.meta.title}`} description={description}>
+  <main class="legal-page">
+    <a href="/" class="legal-back">← Back to imbra.io</a>
+    <div class="legal-label">White Paper</div>
+    <h1 class="legal-heading">Honeywell Control Blocks for Siemens</h1>
+
+    <div class="legal-grid">
+
+      <div class="legal-section">
+        <div class="legal-section-title">Subtitle</div>
+        <div class="legal-section-body">
+          <p>One Control Philosophy Across the Plant</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Version</div>
+        <div class="legal-section-body">
+          <p>0.1 — Draft · March 2026</p>
+          <p>Author: Branimir Georgiev, Imbra.Soft</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Download</div>
+        <div class="legal-section-body">
+          <p><a href="/docs/honeywell-siemens.pdf" target="_blank" rel="noopener noreferrer">Download Full White Paper (PDF)</a></p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Abstract</div>
+        <div class="legal-section-body">
+          <p>Industrial plants running Honeywell DCS as the main control system routinely use Siemens PLCs for auxiliary units — compressors, utilities, ancillary processes. The result is a split control environment: operators trained on Honeywell semantics must context-switch every time they work on a Siemens unit. Block names differ. Parameter conventions differ. Alarm and interlock behaviour differs.</p>
+          <p>This library ports the core Honeywell control modules — PID, DEVCTL, AI, AO, DI, and DO — to Siemens S7-300/1500 as native FC/FB blocks written in SCL and called from Ladder in TIA Portal. The blocks replicate Honeywell semantics precisely: same parameter names, same state machine behaviour, same alarm logic. Operators work with one control philosophy across the entire plant.</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Topics covered</div>
+        <div class="legal-section-body">
+          <p>1. The Mixed DCS/PLC Challenge</p>
+          <p>2. Honeywell Control Block Semantics</p>
+          <p>3. The Port Architecture</p>
+          <p>4. Block Reference</p>
+          <p>5. Operational Benefits</p>
+          <p>6. Deployment</p>
+          <p>7. Conclusion</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Technology</div>
+        <div class="legal-section-body">
+          <p>Siemens S7-300/1500 · TIA Portal · SCL · FC/FB architecture · Honeywell Experion · Honeywell TDC 3000</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</Base>
