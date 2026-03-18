@@ -12,6 +12,50 @@ interface Product {
   status: string;
   url?: string;
   whitepaper?: string;
+  waitlistEndpoint?: string;
+}
+
+type WaitlistStatus = "idle" | "submitting" | "success" | "error";
+
+function WaitlistForm({ endpoint }: { endpoint: string }) {
+  const [status, setStatus] = useState<WaitlistStatus>("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    const data = new FormData(e.currentTarget);
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      setStatus(res.ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return <span className="waitlist-confirm">You're on the list.</span>;
+  }
+
+  return (
+    <form className="waitlist-form" onSubmit={handleSubmit} noValidate>
+      <input
+        name="email"
+        type="email"
+        placeholder="your@email.com"
+        required
+        className="waitlist-input"
+        aria-label="Email address for ImBrain waitlist"
+      />
+      <button type="submit" className="waitlist-btn" disabled={status === "submitting"}>
+        {status === "submitting" ? "…" : "Join waitlist"}
+      </button>
+      {status === "error" && <span className="waitlist-error">Something went wrong — try again.</span>}
+    </form>
+  );
 }
 
 interface Props {
@@ -56,6 +100,14 @@ function DetailPanel({ d }: { d: Product }) {
             </div>
           </div>
         )}
+        {d.waitlistEndpoint && (
+          <div className="detail-row">
+            <div className="detail-col-label">Early access</div>
+            <div className="detail-col-text">
+              <WaitlistForm endpoint={d.waitlistEndpoint} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -68,15 +120,16 @@ export default function ProductExpand({ products }: Props) {
     setActiveId(prev => prev === p.id ? null : p.id);
   }
 
-  const activeProduct = products.find(p => p.id === activeId) ?? null;
-
   return (
     <div className="portfolio-grid reveal" style={{ "--product-cols": Math.min(products.length, 4) } as React.CSSProperties}>
       {products.map(p => (
-        <div
+        <button
           key={p.id}
           className={`product-card ${activeId === p.id ? "active" : ""}`}
           onClick={() => toggle(p)}
+          aria-expanded={activeId === p.id}
+          aria-controls={`detail-${p.id}`}
+          aria-label={`${activeId === p.id ? "Collapse" : "Expand"} details for ${p.name}`}
         >
           <div className="product-index mono">
             <span className="product-role">{p.role}</span>
@@ -90,13 +143,20 @@ export default function ProductExpand({ products }: Props) {
             {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
           </div>
           <div className="expand-indicator">+</div>
+        </button>
+      ))}
+      {products.map(p => (
+        <div
+          key={`detail-${p.id}`}
+          id={`detail-${p.id}`}
+          role="region"
+          aria-label={`${p.name} details`}
+          hidden={activeId !== p.id}
+          className="product-detail-container"
+        >
+          <DetailPanel d={p} />
         </div>
       ))}
-      {activeProduct && (
-        <div style={{ gridColumn: "1 / -1" }}>
-          <DetailPanel d={activeProduct} />
-        </div>
-      )}
     </div>
   );
 }

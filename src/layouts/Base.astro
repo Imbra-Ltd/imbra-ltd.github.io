@@ -39,6 +39,10 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <!-- Google Search Console verification -->
     <meta name="google-site-verification" content="NLAJ2Ho9eJZkSFjWyPd1Un_sAmcOhfsQZagKnDLEc2s" />
 
+    <!-- Preload critical above-the-fold assets -->
+    <link rel="preload" href="/logos/logo-1b-web.svg" as="image" type="image/svg+xml" />
+    <slot name="head" />
+
     <!-- Google Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -18,6 +18,7 @@ import publications from "../data/publications.json";
 import process from "../data/process.json";
 ---
 <Base title={site.meta.title} description={site.meta.description}>
+  <link rel="preload" href="/ot-it-stack.svg" as="image" type="image/svg+xml" slot="head" />
   <Nav links={site.nav.links} cta={site.nav.cta} />
   <Hero hero={site.hero} />
   <Portfolio products={products} />

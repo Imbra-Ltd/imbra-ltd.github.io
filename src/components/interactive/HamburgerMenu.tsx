@@ -37,10 +37,17 @@ export default function HamburgerMenu({ links, cta }: Props) {
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
         aria-expanded={open}
+        aria-controls="mobile-nav"
       >
         <span /><span /><span />
       </button>
-      <div className={`mobile-menu ${open ? "open" : ""}`}>
+      <div
+        id="mobile-nav"
+        className={`mobile-menu ${open ? "open" : ""}`}
+        role="navigation"
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
+      >
         {links.map(l => (
           <a key={l.label} href={l.href ?? `#${l.target}`} className="mobile-menu-link" onClick={close}>
             {l.label}
