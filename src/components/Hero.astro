@@ -3,14 +3,20 @@ const { hero } = Astro.props;
 ---
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">{hero.eyebrow}</div>
-    <h1 class="hero-headline">
-      {hero.headline}<br /><strong>{hero.headlineStrong}</strong>
-    </h1>
-    <p class="hero-sub">{hero.sub}</p>
-    <div class="hero-actions">
-      <a href={`#${hero.cta.target}`} class="btn-primary">{hero.cta.label}</a>
-      <a href={`#${hero.ghost.target}`} class="btn-ghost">{hero.ghost.label}</a>
+    <div class="hero-left-content">
+      <div class="hero-eyebrow">{hero.eyebrow}</div>
+      <h1 class="hero-headline">
+        {hero.headline}<br /><strong>{hero.headlineStrong}</strong>
+      </h1>
+      <p class="hero-sub">{hero.sub}</p>
+      <div class="hero-actions">
+        <a href={`#${hero.cta.target}`} class="btn-primary">{hero.cta.label}</a>
+        <a href={`#${hero.ghost.target}`} class="btn-ghost">{hero.ghost.label}</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- Hero image: iStock standard licence, purchased 2026-03 -->
+      <img src="/ot-it-stack.svg" alt="OT/IT integration diagram" />
     </div>
   </div>
   <div class="hero-right">

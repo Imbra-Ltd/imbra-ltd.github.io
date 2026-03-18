@@ -27,7 +27,7 @@ const { footer } = Astro.props;
   </div>
   <div class="footer-body">
     <div class="footer-address">
-      <span class="footer-logo">IMBRA<span>.</span>SOFT</span>
+      <span class="footer-logo">IMBRA</span>
       <p>
         {footer.address.city}<br />
         <a href={`mailto:${footer.address.email}`}>{footer.address.email}</a><br />
@@ -36,7 +36,8 @@ const { footer } = Astro.props;
     </div>
     <div>
       <div class="footer-desc-label">About</div>
-      <p class="footer-desc-text">{footer.about}</p>
+      <p class="footer-desc-text" set:html={footer.about.replace('codewithbranko.com', '<a href="https://www.codewithbranko.com" target="_blank" rel="noopener noreferrer">codewithbranko.com</a>')} />
+      <a href={footer.founderLink.href} class="footer-founder-link" target="_blank" rel="noopener noreferrer">{footer.founderLink.label}</a>
     </div>
   </div>
   <div class="footer-bottom">

@@ -71,7 +71,7 @@ export default function ProductExpand({ products }: Props) {
   const activeProduct = products.find(p => p.id === activeId) ?? null;
 
   return (
-    <div className="portfolio-grid reveal">
+    <div className="portfolio-grid reveal" style={{ "--product-cols": Math.min(products.length, 4) } as React.CSSProperties}>
       {products.map(p => (
         <div
           key={p.id}

@@ -101,6 +101,60 @@ The LLM translates intent into queries, executes them against the time-series st
 
 ---
 
+## Application architecture
+
+### Core + plugins, not microservices
+
+ImBrain is a core process with a plugin system — not a microservice mesh. This is a deliberate architectural decision for the target deployment context.
+
+**Why microservices were rejected:**
+
+| Concern | Impact |
+|---------|--------|
+| Air-gapped plants run on a single mini PC | An orchestrator (Compose minimum, Kubernetes ideally) is extra operational surface area the customer has to manage |
+| Silent microservice failures | A crashed microservice is invisible until something downstream breaks — in a plant, silent failures are worse than loud ones |
+| Version drift | Services evolve independently; a connectivity service on v1.2 talking to a data service on v1.5 is a support nightmare |
+| Cognitive fragmentation | Every split creates a new failure boundary, a new API contract, a new place to get lost, a new thing to misconfigure |
+
+**What the plugin model gives instead:**
+
+- Same developer experience as microservices — isolated modules, clear interfaces, independent development
+- Same operational experience as a monolith — one process, one container, one log stream, one restart command
+- A plugin in DEGRADED state is still running and logged immediately — no silent failures
+
+**Infrastructure containers are legitimate and unavoidable:**
+
+Not everything is a plugin. Infrastructure components with no business logic run as separate containers:
+
+```
+docker-compose.yml
+├── timescaledb        # infrastructure — commodity, never changes with product
+├── mosquitto          # infrastructure — MQTT broker
+├── imbrain-core       # application — one container, all plugins inside
+└── (optional) caddy   # infrastructure — TLS termination
+```
+
+The customer runs `docker compose up`. They never think about plugin architecture inside `imbrain-core`. A new analytics plugin means a new `imbrain-core` image — no new services, no new ports, no new config.
+
+**The line to hold:** infrastructure containers are fine. Business logic split into microservices multiplies operational burden without benefit at this scale.
+
+### Plugins vs agents — where the boundary is
+
+Plugins and agents are both extension points, but they live in different places for different reasons:
+
+| | Plugins (in-process) | Agents (out-of-process) |
+|-|----------------------|------------------------|
+| Location | Same process and container as ImBrain Core | Separate process; separate container or separate machine |
+| Runtime | Same — Go/Python, same OS | Any runtime, any OS |
+| Examples | OEEPlugin, AnomalyDetectionPlugin, LLMPlugin | CollectAgent, LabFileAgent, OPC DA bridge |
+| When to use | Analytics, storage backends, modern protocol drivers | Legacy system connectors, edge/remote collectors, OS-specific adapters |
+| Deployment | Ships as part of imbrain-core image | Ships as separate binary or container |
+| Failure mode | Core supervises — DEGRADED state, logged, next tick runs | Independent process — can buffer and survive core restarts |
+
+The key question is: **can this run in the same process on the same OS?** If yes → plugin. If the source requires Windows COM, a different runtime, physical proximity to a device, or independent crash survival → agent.
+
+---
+
 ## Product layers
 
 ```
@@ -711,7 +765,7 @@ name        = "oee"                          # unique slug, lowercase, hyphenate
 version     = "1.2.0"                        # semver
 display     = "OEE Plugin"                   # shown in UI
 description = "Overall Equipment Effectiveness — availability × performance × quality"
-author      = "Imbra.Soft"
+author      = "Imbra"
 license     = "commercial"                   # "commercial" | "open-source"
 entry       = "imbra_oee.plugin:OEEPlugin"   # module:class
 
@@ -1863,7 +1917,7 @@ Air-gapped plants run all plugins locally. Connected plants can offload compute-
 | ImBrain core | Open source (MIT) | Historian core, time-series store, agent loop, RBAC |
 | Official agents | Open source (MIT) | CollectAgent, LabFileAgent, ForwardAgent, etc. — Go binaries |
 | Imbra Connect SDK — Python + Go | Open source (MIT) | Protocols, packet crafting, test tooling, agent scaffolding |
-| Imbra Connect SDK — Rust + TypeScript | **Paid** ports | For embedded/safety-critical (Rust) or browser/Node.js (TypeScript) |
+| Imbra Connect SDK — other languages | **Paid** ports on request | For embedded/safety-critical or browser/Node.js targets |
 | Community agents | Open source (MIT, mandatory) | Submitted to agent registry — anyone can publish |
 | ImBrain plugins | **Paid** | OEE, Golden Batch, Anomaly Detection, LLM, Forecast, etc. |
 | Support | **Paid** retainer | Installation, maintenance, incident response |
@@ -2019,6 +2073,32 @@ imbrain agent replay varna-modbus     # replay last N messages
 ### OPC DA / OPC XML-DA (legacy OPC)
 
 OPC DA (1996–2006) is the most widely deployed historian protocol in older industrial plants. Connecting to it without DCOM requires a wrapper or bridge pattern.
+
+#### IT policy — no third-party software on the SCADA machine
+
+Many plants (especially chemical, pharmaceutical, and enterprise-managed sites) prohibit installing any non-approved software on the SCADA or DCS server. This is enforced by OT security policy and sometimes by the SCADA vendor's support contract terms (Siemens WinCC, for example, can void support if unapproved software runs on the server).
+
+**The pattern that works:**
+
+```
+SCADA/PLC machine                   DMZ / Historian machine
+─────────────────                   ───────────────────────
+WinCC / Siemens                     ImBrain agent
+Kepware (OPC gateway)  → [network]  (OPC UA client, gRPC publisher)
+OPC UA endpoint (4840)
+                                            ↓
+                                    ImBrain core (same or separate machine)
+```
+
+- **Gateway on the SCADA box** — licensed, trusted-vendor product (Kepware, Matrikon), approved by OT security. This runs on the SCADA machine.
+- **Agent on the DMZ or historian machine** — Imbra's code lives here. It connects *inward* to the OPC UA endpoint. The SCADA machine never initiates a connection outward — a much easier conversation with security teams.
+- **Core anywhere** — same site server, cloud, or enterprise infrastructure.
+
+**Why Kepware / Matrikon pass the policy check when custom software does not:**
+
+Kepware (PTC) and Matrikon are OPC infrastructure products on most approved vendor lists. IT/OT security teams that refuse a custom Go binary will usually approve Kepware because it is a known, audited commercial product with enterprise support contracts, a defined security posture, a CVE history, and a patch cycle. Many plants already have a Kepware seat deployed elsewhere — the conversation becomes "can we configure the Kepware you already have" rather than "can we install our software."
+
+When even Kepware is blocked (nuclear, defence-adjacent, maximum-security OT environments), the only path is a DMZ machine with controlled, one-way data flow managed entirely by the customer's OT team. ImBrain defines the interface; the customer owns the bridge.
 
 #### Why DCOM cannot be used
 
@@ -2360,10 +2440,13 @@ Primary target: small industrial companies. Demo must run on minimal hardware.
 - ~~Deployment model~~ — **Podman**, self-contained installer, air-gapped capable
 - ~~Security model~~ — **Zero Trust + Defence in Depth** (Azure principles), mTLS everywhere, RBAC/ABAC
 - ~~Plugin contract~~ — defined (manifest, ABC, core handle, lifecycle, error handling — see Plugin ecosystem section)
+- ~~Application architecture~~ — **Core + plugins, not microservices**. Infrastructure components (TimescaleDB, MQTT broker, TLS proxy) run as separate containers — these are commodity infrastructure, not business logic splits. Business logic lives in one `imbrain-core` container with plugins loaded in-process.
+- ~~Plugin vs agent boundary~~ — **plugins are in-process** (analytics, modern protocol drivers, storage backends); **agents are out-of-process** (legacy connectors, OS-specific adapters, edge/remote collectors). The test: can it run in the same process on the same OS? If not → agent.
+- ~~Agent deployment topology~~ — agents run on the **DMZ or historian machine**, never on the protected SCADA/PLC server. The SCADA machine runs a licensed, trusted-vendor OPC gateway (Kepware, Matrikon) — approved by OT security policy. The agent connects inward to the OPC UA endpoint; the SCADA machine never initiates outbound connections.
 - ~~OPC DA integration~~ — **DA→UA wrapper** (Kepware/Matrikon if on-site, else Imbra DA→UA Bridge using `pywin32` + `asyncua`)
 - ~~Lab data ingestion~~ — **LabFileAgent** (CSV, XML, JSON, Excel, ASTM, fixed-width; late arrival handled by lab timestamp preservation)
 - ~~Agent implementation language~~ — **Go** (Python also supported for community/prototyping — both SDKs open source MIT)
-- ~~Imbra Connect commercial model~~ — **Python + Go open source MIT (full SDK)**; Rust + TypeScript are paid ports; revenue from ImBrain plugins, support, and managed cloud
+- ~~Imbra Connect commercial model~~ — **Python + Go open source MIT (full SDK)**; ports to other languages available on request (paid); revenue from ImBrain plugins, support, and managed cloud
 
 ### Agent language: Go
 
@@ -2379,7 +2462,7 @@ Agents are written in Go. The primary driver is deployment simplicity — ImBrai
 | Protocol ecosystem | paho-mqtt, pymodbus, python-can exist now | Go ports to be written | **Python** |
 | Contributor accessibility | OT engineers know Python | Higher barrier | **Python** |
 
-The protocol ecosystem gap is real but temporary — the Go ports of Imbra Connect are already planned. New protocol implementations follow a deliberate two-stage process: prototype and validate in Python, then ship in Go. Python is the exploration language; Go is the product language. Community agents in Python are legitimate releases — Imbra.Soft's official agents are Go. See the Imbra Connect spike for the full language strategy.
+The protocol ecosystem gap is real but temporary — the Go ports of Imbra Connect are already planned. New protocol implementations follow a deliberate two-stage process: prototype and validate in Python, then ship in Go. Python is the exploration language; Go is the product language. Community agents in Python are legitimate releases — Imbra's official agents are Go. See the Imbra Connect spike for the full language strategy.
 
 #### Open-source model
 
@@ -2448,7 +2531,7 @@ imbrain-ctl upgrade --unlock  # re-enable
 
 ### Installer distribution
 
-**Imbra.Soft hosts a versioned release endpoint:**
+**Imbra hosts a versioned release endpoint:**
 
 ```
 https://releases.imbra.io/imbrain/2.3.0/imbrain-2.3.0-linux-amd64.tar.gz
@@ -2475,7 +2558,7 @@ ImBrain does not phone home during installation or operation. The installer is f
 
 **Responsibility split:**
 
-| Responsibility | Imbra.Soft | Client |
+| Responsibility | Imbra | Client |
 |----------------|-----------|--------|
 | Build and sign the installer | ✅ | — |
 | Host public release endpoint | ✅ | — |

@@ -15,9 +15,9 @@
     "id": "02",
     "name": "Imbra Connect",
     "role": "Connectivity layer",
-    "desc": "A unified industrial protocol SDK — one consistent interface for MQTT, Modbus, CAN, CANopen, DeviceNet, EtherNet/IP, and more. Python and Go are open source (MIT). Rust and TypeScript are paid ports. Built to power ImBrain agents and any connectivity project that should not start from scratch.",
+    "desc": "A unified industrial protocol SDK — one consistent interface for MQTT, Modbus, CAN, CANopen, DeviceNet, EtherNet/IP, and more. Python and Go are open source (MIT). Ports to other languages are available on request. Built to power ImBrain agents and any connectivity project that should not start from scratch.",
     "tags": ["MIT License", "Fieldbus", "Packet Crafting", "Agent SDK"],
-    "problem": "The Python industrial protocol ecosystem is fragmented, undermaintained, and incomplete. DeviceNet has no open library at all. EtherNet/IP lost its only maintained project. HART and Profibus have stale, barely active codebases. Engineers assembling a connectivity stack end up combining five different libraries with inconsistent APIs — and still hit gaps.\n\nImbra Connect fills those gaps with a single package. One abstract interface — Connection, Driver, Adapter — works across all supported protocols. Adding a new protocol or swapping hardware does not change application code. Packet crafting and test tooling are first-class. Engineers can craft standard and non-standard frames, handle malformed packets, and build integration tests without specialised hardware.\n\nPython and Go are fully open source (MIT), covering protocol implementations, packet crafting, agent scaffolding, and test tooling with no paid tiers or feature gates. Community agents are submitted to the Imbra registry. Open source under MIT is mandatory for submission.\n\nImbra Connect is the foundation layer for ImBrain agents. Every device ImBrain can talk to is a protocol implementation in Imbra Connect. Rust and TypeScript ports are available on request for teams that need embedded or browser targets.",
+    "problem": "The Python industrial protocol ecosystem is fragmented, undermaintained, and incomplete. DeviceNet has no open library at all. EtherNet/IP lost its only maintained project. HART and Profibus have stale, barely active codebases. Engineers assembling a connectivity stack end up combining five different libraries with inconsistent APIs — and still hit gaps.\n\nThe Go ecosystem has the same problem from a different angle: not fragmentation, but absence. DeviceNet, HART, Profibus, and CANopen simply do not exist as Go libraries. Teams that chose Go for its performance and concurrency model hit a dead end the moment they need to talk to field devices.\n\nImbra Connect fills those gaps with a single package. One abstract interface — Connection, Driver, Adapter — works across all supported protocols. Adding a new protocol or swapping hardware does not change application code. Packet crafting and test tooling are first-class. Engineers can craft standard and non-standard frames, handle malformed packets, and build integration tests without specialised hardware.\n\nPython and Go are fully open source (MIT), covering protocol implementations, packet crafting, agent scaffolding, and test tooling with no paid tiers or feature gates. Community agents are submitted to the Imbra registry. Open source under MIT is mandatory for submission.\n\nImbra Connect is the foundation layer for ImBrain agents. Every device ImBrain can talk to is a protocol implementation in Imbra Connect. Ports to other languages are available on request for teams that need embedded or browser targets.",
     "tech": ["Modbus TCP/IP", "Modbus RTU", "DeviceNet", "EtherNet/IP", "CAN", "CANopen", "OPC-UA", "MQTT", "HART", "Profibus"],
     "audience": "Automation engineers, embedded developers, and system integrators building device connectivity layers — and anyone writing agents for ImBrain or other industrial data platforms.",
     "whitepaper": "/whitepapers/imbra-connect/",
@@ -34,17 +34,5 @@
     "audience": "Operations engineers and plant managers at small and medium industrial companies who need historian capabilities without enterprise licensing costs. Any organisation with physical sensors, continuous processes, and compliance requirements — manufacturing, energy, utilities, food and beverage, mining, building automation — fits the same pattern. Also a fit for enterprise teams looking to replace closed, vendor-locked historian platforms with an open, extensible architecture.",
     "whitepaper": "/whitepapers/imbrain/",
     "status": "Concept"
-  },
-  {
-    "id": "04",
-    "name": "CodeWithBranko",
-    "role": "Education platform",
-    "desc": "A dedicated platform for engineers working at the OT/IT boundary — practical courses, tutorials, and guides on industrial protocols, PLC programming, historian architecture, and applied AI/ML.",
-    "tags": ["Education", "OT/IT", "Industrial Protocols", "AI/ML"],
-    "problem": "Most industrial training is either too academic to be useful in the field or too vendor-specific to transfer across platforms. CodeWithBranko is built around real engineering problems encountered across automation, connectivity, and software projects — giving engineers practical skills they can apply immediately, regardless of which platform or protocol they are working with.",
-    "tech": ["Udemy", "YouTube", "Python", "Siemens TIA Portal", "OPC-UA", "Modbus"],
-    "audience": "Automation engineers, embedded developers, and software engineers stepping into OT environments — or IT engineers navigating their first industrial project.",
-    "url": "https://www.codewithbranko.com",
-    "status": "Prototype"
   }
 ]

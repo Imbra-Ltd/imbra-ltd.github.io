@@ -45,14 +45,14 @@ Python is the prototyping and exploration language. New protocol implementations
 
 Go is the product language. Once the Python prototype is validated and the API is stable, it is ported to Go for release. Go produces a single self-contained binary with no runtime dependencies — the right fit for air-gapped industrial plants, cross-platform deployment, and long-term maintenance. It is the more future-proof ecosystem for this domain: strong backwards compatibility, trivial cross-compilation, natural concurrency model for multi-protocol agents, and the dominant language direction for infrastructure tooling.
 
-**Maintenance boundary:** once the Go release ships, Imbra.Soft's engineering time moves entirely to Go. The Python version remains open source and available, but it is community-maintained from that point. Community contributions to Python are welcome and will be reviewed — Imbra.Soft does not proactively fix or extend it.
+**Maintenance boundary:** once the Go release ships, Imbra's engineering time moves entirely to Go. The Python version remains open source and available, but it is community-maintained from that point. Community contributions to Python are welcome and will be reviewed — Imbra does not proactively fix or extend it.
 
 | Stage | Language | Owner | Purpose |
 |-------|----------|-------|---------|
-| Prototype | Python | Imbra.Soft | Validate protocol behaviour, explore API design, test on real hardware |
+| Prototype | Python | Imbra | Validate protocol behaviour, explore API design, test on real hardware |
 | Community agents | Python | Community | Production agents for the registry — legitimate releases, not just prototypes |
-| Product | Go | Imbra.Soft | Official release — single binary, air-gapped deployment, long-term maintenance |
-| Paid ports | Rust / TypeScript | Imbra.Soft | Language-specific targets for embedded or browser environments |
+| Product | Go | Imbra | Official release — single binary, air-gapped deployment, long-term maintenance |
+| Paid ports | Rust / TypeScript | Imbra | Language-specific targets for embedded or browser environments |
 
 ---
 
@@ -60,7 +60,7 @@ Go is the product language. Once the Python prototype is validated and the API i
 
 ### Goal
 
-Every industrial protocol and hardware vendor in the world eventually covered — not by Imbra.Soft alone, but by a community of engineers who have the hardware on the bench and want it to work with ImBrain.
+Every industrial protocol and hardware vendor in the world eventually covered — not by Imbra alone, but by a community of engineers who have the hardware on the bench and want it to work with ImBrain.
 
 The model: engineer writes an agent for their Siemens S7-1500 / Yokogawa DCS / Mitsubishi MELSEC / custom serial device → submits to the registry → every other ImBrain user installs it with one command → Imbra reviews the best ones and promotes them to official status.
 
@@ -106,7 +106,7 @@ github.com/acompany/agent-siemens-s7
 |------|------------------|-----------|
 | **Community** | Submitted by anyone, passes automated checks | Reviewed for safety, not quality |
 | **Verified** | Imbra-reviewed, tested on real hardware | Works as documented |
-| **Official** | Maintained by Imbra.Soft, included in installer | Fully supported |
+| **Official** | Maintained by Imbra, included in installer | Fully supported |
 
 ### Installation
 

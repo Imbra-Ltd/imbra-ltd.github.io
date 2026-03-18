@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Imbra.Soft — Software & Industrial Engineering",
-    "description": "Imbra.Soft builds software products and delivers engineering services for industrial environments."
+    "title": "Imbra — Software & Industrial Engineering",
+    "description": "Imbra builds software products and delivers engineering services for industrial environments."
   },
   "nav": {
     "links": [
@@ -18,7 +18,7 @@
     "eyebrow": "Software & Industrial Engineering",
     "headline": "Complex inside.",
     "headlineStrong": "Simple outside.",
-    "sub": "Imbra.Soft builds software products and delivers engineering services for industrial environments — absorbing the technical complexity so operators, engineers, and clients get interfaces and tools that simply work.",
+    "sub": "Imbra builds software products and delivers engineering services for industrial environments — absorbing the technical complexity so operators, engineers, and clients get interfaces and tools that simply work.",
     "cta": { "label": "View Portfolio", "target": "portfolio" },
     "ghost": { "label": "Discuss a project →", "target": "contact" },
     "stats": [
@@ -54,7 +54,6 @@
   },
   "footer": {
     "legal": [
-      { "label": "Pricing", "href": "/pricing/" },
       { "label": "Privacy", "href": "/privacy" },
       { "label": "Imprint", "href": "/imprint" }
     ],
@@ -62,7 +61,7 @@
       {
         "name": "LinkedIn",
         "class": "linkedin",
-        "href": "https://linkedin.com/in/branimir-georgiev"
+        "href": "https://linkedin.com/company/imbra-ltd/"
       },
       {
         "name": "GitHub",
@@ -76,8 +75,9 @@
       "github": "github.com/Imbra-Ltd",
       "githubHref": "https://github.com/Imbra-Ltd"
     },
-    "about": "Imbra.Soft is a boutique software and industrial engineering consultancy based in Varna, Bulgaria. We specialise in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services — serving industrial businesses that need production-grade engineering without enterprise overhead.",
-    "copy": "© 2026 Imbra.Soft · All rights reserved",
+    "about": "Imbra is a boutique software and industrial engineering consultancy founded by Branimir Georgiev, based in Varna, Bulgaria. We specialise in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services — serving industrial businesses that need production-grade engineering without enterprise overhead. Branimir also teaches at codewithbranko.com — practical courses and guides for engineers working at the OT/IT boundary.",
+      "founderLink": { "label": "Meet the engineer behind Imbra →", "href": "https://braboj.me" },
+    "copy": "© 2026 Imbra · All rights reserved",
     "builtWith": "Built with Claude Code"
   }
 }

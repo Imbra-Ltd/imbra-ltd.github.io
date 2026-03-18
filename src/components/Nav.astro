@@ -8,8 +8,8 @@ interface Props { links: Link[]; cta: Cta; }
 const { links, cta } = Astro.props as Props;
 ---
 <nav>
-  <a class="nav-logo" href="/" aria-label="Imbra.Soft — home">
-    <img src="/logos/logo-1b-web.svg" alt="Imbra.Soft" class="nav-logo-img" />
+  <a class="nav-logo" href="/" aria-label="Imbra — home">
+    <img src="/logos/logo-1b-web.svg" alt="Imbra" class="nav-logo-img" />
   </a>
   <div class="nav-links">
     {links.map((l: { label: string; target: string; href?: string }) => (

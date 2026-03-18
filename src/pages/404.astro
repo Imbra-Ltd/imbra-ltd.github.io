@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+---
+
+<Base title={`404 — Page Not Found — ${site.meta.title}`} description="The page you are looking for does not exist.">
+  <main class="legal-page">
+    <a href="/" class="legal-back">← Back to imbra.io</a>
+    <div class="legal-label">404</div>
+    <h1 class="legal-heading">Page not found.</h1>
+
+    <div class="legal-grid">
+      <div class="legal-section">
+        <div class="legal-section-title">What happened</div>
+        <div class="legal-section-body">
+          <p>The page you are looking for does not exist or has been moved.</p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <div class="legal-section-title">Where to go</div>
+        <div class="legal-section-body">
+          <p><a href="/">imbra.io — Homepage</a></p>
+          <p><a href="/pricing/">Pricing</a></p>
+          <p><a href="/about">About</a></p>
+          <p><a href="mailto:contact@imbra.io">contact@imbra.io</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>

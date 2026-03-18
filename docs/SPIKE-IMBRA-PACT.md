@@ -144,7 +144,7 @@ Imbra Pact is a standalone commercial product. It is not open source.
 |------|--------|-------|
 | **Standard** | Single contract type, two sites | Per-site licence |
 | **Enterprise** | Multiple contract types, unlimited sites | Group licence |
-| **Managed** | Imbra.Soft operates the coordination layer | SaaS / managed service |
+| **Managed** | Imbra operates the coordination layer | SaaS / managed service |
 
 Revenue is separate from ImBrain. A customer can buy Imbra Pact only if they already run ImBrain — making it a natural upsell for enterprise ImBrain customers.
 

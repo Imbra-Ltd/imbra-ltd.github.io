@@ -1,7 +1,7 @@
 # Honeywell Control Blocks for Siemens — White Paper
 *One Control Philosophy Across the Plant*
 
-**Author:** Branimir Georgiev, Imbra.Soft
+**Author:** Branimir Georgiev, Imbra
 **Version:** 0.1 — Draft
 **Date:** March 2026
 
@@ -200,7 +200,7 @@ The library is delivered as a TIA Portal library file (.al15 or .al17) containin
 
 ### Licence
 
-One licence covers deployment in a single TIA Portal project. Multi-project and site-wide licences are available — contact Imbra.Soft for pricing.
+One licence covers deployment in a single TIA Portal project. Multi-project and site-wide licences are available — contact Imbra for pricing.
 
 ---
 

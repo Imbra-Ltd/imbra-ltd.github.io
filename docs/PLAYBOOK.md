@@ -1,4 +1,4 @@
-# Imbra.Soft Website — Playbook
+# Imbra Website — Playbook
 
 > **Windows note:** `gh` must be invoked via full path in bash:
 > `"/c/Program Files/GitHub CLI/gh.exe" <command>`

@@ -1,7 +1,7 @@
-# Imbra.Soft Website — Claude Code Instructions
+# Imbra Website — Claude Code Instructions
 
 ## Project
-Website for Imbra.Soft (imbra.io) — a boutique software and industrial engineering consultancy based in Varna, Bulgaria.
+Website for Imbra (imbra.io) — a boutique software and industrial engineering consultancy based in Varna, Bulgaria.
 
 - Owner: Branimir Georgiev
 - GitHub org: https://github.com/Imbra-Ltd
@@ -30,7 +30,7 @@ Website for Imbra.Soft (imbra.io) — a boutique software and industrial enginee
 ## Brand voice
 - Tagline: "Complex inside. Simple outside."
 - Tone: precise, direct, no marketing fluff, no adjective inflation
-- Use "Imbra.Soft" in body copy — not "Imbra Ltd", not "IMBRA.SOFT"
+- Use "Imbra" in body copy — not "Imbra Ltd", not "IMBRA.SOFT"
 - Logo renders as: `IMBRA<span>.</span>SOFT` in IBM Plex Mono
 
 ## Content
@@ -71,14 +71,17 @@ src/components/
 
 ## Pages
 
-| Page                       | Path                          | Notes                                      |
-|----------------------------|-------------------------------|--------------------------------------------|
-| Homepage                   | `/`                           | All main sections                          |
-| Pricing                    | `/pricing/`                   | Standalone page with contact form          |
-| Whitepaper — ImBrain       | `/whitepapers/imbrain/`       | Landing page for ImBrain white paper       |
-| Whitepaper — Imbra Connect | `/whitepapers/imbra-connect/` | Landing page for Imbra Connect white paper |
-| Privacy Policy             | `/privacy/`                   | Legal page                                 |
-| Imprint                    | `/imprint/`                   | Legal page                                 |
+| Page                            | Path                                | Notes                                      |
+|---------------------------------|-------------------------------------|--------------------------------------------|
+| Homepage                        | `/`                                 | All main sections                          |
+| Pricing                         | `/pricing/`                         | Standalone page with contact form          |
+| About                           | `/about`                            | Founder story — Branimir Georgiev          |
+| Whitepaper — ImBrain            | `/whitepapers/imbrain/`             | Landing page for ImBrain white paper       |
+| Whitepaper — Imbra Connect      | `/whitepapers/imbra-connect/`       | Landing page for Imbra Connect white paper |
+| Whitepaper — Honeywell/Siemens  | `/whitepapers/honeywell-siemens/`   | Landing page for Honeywell white paper     |
+| Privacy Policy                  | `/privacy/`                         | Legal page                                 |
+| Imprint                         | `/imprint/`                         | Legal page                                 |
+| 404                             | `/404`                              | Branded not-found page                     |
 
 Whitepaper PDFs are stored in `public/docs/` and served at `/docs/*.pdf`. PDFs are committed to git and deployed with the site. To regenerate a PDF after editing its source markdown:
 ```
@@ -88,7 +91,7 @@ pandoc docs/WHITEPAPER-<NAME>.md -o public/docs/<name>.pdf --pdf-engine="C:/Prog
 ## Homepage sections (in order)
 1. Nav — logo (links to `/`), section links, hamburger on mobile
 2. Hero — eyebrow, headline, sub-text, CTA buttons, stat strip (4 cards)
-3. Portfolio — 4 product cards in a grid, expandable with detail panel
+3. Portfolio — 3 product cards in a grid (count-driven, no hardcoded columns), expandable with detail panel
 4. Services — 10 service cards in 2-column grid, each expandable inline
 5. Expertise — 4 domain expertise cards
 6. Research & Credentials — 3 publication cards with DOI links
@@ -105,6 +108,41 @@ pandoc docs/WHITEPAPER-<NAME>.md -o public/docs/<name>.pdf --pdf-engine="C:/Prog
 | [Formspree](https://formspree.io) | Contact form → `contact@imbra.io` | `src/data/site.json` → `contact.formEndpoint` |
 | [Plausible](https://plausible.io) | Privacy-friendly analytics (no cookies) | Script tag in `src/layouts/Base.astro` |
 | [Google Search Console](https://search.google.com/search-console) | Search indexing and crawl monitoring | Verification meta tag in `src/layouts/Base.astro` |
+
+## Advice rule
+
+When giving an opinion or recommendation, always state the lens explicitly — e.g. "From a maintenance perspective…" or "From a marketing perspective…". If the answer differs by lens, state all relevant lenses and their conclusions before giving a final recommendation. Never give a flat answer to a multi-lens question without acknowledging the tension.
+
+## Quality attributes
+
+Non-negotiable standards for this project:
+
+**Content & architecture**
+- All editable content lives in `src/data/` as JSON — never hardcoded in components
+- Default to `.astro`; only use React (`.tsx`) when client-side state is required
+- No dead code — remove unused components, CSS rules, and data files promptly
+
+**CSS**
+- All CSS in `src/styles/global.css` — no inline styles except dynamic/computed values
+- No hardcoded colour or spacing values — always use CSS custom properties from `:root`
+- Consistent naming: component-element (e.g. `.product-card`, `.footer-logo`)
+
+**Accessibility**
+- Semantic HTML: correct landmark elements and heading hierarchy
+- `aria-label` on all interactive elements (buttons, icon links)
+- Keyboard navigation: menus must close on Escape and restore focus
+
+**Performance**
+- Preload critical above-the-fold assets
+- Keep client-side JS minimal — static (Astro SSG) by default
+
+**SEO & analytics**
+- `robots.txt`, Open Graph, and Twitter Card meta tags required
+- Privacy-friendly analytics only (no consent banner required)
+
+**Documentation**
+- `CLAUDE.md` and `README.md` must always reflect the actual codebase
+- No references to non-existent files, components, or services
 
 ## Documentation rule
 Before every commit, update all relevant documentation:

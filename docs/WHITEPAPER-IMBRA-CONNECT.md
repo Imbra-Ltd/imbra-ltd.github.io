@@ -1,7 +1,7 @@
 # Imbra Connect — White Paper
 *A Unified SDK for Industrial Protocol Connectivity*
 
-**Author:** Branimir Georgiev, Imbra.Soft
+**Author:** Branimir Georgiev, Imbra
 **Version:** 0.1 — Draft
 **Date:** March 2026
 
@@ -11,7 +11,7 @@
 
 Industrial devices speak dozens of incompatible protocols. Engineers building connectivity layers spend weeks assembling fragmented, undermaintained libraries — and still end up with gaps. DeviceNet has no open Python library. EtherNet/IP lost its only maintained project. HART and Profibus are effectively unserved. The result is that every industrial connectivity project starts from scratch, reinventing the same plumbing with different tools.
 
-Imbra Connect is a unified industrial protocol SDK that provides a single abstract interface across MQTT, Modbus, CAN, CANopen, DeviceNet, EtherNet/IP, OPC-UA, HART, and Profibus. One API, consistent across all protocols. Packet crafting and test tooling are first-class — engineers can validate implementations without physical hardware. Python and Go are fully open source (MIT). A community registry allows engineers to publish and discover protocol agents, growing coverage without Imbra.Soft writing every driver.
+Imbra Connect is a unified industrial protocol SDK that provides a single abstract interface across MQTT, Modbus, CAN, CANopen, DeviceNet, EtherNet/IP, OPC-UA, HART, and Profibus. One API, consistent across all protocols. Packet crafting and test tooling are first-class — engineers can validate implementations without physical hardware. Python and Go are fully open source (MIT). A community registry allows engineers to publish and discover protocol agents, growing coverage without Imbra writing every driver.
 
 ---
 
@@ -182,7 +182,7 @@ Go is the production language. Once a Python prototype is validated, it is porte
 
 Go has a strong backwards compatibility guarantee. It cross-compiles trivially — one command produces a Linux ARM binary for an industrial Raspberry Pi or a Windows x64 binary for a plant PC. Goroutines are a natural fit for multi-protocol agents that poll devices, buffer writes, and flush to a historian concurrently.
 
-Imbra.Soft maintains Go. The Python codebase is community-maintained after the Go port ships.
+Imbra maintains Go. The Python codebase is community-maintained after the Go port ships.
 
 ### Rust and TypeScript — paid ports
 
@@ -194,9 +194,9 @@ Customers who need Rust (embedded, safety-critical, bare-metal) or TypeScript (b
 
 ### The model
 
-Every industrial protocol and hardware vendor in the world eventually covered — not by Imbra.Soft alone, but by a community of engineers who have the hardware on the bench and want it to work.
+Every industrial protocol and hardware vendor in the world eventually covered — not by Imbra alone, but by a community of engineers who have the hardware on the bench and want it to work.
 
-The model: an engineer writes an agent for their Yokogawa DCS, Mitsubishi MELSEC, or custom serial device. They submit it to the Imbra registry. Every other ImBrain user installs it with one command. Imbra.Soft reviews the best ones and promotes them to official status.
+The model: an engineer writes an agent for their Yokogawa DCS, Mitsubishi MELSEC, or custom serial device. They submit it to the Imbra registry. Every other ImBrain user installs it with one command. Imbra reviews the best ones and promotes them to official status.
 
 This is how Home Assistant grew from 50 device integrations to 3,000+. The same dynamic applies here: the more protocols Imbra Connect covers, the more valuable it becomes for every user, which attracts more contributors, which increases coverage further.
 
@@ -218,7 +218,7 @@ The registry is a catalogue. Code lives in agent repositories. Installation reso
 |------|------------------|-----------|
 | Community | Submitted by anyone, passes automated checks | Reviewed for safety, not quality |
 | Verified | Imbra-reviewed, tested on real hardware | Works as documented |
-| Official | Maintained by Imbra.Soft, included in installer | Fully supported |
+| Official | Maintained by Imbra, included in installer | Fully supported |
 
 ### Submission rules
 
@@ -281,7 +281,7 @@ Commissioning engineers use Imbra Connect's packet crafting capabilities to vali
 
 The industrial protocol ecosystem has a structural problem. Coverage is fragmented. Maintenance is inconsistent. The protocols with the largest installed base — DeviceNet, EtherNet/IP, HART, Profibus — are the worst served. Engineers pay this cost on every project, in every company, independently.
 
-Imbra Connect addresses the problem at the right layer. A unified abstract interface means application code does not depend on protocol specifics. Packet crafting as a first-class concern removes hardware from the testing dependency chain. Open source under MIT removes licence friction. A community registry means coverage grows with the community, not just with Imbra.Soft's engineering capacity.
+Imbra Connect addresses the problem at the right layer. A unified abstract interface means application code does not depend on protocol specifics. Packet crafting as a first-class concern removes hardware from the testing dependency chain. Open source under MIT removes licence friction. A community registry means coverage grows with the community, not just with Imbra's engineering capacity.
 
 The industrial world will not converge on a single protocol. The installed base of legacy devices will persist for decades. The right response is not to wait for convergence — it is to build an abstraction layer that makes the heterogeneity manageable.
 
@@ -301,5 +301,5 @@ That is what Imbra Connect does.
 
 ---
 
-*© 2026 Imbra.Soft. All rights reserved.*
+*© 2026 Imbra. All rights reserved.*
 *Imbra Connect, ImBrain, and Imbra Pact are trademarks of Imbra Ltd.*

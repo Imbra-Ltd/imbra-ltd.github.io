@@ -1,7 +1,7 @@
 # ImBrain™ — White Paper
 *An Open-Architecture Industrial Historian for the Modern Plant*
 
-**Author:** Branimir Georgiev, Imbra.Soft
+**Author:** Branimir Georgiev, Imbra
 **Version:** 0.1 — Draft
 **Date:** March 2026
 
@@ -90,13 +90,13 @@ ImBrain is built on an open hourglass architecture. The metaphor captures the de
 
 Go-based agents collect data from any source — PLCs, sensors, lab systems, WinCC alarms, legacy OPC DA servers — using the Imbra Connect SDK. Each agent is a single self-contained binary. A Modbus agent reads registers from a PLC at a configurable interval and forwards DataRecord messages to the Core over gRPC. An OPC-UA agent subscribes to a server and forwards value change events. A LabFileAgent watches a directory for CSV or XML exports from LIMS systems and parses them into structured lab records.
 
-Agents are open source. Official agents are maintained by Imbra.Soft. Community agents are published to the Imbra agent registry under MIT licence. The registry grows with the community — every engineer who writes an agent for their specific device adds to the coverage available to every other ImBrain user.
+Agents are open source. Official agents are maintained by Imbra. Community agents are published to the Imbra agent registry under MIT licence. The registry grows with the community — every engineer who writes an agent for their specific device adds to the coverage available to every other ImBrain user.
 
 ### The core
 
 The Core is deliberately thin. It receives DataRecord messages from agents over gRPC, stores them in TimescaleDB, and exposes a query interface. It handles RBAC, the mesh protocol, virtual tag computation, and the plugin API. It does not implement analytics, cloud forwarding, or natural language — those are plugin concerns.
 
-This separation is intentional. The Core is AGPL — open, auditable, forkable. Plugins are commercial. The boundary between them is the plugin API — a stable, versioned contract that allows Imbra.Soft and third parties to build analytics on top of the Core without modifying it.
+This separation is intentional. The Core is AGPL — open, auditable, forkable. Plugins are commercial. The boundary between them is the plugin API — a stable, versioned contract that allows Imbra and third parties to build analytics on top of the Core without modifying it.
 
 ### Above the core: plugins
 
@@ -260,7 +260,7 @@ Enterprise deployments spanning multiple sites require automated update manageme
 imbrain-ctl upgrade --version 2.3.0 --backup-before
 ```
 
-The upgrade sequence — pre-flight checks, schema snapshot, graceful shutdown, package swap, migration, health check, automatic rollback on failure — is owned by ImBrain. The automation platform triggers the command and checks the exit code. Imbra.Soft publishes an official Ansible collection (`imbra.imbrain`) on Ansible Galaxy. Enterprise customers install it and supply their inventory and version pin.
+The upgrade sequence — pre-flight checks, schema snapshot, graceful shutdown, package swap, migration, health check, automatic rollback on failure — is owned by ImBrain. The automation platform triggers the command and checks the exit code. Imbra publishes an official Ansible collection (`imbra.imbrain`) on Ansible Galaxy. Enterprise customers install it and supply their inventory and version pin.
 
 Update freezes for maintenance windows or critical production periods:
 
@@ -349,6 +349,6 @@ Industrial data infrastructure should not cost six figures. It should not requir
 
 ---
 
-*© 2026 Imbra.Soft. All rights reserved.*
+*© 2026 Imbra. All rights reserved.*
 *ImBrain and Imbra Pact are trademarks of Imbra Ltd.*
 *Imbra Connect is open source software licensed under the MIT Licence.*

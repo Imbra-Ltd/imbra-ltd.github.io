@@ -76,7 +76,7 @@
           "id": "l3-new",
           "index": "1.2",
           "title": "Support of New Products",
-          "desc": "Applies only to systems delivered by Imbra.Soft and covered by full arc42 architecture documentation. Same service conditions as legacy support — lower rates reflect the structured codebase, modern tooling, and complete documentation available from day one.",
+          "desc": "Applies only to systems delivered by Imbra and covered by full arc42 architecture documentation. Same service conditions as legacy support — lower rates reflect the structured codebase, modern tooling, and complete documentation available from day one.",
           "tiers": [
             {
               "name": "Basic",
