@@ -31,7 +31,8 @@ Website for Imbra (imbra.io) — a boutique software and industrial engineering 
 - Tagline: "Complex inside. Simple outside."
 - Tone: precise, direct, no marketing fluff, no adjective inflation
 - Use "Imbra" in body copy — not "Imbra Ltd", not "IMBRA.SOFT"
-- Logo renders as: `IMBRA<span>.</span>SOFT` in IBM Plex Mono
+- Footer text logo renders as: `IMBRA` in IBM Plex Mono
+- Nav logo is an SVG image (`/logos/logo-1b-web.svg`)
 
 ## Content
 All editable content lives in `src/data/` as JSON. Never hardcode content that a non-developer might want to change. Non-developers edit only `src/data/` — no JS/TS knowledge required.
@@ -75,7 +76,6 @@ src/components/
 |---------------------------------|-------------------------------------|--------------------------------------------|
 | Homepage                        | `/`                                 | All main sections                          |
 | Pricing                         | `/pricing/`                         | Standalone page with contact form          |
-| About                           | `/about`                            | Founder story — Branimir Georgiev          |
 | Whitepaper — ImBrain            | `/whitepapers/imbrain/`             | Landing page for ImBrain white paper       |
 | Whitepaper — Imbra Connect      | `/whitepapers/imbra-connect/`       | Landing page for Imbra Connect white paper |
 | Whitepaper — Honeywell/Siemens  | `/whitepapers/honeywell-siemens/`   | Landing page for Honeywell white paper     |

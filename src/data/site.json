@@ -76,7 +76,7 @@
       "githubHref": "https://github.com/Imbra-Ltd"
     },
     "about": "Imbra is a boutique software and industrial engineering consultancy founded by Branimir Georgiev, based in Varna, Bulgaria. We specialise in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services — serving industrial businesses that need production-grade engineering without enterprise overhead. Branimir also teaches at codewithbranko.com — practical courses and guides for engineers working at the OT/IT boundary.",
-      "founderLink": { "label": "Meet the engineer behind Imbra →", "href": "https://braboj.me" },
+      "founderLink": { "label": "Built by Branimir Georgiev →", "href": "https://braboj.me" },
     "copy": "© 2026 Imbra · All rights reserved",
     "builtWith": "Built with Claude Code"
   }
