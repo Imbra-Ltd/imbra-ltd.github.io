@@ -36,7 +36,7 @@ const { footer } = Astro.props;
     </div>
     <div>
       <div class="footer-desc-label">About</div>
-      <p class="footer-desc-text" set:html={footer.about.replace('codewithbranko.com', '<a href="https://www.codewithbranko.com" target="_blank" rel="noopener noreferrer">codewithbranko.com</a>')} />
+      <p class="footer-desc-text">{footer.aboutBefore}<a href={footer.teachingLink.href} target="_blank" rel="noopener noreferrer">{footer.teachingLink.label}</a>{footer.aboutAfter}</p>
       <a href={footer.founderLink.href} class="footer-founder-link" target="_blank" rel="noopener noreferrer">{footer.founderLink.label}</a>
     </div>
   </div>

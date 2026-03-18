@@ -62,6 +62,7 @@ src/components/
 ├── Hero.astro
 ├── Portfolio.astro       # Static section header — mounts ProductExpand island
 ├── Services.astro        # Static section header — mounts ServiceExpand island
+├── Process.astro         # How We Work — 4 steps, data from process.json
 ├── Expertise.astro
 ├── Publications.astro
 ├── Contact.astro         # Dark CTA section — email link + ContactForm island
@@ -93,10 +94,11 @@ pandoc docs/WHITEPAPER-<NAME>.md -o public/docs/<name>.pdf --pdf-engine="C:/Prog
 2. Hero — eyebrow, headline, sub-text, CTA buttons, stat strip (4 cards)
 3. Portfolio — 3 product cards in a grid (count-driven, no hardcoded columns), expandable with detail panel
 4. Services — 10 service cards in 2-column grid, each expandable inline
-5. Expertise — 4 domain expertise cards
-6. Research & Credentials — 3 publication cards with DOI links
-7. Contact CTA — dark (`#111318`) section with headline, email link, and contact form
-8. Footer — top bar (legal links + social icons), body (address + about), bottom bar (copyright)
+5. Process — How We Work, 4 steps (Spike → SOW → Deliver → Support)
+6. Expertise — 4 domain expertise cards
+7. Research & Credentials — 3 publication cards, title is the DOI link
+8. Contact CTA — dark (`#111318`) section with headline, email link, and contact form
+9. Footer — top bar (legal links + social icons), body (address + about), bottom bar (copyright)
 
 ## Reveal animations
 `.reveal` → `.reveal.visible` transition handled by a single `IntersectionObserver` script in `src/layouts/Base.astro`. Do not add per-component reveal scripts.

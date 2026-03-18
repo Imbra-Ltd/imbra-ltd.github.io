@@ -34,7 +34,8 @@ export default function ServiceExpand({ services }: Props) {
             <button
               className="service-toggle"
               onClick={(e) => toggle(e, s.num)}
-              aria-label="Toggle details"
+              aria-expanded={activeNum === s.num}
+              aria-label={`${activeNum === s.num ? "Collapse" : "Expand"} details for ${s.title}`}
             >
               {activeNum === s.num ? "−" : "+"}
             </button>
