@@ -59,6 +59,18 @@ export default function ContactForm({ endpoint }: Props) {
         </div>
       </div>
       <div className="contact-form-field">
+        <label htmlFor="cf-topic">What are you working on?</label>
+        <select id="cf-topic" name="topic" required>
+          <option value="" disabled selected>Select a topic…</option>
+          <option value="OT/IT Integration">OT/IT Integration</option>
+          <option value="PLC / DCS Engineering">PLC / DCS Engineering</option>
+          <option value="Data Pipeline / Historian">Data Pipeline / Historian</option>
+          <option value="Protocol SDK / Imbra Connect">Protocol SDK / Imbra Connect</option>
+          <option value="Support & Maintenance">Support &amp; Maintenance</option>
+          <option value="Something else">Something else</option>
+        </select>
+      </div>
+      <div className="contact-form-field">
         <label htmlFor="cf-message">Message</label>
         <textarea id="cf-message" name="message" rows={4} required />
       </div>
