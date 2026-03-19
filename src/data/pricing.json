@@ -80,7 +80,7 @@
           "tiers": [
             {
               "name": "Basic",
-              "price": "€750",
+              "price": "€600",
               "period": "per instance / year",
               "hours": "6 h included / instance / year",
               "response": "48 h critical response",
@@ -90,7 +90,7 @@
             },
             {
               "name": "Standard",
-              "price": "€1,200",
+              "price": "€900",
               "period": "per instance / year",
               "hours": "10 h included / instance / year",
               "response": "8 h critical response",
@@ -101,7 +101,7 @@
             },
             {
               "name": "Premium",
-              "price": "€2,000",
+              "price": "€1,500",
               "period": "per instance / year",
               "hours": "16 h included / instance / year",
               "response": "4 h critical response",
