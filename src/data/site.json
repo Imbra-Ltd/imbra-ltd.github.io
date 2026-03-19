@@ -18,7 +18,7 @@
     "eyebrow": "Software & Industrial Engineering",
     "headline": "Complex inside.",
     "headlineStrong": "Simple outside.",
-    "sub": "Imbra builds software products and delivers engineering services for industrial environments — from Modbus RTU to REST API, from PLC to cloud historian. Absorbing the technical complexity so operators, engineers, and clients get interfaces and tools that simply work.",
+    "sub": "Imbra builds software products and delivers engineering services for industrial environments — from Fieldbus to REST API, from PLC to cloud historian. Absorbing the technical complexity so operators, engineers, and clients get interfaces and tools that simply work.",
     "cta": { "label": "View Portfolio", "target": "portfolio" },
     "ghost": { "label": "Discuss a project →", "target": "contact" },
     "stats": [
