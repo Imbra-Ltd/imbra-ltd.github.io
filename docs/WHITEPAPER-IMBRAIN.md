@@ -113,6 +113,7 @@ Paid plugins deliver the capabilities that generate value beyond raw storage:
 | LLMPlugin | Natural language interface — local or cloud LLM | 7 / 10 |
 | ForecastPlugin | Time-series forecasting on production and quality metrics | 6 / 10 |
 | SPCPlugin | Statistical process control — control charts, Cpk, out-of-control detection | 6 / 10 |
+| CellularFleetPlugin | Field device fleet management — LTE-M, NB-IoT, LoRaWAN, Zigbee — connectivity, telemetry ingestion, over-the-air updates | 6 / 10 |
 
 ---
 
@@ -189,6 +190,39 @@ The LLMPlugin connects ImBrain to a local (Ollama) or cloud (Claude, GPT-4) LLM 
 The LLM translates intent into TimescaleDB queries using tag name resolution via vector search. Operators do not need to know tag names, query syntax, or database schema. The historian becomes accessible to everyone in the plant, not just the engineers who configured it.
 
 Vector search (pgvector) resolves natural language descriptions to tag names — "tank pressure" maps to `TK-101_PIC_PV` — enabling the interface to work across any tag naming convention without manual configuration.
+
+### CellularFleetPlugin — BV 6
+
+Many industrial assets operate outside the plant fence — remote pumping stations, pipeline segments, weather stations, mobile equipment, distributed energy assets, and agricultural field sensors. These assets cannot be reached by Modbus or OPC-UA over a plant LAN. They report over a range of low-power wide-area and short-range wireless protocols: LTE-M or NB-IoT for wide-area cellular coverage, LoRaWAN for long-range low-power mesh networks, and Zigbee for dense short-range sensor clusters.
+
+CellularFleetPlugin adds a wireless-aware ingestion path to ImBrain. It bridges each protocol's native network server or gateway to the standard MQTT/TLS pipeline, authenticates devices by certificate or pre-shared key, and maps incoming telemetry to the standard ImBrain DataRecord model. All data — regardless of transport — lands in the same TimescaleDB schema and is queryable alongside plant-floor OPC-UA and Modbus data.
+
+**What it manages:**
+
+- **Connectivity state** — last seen, signal strength (RSSI/RSRQ), network operator, roaming status stored as virtual tags per device. Devices that go silent beyond a configurable threshold raise an alarm.
+- **Telemetry ingestion** — numeric tags, alarm events, and text tags arriving over MQTT/TLS from LTE-M or NB-IoT devices. Payload format is Sparkplug B or a compact JSON schema for resource-constrained devices.
+- **Over-the-air (OTA) updates** — firmware packages are staged in ImBrain and pushed to devices on a schedule or on demand. The plugin tracks firmware version per device, reports update success or failure, and supports staged rollout (update 10% of fleet, observe for 24 hours, proceed or roll back).
+- **Power budget tracking** — battery voltage and estimated remaining charge stored as tags. Devices approaching end-of-charge generate an alarm before they go dark.
+- **SIM inventory** — ICCID, IMEI, operator, data usage (where the SIM management API is available) stored per device. Useful for cost management on metered SIMs.
+
+**Supported protocols:**
+
+| Transport | Range | Data rate | Typical use case |
+|-----------|-------|-----------|-----------------|
+| LTE-M (Cat-M1) | Wide area (cellular) | ~1 Mbit/s | Mobile assets, moderate data rates, good indoor penetration |
+| NB-IoT | Wide area (cellular) | ~60 kbit/s | Fixed low-power assets, deep indoor / underground, metered SIMs |
+| LTE Cat-1 | Wide area (cellular) | ~10 Mbit/s | Edge gateways requiring higher bandwidth |
+| LoRaWAN | 2–15 km line of sight | ~50 kbit/s | Agricultural field sensors, rural infrastructure, battery-operated nodes |
+| Zigbee | ~100 m (mesh) | ~250 kbit/s | Dense indoor sensor clusters, greenhouse automation, short-range mesh |
+| Private APN | N/A | — | Enterprise deployments where public internet exposure is not permitted |
+
+For cellular transports, the plugin connects directly to the device over MQTT/TLS. For LoRaWAN, it integrates with a LoRaWAN Network Server (The Things Stack, ChirpStack, or AWS IoT Core for LoRaWAN) via its application webhook or MQTT bridge — ImBrain does not replace the LNS but consumes its decoded uplinks. For Zigbee, it connects to a Zigbee coordinator gateway (e.g. a ConBee or coordinator running Zigbee2MQTT) and maps device attributes to ImBrain tags.
+
+The plugin does not require a specific hardware vendor. Imbra maintains tested configuration profiles for common industrial modem and gateway families (Sierra Wireless, Telit, u-blox, Quectel for cellular; Dragino, Kerlink, RAK Wireless for LoRaWAN gateways).
+
+**Deployment example — water utility:** 120 remote pumping stations report flow, pressure, and motor current over LTE-M at 1-minute intervals. CellularFleetPlugin ingests all 120 devices into ImBrain. OEEPlugin calculates availability per station. AnomalyDetectionPlugin flags pressure anomalies that precede pipe failures. The operations centre sees all 120 stations in the same historian view as its SCADA-connected plant assets.
+
+**Deployment example — precision agriculture:** A grain cooperative deploys 400 soil sensors across 2,000 hectares. Each sensor reports soil moisture, temperature, and electrical conductivity over LoRaWAN at 15-minute intervals. CellularFleetPlugin ingests all sensors via ChirpStack. ForecastPlugin projects soil moisture depletion per field zone. EnergyPlugin tracks irrigation pump runtime and energy cost per hectare. The cooperative's agronomist queries ImBrain in plain language via LLMPlugin: *"Which zones will need irrigation in the next 48 hours if no rain falls?"* The historian answers from sensor trends and forecast models — no manual spreadsheet, no separate precision agriculture platform.
 
 ---
 
@@ -281,7 +315,7 @@ This protects the open source investment. A cloud vendor cannot take ImBrain Cor
 
 ### Commercial plugins
 
-Analytics plugins — OEEPlugin, GoldenBatchPlugin, AnomalyDetectionPlugin, EnergyPlugin, SPCPlugin, StreamGatewayPlugin, ColdArchivePlugin, LLMPlugin, ForecastPlugin — are licensed commercially. Pricing is per site, per year. The plugin API is stable and versioned — plugins work across Core versions within a major release.
+Analytics plugins — OEEPlugin, GoldenBatchPlugin, AnomalyDetectionPlugin, EnergyPlugin, SPCPlugin, StreamGatewayPlugin, ColdArchivePlugin, LLMPlugin, ForecastPlugin, CellularFleetPlugin — are licensed commercially. Pricing is per site, per year. The plugin API is stable and versioned — plugins work across Core versions within a major release.
 
 ### The open core model
 
