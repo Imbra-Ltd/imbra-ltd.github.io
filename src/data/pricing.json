@@ -25,9 +25,8 @@
           "tiers": [
             {
               "name": "Basic",
-              "price": "€1,200",
+              "price": "€1,500",
               "period": "per instance / year",
-              "hours": "6 h included / instance / year",
               "response": "48 h critical response",
               "channel": "Email",
               "reporting": false,
@@ -35,10 +34,9 @@
             },
             {
               "name": "Standard",
-              "price": "€1,800",
+              "price": "€2,200",
               "period": "per instance / year",
-              "hours": "10 h included / instance / year",
-              "response": "8 h critical response",
+              "response": "24 h critical response",
               "channel": "Email + video call",
               "reporting": true,
               "review": false,
@@ -46,30 +44,29 @@
             },
             {
               "name": "Premium",
-              "price": "€3,000",
+              "price": "€3,500",
               "period": "per instance / year",
-              "hours": "16 h included / instance / year",
-              "response": "4 h critical response",
+              "response": "8 h critical response",
               "channel": "Email + video + on-call",
               "reporting": true,
               "review": true
             }
           ],
           "sla": [
-            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "48 h", "standard": "8 h", "premium": "4 h" },
+            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "48 h", "standard": "24 h", "premium": "8 h" },
             { "severity": "High", "definition": "Significant data gap or integration failure", "basic": "3 days", "standard": "1 day", "premium": "8 h" },
             { "severity": "Medium", "definition": "Degraded performance, partial data issues", "basic": "5 days", "standard": "2 days", "premium": "1 day" },
             { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "10 days", "standard": "5 days", "premium": "2 days" }
           ],
           "notes": [
-            "Included hours are pooled across all instances within a tier — a quiet instance offsets a busy one.",
-            "Excess hours beyond the annual pool are billed at €200/hour with prior written approval.",
+            "All work is billed at €200/hour with prior written approval.",
             "Instances may be on different tiers within the same agreement.",
-            "Total pooled hours across all instances and tiers cannot exceed 2,500 hours per year (10 hours/day × 250 working days) — the maximum annual capacity of one engineer.",
+            "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
+            "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
             "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays.",
+            "SLA response timers apply during business hours only.",
             "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer Industrial, or Secomea.",
-            "SLA response timers start only when remote access to the site is available.",
-            "Unused hours expire at the end of the annual period and do not roll over."
+            "SLA response timers start only when remote access to the site is available."
           ]
         },
         {
@@ -80,9 +77,8 @@
           "tiers": [
             {
               "name": "Basic",
-              "price": "€600",
+              "price": "€800",
               "period": "per instance / year",
-              "hours": "6 h included / instance / year",
               "response": "48 h critical response",
               "channel": "Email",
               "reporting": false,
@@ -90,10 +86,9 @@
             },
             {
               "name": "Standard",
-              "price": "€900",
+              "price": "€1,200",
               "period": "per instance / year",
-              "hours": "10 h included / instance / year",
-              "response": "8 h critical response",
+              "response": "24 h critical response",
               "channel": "Email + video call",
               "reporting": true,
               "review": false,
@@ -101,30 +96,29 @@
             },
             {
               "name": "Premium",
-              "price": "€1,500",
+              "price": "€2,000",
               "period": "per instance / year",
-              "hours": "16 h included / instance / year",
-              "response": "4 h critical response",
+              "response": "8 h critical response",
               "channel": "Email + video + on-call",
               "reporting": true,
               "review": true
             }
           ],
           "sla": [
-            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "48 h", "standard": "8 h", "premium": "4 h" },
+            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "48 h", "standard": "24 h", "premium": "8 h" },
             { "severity": "High", "definition": "Significant data gap or integration failure", "basic": "3 days", "standard": "1 day", "premium": "8 h" },
             { "severity": "Medium", "definition": "Degraded performance, partial data issues", "basic": "5 days", "standard": "2 days", "premium": "1 day" },
             { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "10 days", "standard": "5 days", "premium": "2 days" }
           ],
           "notes": [
-            "Included hours are pooled across all instances within a tier — a quiet instance offsets a busy one.",
-            "Excess hours beyond the annual pool are billed at €200/hour with prior written approval.",
+            "All work is billed at €100/hour with prior written approval.",
             "Instances may be on different tiers within the same agreement.",
-            "Total pooled hours across all instances and tiers cannot exceed 2,500 hours per year.",
+            "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
+            "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
             "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays.",
+            "SLA response timers apply during business hours only.",
             "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer Industrial, or Secomea.",
-            "SLA response timers start only when remote access to the site is available.",
-            "Unused hours expire at the end of the annual period and do not roll over."
+            "SLA response timers start only when remote access to the site is available."
           ]
         }
       ]
@@ -157,7 +151,7 @@
           "index": "2.2",
           "title": "Exploration & Spikes",
           "desc": "A Spike is a time-boxed investigation used to reduce technical uncertainty before committing to a full project. The outcome is a written finding — not production code. Common uses: feasibility assessment, architecture options analysis, protocol compatibility study, or vendor evaluation.",
-          "excludes": "⚠\uFE0F A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
+          "excludes": "⚠️ A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
           "rate": "€150 / hour",
           "minimum": "1-day minimum (8 hours)",
           "expenses": "All expenses incurred during the engagement (travel, third-party licences, specialised tooling) are borne by the client.",
@@ -173,7 +167,7 @@
       "index": "3",
       "title": "Project Engagement",
       "model": "Fixed price",
-      "desc": "Refactoring, new features, migrations, and integrations. Each project is governed by a Statement of Work agreed in writing before commencement, defining scope, deliverables, timeline, and acceptance criteria.",
+      "desc": "Refactoring, new features, migrations, and integrations. Each project is governed by a Statement of Work agreed in writing before commencement, defining scope, deliverables, timeline, and acceptance criteria. Projects involving third-party systems, undocumented interfaces, or undefined scope require an Exploration & Spike before a fixed price can be quoted.",
       "models": [
         {
           "name": "Fixed Price",
