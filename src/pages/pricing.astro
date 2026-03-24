@@ -130,7 +130,7 @@ const pricingLinks = [
             )}
 
             {sub.examples && (
-              <details class="pricing-notes-details">
+              <details class="pricing-notes-details" open>
                 <summary class="pricing-notes-summary mono">Use Cases</summary>
                 <ul class="pricing-notes">
                   {sub.examples.map((e) => <li>{e}</li>)}
@@ -163,7 +163,7 @@ const pricingLinks = [
         )}
 
         {cat.examples && (
-          <details class="pricing-notes-details">
+          <details class="pricing-notes-details" open>
             <summary class="pricing-notes-summary mono">Use Cases</summary>
             <ul class="pricing-notes">
               {cat.examples.map((e) => <li>{e}</li>)}
