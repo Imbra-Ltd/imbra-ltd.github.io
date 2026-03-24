@@ -49,22 +49,26 @@ refactor: code change that neither fixes a bug nor adds a feature
 ### Release workflow
 
 ```bash
-git checkout main
-git pull
+# 1. Create a chore branch
+git checkout main && git pull
+git checkout -b chore/vX.Y.Z.W
 
-# 1. Empty release marker commit
-git commit --allow-empty -m "chore: release v0.0.1.0"
+# 2. Update CLAUDE.md, README.md, PLAYBOOK.md if needed, then commit
+git add docs/PLAYBOOK.md CLAUDE.md README.md
+git commit -m "chore: release vX.Y.Z.W"
 
-# 2. Tag and push
-git tag v0.0.1.0
-git push
-git push origin v0.0.1.0
+# 3. Push and open PR, merge via GitHub
+git push -u origin chore/vX.Y.Z.W
+gh pr create --title "chore: release vX.Y.Z.W" --body "Release notes here"
 
-# 3. Create GitHub release
-gh release create v0.0.1.0 \
-  --repo Imbra-Ltd/imbra-ltd.github.io \
-  --title "v0.0.1.0" \
-  --notes "Release notes here"
+# 4. After PR is merged, pull main and tag
+git checkout main && git pull
+git tag -a vX.Y.Z.W -m "vX.Y.Z.W — short description"
+git push origin vX.Y.Z.W
+
+# 5. Clean up branch
+git branch -d chore/vX.Y.Z.W
+git remote prune origin
 ```
 
 ### Useful git commands
