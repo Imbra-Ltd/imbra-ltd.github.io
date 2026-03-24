@@ -62,11 +62,16 @@ export default function ContactForm({ endpoint }: Props) {
         <label htmlFor="cf-topic">What are you working on?</label>
         <select id="cf-topic" name="topic" required>
           <option value="" disabled>Select a topic…</option>
-          <option value="OT/IT Integration">OT/IT Integration</option>
-          <option value="PLC / DCS Engineering">PLC / DCS Engineering</option>
-          <option value="Data Pipeline / Historian">Data Pipeline / Historian</option>
-          <option value="Protocol SDK / Imbra Connect">Protocol SDK / Imbra Connect</option>
-          <option value="Support & Maintenance">Support &amp; Maintenance</option>
+          <option value="Data Integration & ETL">Data Integration &amp; ETL</option>
+          <option value="Software Services & SDKs">Software Services &amp; SDKs</option>
+          <option value="Application Refactoring">Application Refactoring</option>
+          <option value="AI/ML-Augmented Engineering">AI/ML-Augmented Engineering</option>
+          <option value="Testing & Quality Assurance">Testing &amp; Quality Assurance</option>
+          <option value="Maintenance & Support">Maintenance &amp; Support</option>
+          <option value="PLC & DCS Engineering">PLC &amp; DCS Engineering</option>
+          <option value="DevOps & CI/CD">DevOps &amp; CI/CD</option>
+          <option value="Industrial Security">Industrial Security</option>
+          <option value="Training & Tutorials">Training &amp; Tutorials</option>
           <option value="Something else">Something else</option>
         </select>
       </div>

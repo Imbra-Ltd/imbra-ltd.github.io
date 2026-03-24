@@ -1,5 +1,6 @@
 ---
 import HamburgerMenu from "./interactive/HamburgerMenu.tsx";
+import { Image } from 'astro:assets';
 
 interface Link { label: string; target: string; href?: string; }
 interface Cta  { label: string; target: string; }
@@ -9,7 +10,7 @@ const { links, cta } = Astro.props as Props;
 ---
 <nav>
   <a class="nav-logo" href="/" aria-label="Imbra — home">
-    <img src="/logos/logo-1b-web.svg" alt="Imbra" class="nav-logo-img" />
+    <Image src="/logos/logo-1b-web.svg" alt="Imbra" class="nav-logo-img" width={120} height={32} />
   </a>
   <div class="nav-links">
     {links.map((l: { label: string; target: string; href?: string }) => (

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 const { hero } = Astro.props;
 ---
 <div class="hero">
@@ -16,7 +17,7 @@ const { hero } = Astro.props;
     </div>
     <div class="hero-image">
       <!-- Hero image: iStock standard licence, purchased 2026-03 -->
-      <img src="/ot-it-stack.svg" alt="OT/IT integration diagram" />
+      <Image src="/ot-it-stack.svg" alt="OT/IT integration diagram" width={800} height={600} />
     </div>
   </div>
   <div class="hero-right">
