@@ -63,7 +63,7 @@ export default function ServiceExpand({ services }: Props) {
                   </div>
                   {s.useCases.exploring && (
                     <div className="service-detail-row">
-                      <div className="service-detail-label">Exploring</div>
+                      <div className="service-detail-label">In Development</div>
                       <ul className="service-detail-projects">
                         {s.useCases.exploring.map(u => <li key={u}>{u}</li>)}
                       </ul>

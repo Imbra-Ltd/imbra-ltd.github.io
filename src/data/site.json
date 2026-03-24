@@ -17,7 +17,7 @@
     "eyebrow": "Software & Industrial Engineering",
     "headline": "Complex inside.",
     "headlineStrong": "Simple outside.",
-    "sub": "Imbra builds software products and delivers engineering services for industrial environments — from Fieldbus to REST API, from PLC to cloud historian. Absorbing the technical complexity so operators, engineers, and clients get interfaces and tools that simply work.",
+    "sub": "Imbra helps industrial companies connect, monitor, and modernise their automation systems — building the software layer between plant floor and IT that most vendors won't touch. One engineer, full accountability, transparent pricing.",
     "cta": { "label": "View Portfolio", "target": "portfolio" },
     "ghost": { "label": "Discuss a project →", "target": "contact" },
     "stats": [
@@ -76,7 +76,7 @@
     },
     "aboutBefore": "Imbra is a one-engineer consultancy. Branimir Georgiev — founder, designer, and builder — handles every engagement personally. No handoffs, no account managers, no one to call when the person who built it has moved on. Based in Varna, Bulgaria (EU, CET+1). Available on-site across Europe. Remote-first for all other engagements. Specialising in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services. Branimir also teaches at ",
     "teachingLink": { "label": "codewithbranko.com", "href": "https://www.codewithbranko.com" },
-    "aboutAfter": " — practical courses and guides for engineers working at the OT/IT boundary.",
+    "aboutAfter": " — practical courses and guides for engineers working at the OT/IT boundary. For continuity, all engagements are fully documented — architecture, playbooks, and source code are client-owned and transferable.",
       "founderLink": { "label": "Built by Branimir Georgiev →", "href": "https://braboj.me" },
     "copy": "© 2026 Imbra · All rights reserved",
     "builtWith": "Built with Claude Code"
