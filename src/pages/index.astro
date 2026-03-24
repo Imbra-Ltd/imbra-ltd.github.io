@@ -2,7 +2,6 @@
 import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
-import Portfolio from "../components/Portfolio.astro";
 import Services from "../components/Services.astro";
 import Process from "../components/Process.astro";
 import Expertise from "../components/Expertise.astro";
@@ -11,7 +10,6 @@ import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 
 import site from "../data/site.json";
-import products from "../data/products.json";
 import services from "../data/services.json";
 import expertise from "../data/expertise.json";
 import publications from "../data/publications.json";
@@ -21,7 +19,6 @@ import process from "../data/process.json";
   <link rel="preload" href="/ot-it-stack.svg" as="image" type="image/svg+xml" slot="head" />
   <Nav links={site.nav.links} cta={site.nav.cta} />
   <Hero hero={site.hero} />
-  {/* <Portfolio products={products} /> */}
   <Services services={services} />
   <Process process={process} />
   <Expertise expertise={expertise} />

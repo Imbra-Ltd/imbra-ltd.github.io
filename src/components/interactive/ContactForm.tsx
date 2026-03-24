@@ -61,7 +61,7 @@ export default function ContactForm({ endpoint }: Props) {
       <div className="contact-form-field">
         <label htmlFor="cf-topic">What are you working on?</label>
         <select id="cf-topic" name="topic" required>
-          <option value="" disabled selected>Select a topic…</option>
+          <option value="" disabled>Select a topic…</option>
           <option value="OT/IT Integration">OT/IT Integration</option>
           <option value="PLC / DCS Engineering">PLC / DCS Engineering</option>
           <option value="Data Pipeline / Historian">Data Pipeline / Historian</option>

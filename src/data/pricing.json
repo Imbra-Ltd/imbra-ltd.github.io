@@ -15,12 +15,19 @@
       "title": "Support Retainer",
       "model": "Annual flat fee · per server instance",
       "desc": "Third-level escalation for industrial software systems. Covers incident investigation, root cause analysis, workaround guidance, documentation, and remote consultation — across all covered instances. Each agreement is assigned a dedicated Imbra engineer — the same person across the lifetime of the contract.",
+      "transparency": [
+        "Response time refers to a human engineer acknowledging the incident and starting the investigation — not resolution time.",
+        "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays. All SLA timers apply during business hours only.",
+        "The SLA clock pauses while waiting for a response or access credentials from the client.",
+        "For legacy systems, Critical response times are contingent on the system assessment being completed and remote access being active."
+      ],
       "subtypes": [
         {
           "id": "l3-legacy",
           "index": "1.1",
           "title": "Support of Legacy Systems",
-          "desc": "For systems with limited or no original documentation. Investigation requires reverse-engineering, log analysis, and source-level archaeology. Higher rates reflect the additional overhead of working with undocumented, end-of-life, or vendor-unsupported software. Third-party systems not previously known to Imbra require a system assessment before support can commence.",
+          "desc": "For systems with limited or no original documentation. Investigation requires reverse-engineering, log analysis, and source-level archaeology. Higher rates reflect the additional overhead of working with undocumented, end-of-life, or vendor-unsupported software.",
+          "prerequisite": "Third-party legacy systems not previously known to Imbra require a completed system assessment and operational playbooks before support can commence. This is a separate project governed by a Statement of Work.",
           "excludes": "Deployment to production systems, on-site visits, and new feature development are excluded and governed separately.",
           "examples": [
             "End-of-life software with no vendor support or documentation.",
@@ -36,7 +43,8 @@
               "response": "3d critical response",
               "channel": "Email",
               "reporting": false,
-              "review": false
+              "review": false,
+              "oncall": false
             },
             {
               "name": "Standard",
@@ -46,6 +54,7 @@
               "channel": "Email + video call",
               "reporting": true,
               "review": false,
+              "oncall": false,
               "highlight": true
             },
             {
@@ -55,25 +64,22 @@
               "response": "4h critical response",
               "channel": "Email + video call",
               "reporting": true,
-              "review": true
+              "review": true,
+              "oncall": true
             }
           ],
           "sla": [
-            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "2d", "standard": "1d", "premium": "4h" },
-            { "severity": "High", "definition": "Significant data gap or integration failure", "basic": "5d", "standard": "2d", "premium": "8h" },
+            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "2d", "standard": "1d", "premium": "8h" },
+            { "severity": "High", "definition": "Significant data gap or integration failure", "basic": "5d", "standard": "2d", "premium": "1d" },
             { "severity": "Medium", "definition": "Degraded performance, partial data issues", "basic": "10d", "standard": "5d", "premium": "2d" },
-            { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "10d", "standard": "7d", "premium": "5d" }
+            { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "15d", "standard": "7d", "premium": "5d" }
           ],
           "notes": [
             "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer, SimpleHelp, Secomea, AnyDesk, or equivalent.",
-            "SLA response timers start only when remote access to the site is available.",
-            "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays.",
-            "SLA response timers apply during business hours only.",
             "Excess work is billed at €200/hour with prior written approval.",
             "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
             "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
             "Instances may be on different tiers within the same agreement.",
-            "Third-party legacy systems not previously delivered by Imbra require a system assessment before support can commence. This is handled as a separate project and governed by a Statement of Work.",
             "L3 support covers investigation, root cause analysis, and workaround guidance. Code-level fixes require a separate Project Engagement governed by a Statement of Work. Where source code is unavailable, root cause analysis is limited to log analysis, observed behaviour, and binary-level inspection."
           ]
         },
@@ -95,7 +101,8 @@
               "response": "3d critical response",
               "channel": "Email",
               "reporting": false,
-              "review": false
+              "review": false,
+              "oncall": false
             },
             {
               "name": "Standard",
@@ -105,29 +112,28 @@
               "channel": "Email + video call",
               "reporting": true,
               "review": false,
+              "oncall": false,
               "highlight": true
             },
             {
               "name": "Premium",
-              "price": "€2,000",
+              "price": "€2,500",
               "period": "per instance / year",
               "response": "4h critical response",
               "channel": "Email + video call",
               "reporting": true,
-              "review": true
+              "review": true,
+              "oncall": true
             }
           ],
           "sla": [
-            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "2d", "standard": "1d", "premium": "4h" },
-            { "severity": "High", "definition": "Significant data gap or integration failure", "basic": "5d", "standard": "2d", "premium": "8h" },
-            { "severity": "Medium", "definition": "Degraded performance, partial data issues", "basic": "10d", "standard": "5d", "premium": "2d" },
-            { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "10d", "standard": "7d", "premium": "5d" }
+            { "severity": "Critical", "definition": "System fully offline, data loss risk", "basic": "1d", "standard": "8h", "premium": "4h" },
+            { "severity": "High", "definition": "Significant data gap or integration failure", "basic": "2d", "standard": "1d", "premium": "8h" },
+            { "severity": "Medium", "definition": "Degraded performance, partial data issues", "basic": "5d", "standard": "2d", "premium": "1d" },
+            { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "7d", "standard": "3d", "premium": "2d" }
           ],
           "notes": [
             "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer, SimpleHelp, Secomea, AnyDesk, or equivalent.",
-            "SLA response timers start only when remote access to the site is available.",
-            "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays.",
-            "SLA response timers apply during business hours only.",
             "Excess work is billed at €100/hour with prior written approval.",
             "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
             "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
@@ -138,13 +144,13 @@
           "id": "oncall",
           "index": "1.3",
           "title": "24/7 On-Call Add-On",
-          "desc": "An optional extension to any active retainer agreement. Provides round-the-clock availability for Critical incidents, reducing response time to 1h regardless of time of day. Governed by a separate agreement in addition to the base retainer.",
+          "desc": "An optional extension to an active Premium retainer agreement. Provides round-the-clock availability for Critical incidents, reducing response time to 1h regardless of time of day. Governed by a separate agreement in addition to the base retainer.",
           "examples": [
             "A production system where downtime at night or on weekends carries significant financial or operational risk."
           ],
           "rate": "€20,000 / client / year",
           "notes": [
-            "Requires an active retainer agreement (1.1 or 1.2) — cannot be purchased standalone.",
+            "Requires an active Premium retainer agreement (1.1 or 1.2) — cannot be purchased standalone or added to Basic/Standard tiers. Safe round-the-clock response depends on the operational context built through quarterly reviews and monthly reporting.",
             "Reduces Critical response time to 1h, 24 hours a day, 7 days a week.",
             "All other severity response times remain as defined in the base retainer.",
             "Priced per client — covers all instances under the client agreement regardless of tier."
@@ -240,9 +246,9 @@
       "lines": [
         { "label": "15 × Basic (€800)", "amount": "€12,000" },
         { "label": "4 × Standard (€1,200)", "amount": "€4,800" },
-        { "label": "1 × Premium (€2,000)", "amount": "€2,000" }
+        { "label": "1 × Premium (€2,500)", "amount": "€2,500" }
       ],
-      "total": "€18,800 / year"
+      "total": "€19,300 / year"
     },
     {
       "title": "Hotfix & Emergency — single incident",

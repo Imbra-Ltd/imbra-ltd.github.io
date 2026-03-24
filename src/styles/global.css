@@ -285,6 +285,7 @@ footer { background: var(--color-dark); color: white; }
 .pricing-excludes { display: grid; grid-template-columns: 48px 1fr; background: var(--color-border); border: 1px solid var(--color-border); gap: 1px; margin-bottom: 32px; }
 .pricing-excludes-icon { background: #D97706; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
 .pricing-excludes-text { background: var(--color-white); font-size: 13px; color: var(--color-text-body); line-height: 1.6; padding: 14px 20px; margin: 0; }
+.pricing-excludes-list { background: var(--color-white); font-size: 13px; color: var(--color-text-body); line-height: 1.6; padding: 14px 20px 14px 36px; margin: 0; display: flex; flex-direction: column; gap: 6px; }
 .pricing-subtype { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--color-border-light); }
 .pricing-subtype-title { font-size: 16px; font-weight: 500; color: var(--color-dark); letter-spacing: 0.01em; margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; }
 .pricing-subtype-index { font-size: 13px; color: var(--color-accent); font-weight: 400; letter-spacing: 0.04em; }

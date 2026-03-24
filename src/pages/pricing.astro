@@ -42,6 +42,15 @@ const pricingLinks = [
           </div>
         )}
 
+        {cat.transparency && (
+          <div class="pricing-table-wrap">
+            <div class="pricing-table-label mono">Operational Transparency</div>
+            <ol class="pricing-notes">
+              {cat.transparency.map((t) => <li>{t}</li>)}
+            </ol>
+          </div>
+        )}
+
         <!-- Subtypes: Retainer (Legacy + New) and Hourly (Hotfix + Exploration) -->
         {cat.subtypes && cat.subtypes.map((sub) => (
           <div class="pricing-subtype" id={sub.id}>
@@ -50,6 +59,19 @@ const pricingLinks = [
               {sub.title}
             </h3>
             <p class="pricing-subtype-desc">{sub.desc}</p>
+            {(sub.prerequisite || sub.excludes) && (
+              <div class="pricing-excludes">
+                <div class="pricing-excludes-icon">!</div>
+                {(sub.prerequisite && sub.excludes) ? (
+                  <ul class="pricing-excludes-list">
+                    <li>{sub.prerequisite}</li>
+                    <li>{sub.excludes}</li>
+                  </ul>
+                ) : (
+                  <p class="pricing-excludes-text">{sub.prerequisite || sub.excludes}</p>
+                )}
+              </div>
+            )}
             {sub.tiers && (
               <div class="pricing-tiers">
                 {sub.tiers.map((tier) => (
@@ -61,6 +83,9 @@ const pricingLinks = [
                       <li>{tier.channel}</li>
                       <li>{tier.reporting ? 'Monthly summary report' : 'No monthly report'}</li>
                       <li>{tier.review ? 'Quarterly business review' : 'No quarterly review'}</li>
+                      {tier.oncall !== undefined && (
+                        <li>{tier.oncall ? '24/7 on-call eligible' : 'No 24/7 on-call'}</li>
+                      )}
                     </ul>
                   </div>
                 ))}
@@ -119,13 +144,6 @@ const pricingLinks = [
                     <span class="pricing-rate-value">{sub.expenses}</span>
                   </div>
                 )}
-              </div>
-            )}
-
-            {sub.excludes && (
-              <div class="pricing-excludes">
-                <div class="pricing-excludes-icon">!</div>
-                <p class="pricing-excludes-text">{sub.excludes}</p>
               </div>
             )}
 
