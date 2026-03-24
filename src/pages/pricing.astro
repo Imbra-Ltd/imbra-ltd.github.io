@@ -10,6 +10,7 @@ const pricingLinks = [
   { label: "Retainer", target: "retainer" },
   { label: "Hourly", target: "hourly" },
   { label: "Project", target: "project" },
+  { label: "Examples", target: "scenarios" },
 ];
 ---
 
@@ -34,7 +35,12 @@ const pricingLinks = [
         </div>
 
         <p class="pricing-desc">{cat.desc}</p>
-        {cat.excludes && <p class="pricing-excludes">{cat.excludes}</p>}
+        {cat.excludes && (
+          <div class="pricing-excludes">
+            <div class="pricing-excludes-icon">!</div>
+            <p class="pricing-excludes-text">{cat.excludes}</p>
+          </div>
+        )}
 
         <!-- Subtypes: Retainer (Legacy + New) and Hourly (Hotfix + Exploration) -->
         {cat.subtypes && cat.subtypes.map((sub) => (
@@ -44,7 +50,17 @@ const pricingLinks = [
               {sub.title}
             </h3>
             <p class="pricing-subtype-desc">{sub.desc}</p>
-            {sub.excludes && <p class="pricing-excludes">{sub.excludes}</p>}
+            {sub.examples && (
+              <ul class="pricing-examples">
+                {sub.examples.map((e) => <li>{e}</li>)}
+              </ul>
+            )}
+            {sub.excludes && (
+              <div class="pricing-excludes">
+                <div class="pricing-excludes-icon">!</div>
+                <p class="pricing-excludes-text">{sub.excludes}</p>
+              </div>
+            )}
 
             {sub.tiers && (
               <div class="pricing-tiers">
@@ -130,6 +146,12 @@ const pricingLinks = [
           </div>
         ))}
 
+        {cat.examples && (
+          <ul class="pricing-examples">
+            {cat.examples.map((e) => <li>{e}</li>)}
+          </ul>
+        )}
+
         <!-- Project models -->
         {cat.models && (
           <div class="pricing-project-models">
@@ -145,7 +167,41 @@ const pricingLinks = [
       </section>
     ))}
 
+    <!-- Scenarios -->
+    {pricing.scenarios && (
+      <section class="pricing-section" id="scenarios">
+        <div class="pricing-section-header">
+          <span class="pricing-index mono">4</span>
+          <div>
+            <h2 class="pricing-section-title">Pricing Examples</h2>
+            <div class="pricing-model mono">Illustrative scenarios — all prices exclusive of VAT</div>
+          </div>
+        </div>
+        <div class="pricing-scenarios-grid">
+          {pricing.scenarios.map((s) => (
+            <div class="pricing-scenario">
+              <div class="pricing-scenario-title mono">{s.title}</div>
+              <p class="pricing-scenario-desc">{s.desc}</p>
+              <div class="pricing-scenario-lines">
+                {s.lines.map((l) => (
+                  <div class="pricing-scenario-line">
+                    <span class="pricing-scenario-line-label">{l.label}</span>
+                    <span class="pricing-scenario-line-amount mono">{l.amount}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="pricing-scenario-total">
+                <span>Total</span>
+                <span class="mono">{s.total}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
     <!-- Legal note -->
+
     <p class="pricing-legal-note">{pricing.legalNote}</p>
 
     <!-- CTA -->

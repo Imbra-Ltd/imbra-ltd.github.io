@@ -13,15 +13,19 @@
       "id": "retainer",
       "index": "1",
       "title": "Support Retainer",
-      "model": "Annual flat fee · per server instance or per release branch (libraries and frameworks)",
-      "desc": "Third-level escalation for industrial software systems. Covers incident investigation, root cause analysis, workaround guidance, documentation, and remote consultation — across all covered instances.",
-      "excludes": "⚠️ Deployment to production systems, on-site visits, and new feature development are excluded and governed separately.",
+      "model": "Annual flat fee · per server instance",
+      "desc": "Third-level escalation for industrial software systems. Covers incident investigation, root cause analysis, workaround guidance, documentation, and remote consultation — across all covered instances. Each agreement is assigned a dedicated Imbra engineer — the same person across the lifetime of the contract.",
+      "excludes": "Deployment to production systems, on-site visits, and new feature development are excluded and governed separately.",
       "subtypes": [
         {
           "id": "l3-legacy",
           "index": "1.1",
           "title": "Support of Legacy Systems",
           "desc": "For systems with limited or no original documentation. Investigation requires reverse-engineering, log analysis, and source-level archaeology. Higher rates reflect the additional overhead of working with undocumented, end-of-life, or vendor-unsupported software.",
+          "examples": [
+            "A system running on end-of-life software with no documentation.",
+            "An integration with undocumented behaviour causing intermittent data loss."
+          ],
           "tiers": [
             {
               "name": "Basic",
@@ -59,14 +63,15 @@
             { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "10 days", "standard": "5 days", "premium": "2 days" }
           ],
           "notes": [
-            "All work is billed at €200/hour with prior written approval.",
-            "Instances may be on different tiers within the same agreement.",
-            "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
-            "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
+            "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer, SimpleHelp, Secomea, AnyDesk, or equivalent.",
+            "SLA response timers start only when remote access to the site is available.",
             "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays.",
             "SLA response timers apply during business hours only.",
-            "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer Industrial, or Secomea.",
-            "SLA response timers start only when remote access to the site is available."
+            "Excess work is billed at €200/hour with prior written approval.",
+            "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
+            "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
+            "Instances may be on different tiers within the same agreement.",
+            "Third-party legacy systems not previously delivered by Imbra require a system assessment before support can commence. This is handled as a separate project and governed by a Statement of Work."
           ]
         },
         {
@@ -74,6 +79,10 @@
           "index": "1.2",
           "title": "Support of New Products",
           "desc": "Applies only to systems delivered by Imbra and covered by full arc42 architecture documentation. Same service conditions as legacy support — lower rates reflect the structured codebase, modern tooling, and complete documentation available from day one.",
+          "examples": [
+            "An Imbra-built gateway deployed across 3 production sites.",
+            "A cloud integration delivered by Imbra, now in steady-state operation."
+          ],
           "tiers": [
             {
               "name": "Basic",
@@ -111,14 +120,14 @@
             { "severity": "Low", "definition": "Non-urgent queries, documentation", "basic": "10 days", "standard": "5 days", "premium": "2 days" }
           ],
           "notes": [
-            "All work is billed at €100/hour with prior written approval.",
-            "Instances may be on different tiers within the same agreement.",
-            "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
-            "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
+            "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer, SimpleHelp, Secomea, AnyDesk, or equivalent.",
+            "SLA response timers start only when remote access to the site is available.",
             "Business hours: Mon–Fri 09:00–18:00 CET, excluding Bulgarian and EU public holidays.",
             "SLA response timers apply during business hours only.",
-            "Client is responsible for enabling secure remote access prior to the start of the agreement. Accepted methods include VPN, TeamViewer Industrial, or Secomea.",
-            "SLA response timers start only when remote access to the site is available."
+            "Excess work is billed at €100/hour with prior written approval.",
+            "Hours are pooled across all instances within a client agreement — a quiet instance offsets a busy one.",
+            "Maximum pooled capacity is 1,000 hours per client per year (20 hours/week × 50 working weeks).",
+            "Instances may be on different tiers within the same agreement."
           ]
         }
       ]
@@ -135,13 +144,17 @@
           "index": "2.1",
           "title": "Hotfix & Emergency",
           "desc": "Analysis, preparation, and delivery of patches, configuration corrections, or emergency fixes. All artifacts are tested in-house before delivery.",
-          "excludes": "⚠️ Production deployment is carried out by the client.",
+          "examples": [
+            "A data pipeline stops writing the night before a regulatory audit.",
+            "A communication driver crashes after a routine OS update."
+          ],
+          "excludes": "Production deployment is carried out by the client.",
           "rate": "€250 / hour",
           "minimum": "4-hour minimum per incident",
           "outofhours": "1.5× multiplier — evenings after 18:00 CET, weekends, public holidays",
           "expenses": "The hourly rate covers all standard expenses. Exceptional costs exceeding €1,000 (travel, third-party licences, specialised tooling) are borne by the client with prior written agreement.",
           "notes": [
-            "Client must provide remote access before work begins. Accepted methods include VPN, TeamViewer Industrial, or Secomea.",
+            "Client must provide remote access before work begins. Accepted methods include VPN, TeamViewer, SimpleHelp, Secomea, AnyDesk, or equivalent.",
             "The 4-hour minimum billing starts from the moment access is confirmed and the engagement can commence — not from when the incident is reported.",
             "A written summary of findings and delivered artifacts is provided at the end of each engagement."
           ]
@@ -151,7 +164,11 @@
           "index": "2.2",
           "title": "Exploration & Spikes",
           "desc": "A Spike is a time-boxed investigation used to reduce technical uncertainty before committing to a full project. The outcome is a written finding — not production code. Common uses: feasibility assessment, architecture options analysis, protocol compatibility study, or vendor evaluation.",
-          "excludes": "⚠️ A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
+          "examples": [
+            "Assessing whether an existing integration can be migrated to a modern protocol without replacing infrastructure.",
+            "Evaluating two competing platforms before committing to a multi-year licence."
+          ],
+          "excludes": "A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
           "rate": "€150 / hour",
           "minimum": "1-day minimum (8 hours)",
           "expenses": "All expenses incurred during the engagement (travel, third-party licences, specialised tooling) are borne by the client.",
@@ -168,6 +185,10 @@
       "title": "Project Engagement",
       "model": "Fixed price",
       "desc": "Refactoring, new features, migrations, and integrations. Each project is governed by a Statement of Work agreed in writing before commencement, defining scope, deliverables, timeline, and acceptance criteria. Projects involving third-party systems, undocumented interfaces, or undefined scope require an Exploration & Spike before a fixed price can be quoted.",
+      "examples": [
+        "Migrating a legacy COM-based driver to a modern .NET service.",
+        "Building a REST API layer over an existing server."
+      ],
       "models": [
         {
           "name": "Fixed Price",
@@ -175,6 +196,44 @@
           "rate": "Quoted per project"
         }
       ]
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "Legacy retainer — 20 instances",
+      "desc": "16 instances on Basic, 3 on Standard, 1 on Premium.",
+      "lines": [
+        { "label": "16 × Basic (€1,500)", "amount": "€24,000" },
+        { "label": "3 × Standard (€2,200)", "amount": "€6,600" },
+        { "label": "1 × Premium (€3,500)", "amount": "€3,500" }
+      ],
+      "total": "€34,100 / year"
+    },
+    {
+      "title": "New products retainer — 20 instances",
+      "desc": "15 instances on Basic, 4 on Standard, 1 on Premium.",
+      "lines": [
+        { "label": "15 × Basic (€800)", "amount": "€12,000" },
+        { "label": "4 × Standard (€1,200)", "amount": "€4,800" },
+        { "label": "1 × Premium (€2,000)", "amount": "€2,000" }
+      ],
+      "total": "€18,800 / year"
+    },
+    {
+      "title": "Hotfix & Emergency — single incident",
+      "desc": "8-hour emergency engagement during business hours.",
+      "lines": [
+        { "label": "8h × €250", "amount": "€2,000" }
+      ],
+      "total": "€2,000"
+    },
+    {
+      "title": "Exploration & Spike — single engagement",
+      "desc": "1-day investigation, written findings delivered.",
+      "lines": [
+        { "label": "8h × €150", "amount": "€1,200" }
+      ],
+      "total": "€1,200"
     }
   ],
   "legalNote": "All agreements are governed by Bulgarian law. Full terms are included in each engagement contract.",
