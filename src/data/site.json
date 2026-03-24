@@ -74,9 +74,7 @@
       "github": "github.com/Imbra-Ltd",
       "githubHref": "https://github.com/Imbra-Ltd"
     },
-    "aboutBefore": "Imbra is a one-engineer consultancy. Branimir Georgiev — founder, designer, and builder — handles every engagement personally. No handoffs, no account managers, no one to call when the person who built it has moved on. Based in Varna, Bulgaria (EU, CET+1). Available on-site across Europe. Remote-first for all other engagements. Specialising in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services. Branimir also teaches at ",
-    "teachingLink": { "label": "codewithbranko.com", "href": "https://www.codewithbranko.com" },
-    "aboutAfter": " — practical courses and guides for engineers working at the OT/IT boundary. For continuity, all engagements are fully documented — architecture, playbooks, and source code are client-owned and transferable.",
+    "about": "Imbra is a one-engineer consultancy. Branimir Georgiev — founder, designer, and builder — handles every engagement personally. No handoffs, no account managers, no one to call when the person who built it has moved on. Based in Varna, Bulgaria (EU, CET+1). Available on-site across Europe. Remote-first for all other engagements. Specialising in OT/IT integration, industrial historian systems, communication protocol SDKs, and bespoke engineering services. For continuity, all engagements are fully documented — architecture, playbooks, and source code are client-owned and transferable.",
       "founderLink": { "label": "Built by Branimir Georgiev →", "href": "https://braboj.me" },
     "copy": "© 2026 Imbra · All rights reserved",
     "builtWith": "Built with Claude Code"
