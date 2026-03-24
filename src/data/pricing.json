@@ -24,7 +24,9 @@
           "excludes": "Deployment to production systems, on-site visits, and new feature development are excluded and governed separately.",
           "examples": [
             "End-of-life software with no vendor support or documentation.",
-            "Custom-built solution with no source code or original developer."
+            "Custom-built solution with no source code or original developer.",
+            "A system running on an unsupported OS or runtime — Windows XP, Python 2, .NET 2.0.",
+            "A proprietary system whose vendor no longer exists."
           ],
           "tiers": [
             {
@@ -82,7 +84,8 @@
           "desc": "Applies only to systems delivered by Imbra and covered by full arc42 architecture documentation. Same service conditions as legacy support — lower rates reflect the structured codebase, modern tooling, and complete documentation available from day one.",
           "excludes": "Deployment to production systems, on-site visits, and new feature development are excluded and governed separately.",
           "examples": [
-            "Any system delivered and documented by Imbra in steady-state operation."
+            "Any system delivered and documented by Imbra in steady-state operation.",
+            "An Imbra-built integration recently deployed and entering production."
           ],
           "tiers": [
             {
@@ -164,7 +167,8 @@
           "examples": [
             "System down — root cause unknown, production at risk.",
             "Urgent configuration correction needed after a failed deployment.",
-            "Critical hotfix required before the next production window."
+            "Critical hotfix required before the next production window.",
+            "A third-party update breaks an existing integration."
           ],
           "excludes": "Production deployment is carried out by the client.",
           "rate": "€250 / hour",
@@ -184,7 +188,8 @@
           "desc": "A Spike is a time-boxed investigation used to reduce technical uncertainty before committing to a full project. The outcome is a written finding — not production code. Common uses: feasibility assessment, architecture options analysis, protocol compatibility study, or vendor evaluation.",
           "examples": [
             "Assessing migration options before committing to a technical change.",
-            "Evaluating two competing platforms before committing to a multi-year licence."
+            "Evaluating two competing platforms before committing to a multi-year licence.",
+            "Determining feasibility of connecting two systems before starting a project."
           ],
           "excludes": "A Spike does not produce deployable software. If the investigation leads to a project, a separate Statement of Work is required.",
           "rate": "€150 / hour",
@@ -206,7 +211,8 @@
       "examples": [
         "Modernising a legacy codebase — language upgrades, runtime migrations, or framework replacements.",
         "Connecting systems that don't talk to each other — APIs, data pipelines, or protocol bridges.",
-        "Extending an existing system with new features or capabilities."
+        "Extending an existing system with new features or capabilities.",
+        "Building a new system from scratch with full arc42 documentation."
       ],
       "models": [
         {
