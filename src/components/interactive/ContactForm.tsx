@@ -47,7 +47,7 @@ export default function ContactForm({ endpoint }: Props) {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
+    <form className="contact-form" onSubmit={handleSubmit}>
       <div className="contact-form-row">
         <div className="contact-form-field">
           <label htmlFor="cf-name">Name</label>
@@ -79,6 +79,7 @@ export default function ContactForm({ endpoint }: Props) {
         <label htmlFor="cf-message">Message</label>
         <textarea id="cf-message" name="message" rows={4} required />
       </div>
+      <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
       {status === "error" && (
         <p className="contact-form-error">{errorMsg}</p>
       )}
