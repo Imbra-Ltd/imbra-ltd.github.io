@@ -76,7 +76,7 @@ src/components/
 | Page                            | Path                                | Notes                                      |
 |---------------------------------|-------------------------------------|--------------------------------------------|
 | Homepage                        | `/`                                 | All main sections                          |
-| Pricing                         | `/pricing/`                         | Standalone page with contact form          |
+| Pricing (hidden)                | `src/pages/_pricing.astro`          | Excluded from build (`_` prefix), not in nav — hidden for now |
 | Whitepaper — ImBrain            | `/whitepapers/imbrain/`             | Landing page for ImBrain white paper       |
 | Whitepaper — Imbra Connect      | `/whitepapers/imbra-connect/`       | Landing page for Imbra Connect white paper |
 | Whitepaper — Honeywell/Siemens  | `/whitepapers/honeywell-siemens/`   | Landing page for Honeywell white paper     |

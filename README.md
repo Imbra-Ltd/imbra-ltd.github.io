@@ -55,7 +55,7 @@ src/
 │   └── Base.astro         # HTML shell, global CSS, reveal script
 ├── pages/
 │   ├── index.astro        # Homepage
-│   ├── pricing.astro      # Pricing page
+│   ├── _pricing.astro     # Pricing page (hidden — excluded from build)
 │   ├── imprint.astro      # Legal imprint
 │   └── privacy.astro      # Privacy policy
 └── styles/
