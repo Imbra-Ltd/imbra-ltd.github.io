@@ -8,8 +8,7 @@
       { "label": "Services",   "target": "services" },
       { "label": "Process",    "target": "process" },
       { "label": "Expertise",  "target": "expertise" },
-      { "label": "Research",   "target": "publications" },
-      { "label": "Pricing",    "target": "pricing", "href": "/pricing/" }
+      { "label": "Research",   "target": "publications" }
     ],
     "cta": { "label": "Get in touch", "target": "contact" }
   },

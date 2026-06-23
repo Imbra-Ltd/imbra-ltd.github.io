@@ -6,5 +6,5 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://imbra.io',
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap({ filter: (page) => !page.includes('/pricing') })],
 });
