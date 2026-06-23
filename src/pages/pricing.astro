@@ -15,6 +15,7 @@ const pricingLinks = [
 ---
 
 <Base title={`${pricing.meta.title} — ${site.meta.title}`} description={pricing.meta.description}>
+  <meta slot="head" name="robots" content="noindex, nofollow" />
   <Nav links={pricingLinks} cta={site.nav.cta} />
 
   <main class="pricing-page">
